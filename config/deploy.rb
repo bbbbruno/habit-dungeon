@@ -79,3 +79,6 @@ append :linked_dirs, ".bundle"
 
 # puma
 append :rbenv_map_bins, "puma", "pumactl"
+
+# sprocketsをスキップ
+Rake::Task["deploy:assets:backup_manifest"].clear_actions

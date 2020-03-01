@@ -79,5 +79,5 @@ test:
 production:
   <<: *default
   database: habit_dungeon_production
-  username: habit_dungeon
+  username: <%= Rails.application.credentials.postgres[:user] %>
   password: <%= Rails.application.credentials.postgres[:password] %>
