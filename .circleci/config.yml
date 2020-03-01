@@ -2,7 +2,7 @@ version: 2.1
 
 executors:
   default:
-    working_directory: /srv/habit-dungeon
+    working_directory: ~/habit-dungeon
     docker:
       - image: circleci/ruby:2.6.5-node-browsers
         environment:
