@@ -1,0 +1,105 @@
+version: 2.1
+
+executors:
+  default:
+    working_directory: /srv/habit-dungeon
+    docker:
+      - image: circleci/ruby:2.6.5-node-browsers
+        environment:
+          BUNDLER_VERSION: 2.1.4
+          BUNDLE_JOBS: "3"
+          BUNDLE_RETRY: "3"
+          BUNDLE_PATH: vendor/bundle
+          PGHOST: localhost
+          PGUSER: habit_dungeon
+          PGPASSWORD: ""
+      - image: circleci/postgres:11.5-alpine
+        environment:
+          POSTGRES_USER: habit_dungeon
+          POSTGRES_DB: habit_dungeon_test
+          POSTGRES_PASSWORD: ""
+
+commands:
+  setup:
+    steps:
+      - checkout
+      - run:
+          name: Update bundler
+          command: gem update bundler
+
+      - run:
+          name: Which bundler?
+          command: bundle -v
+
+      - restore_cache:
+          keys:
+            - gem-cache-v1-{{ checksum "Gemfile.lock" }}
+            - gem-cache-v1-
+
+      - run:
+          name: Bundle Install
+          command: bundle check --path vendor/bundle || bundle install --deployment
+
+      - save_cache:
+          key: gem-cache-v1-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+      - restore_cache:
+          keys:
+            - yarn-cache-v1-{{ checksum "yarn.lock" }}
+            - yarn-cache-v1-
+
+      - run:
+          name: Yarn Install
+          command: yarn install --cache-folder ~/.cache/yarn
+
+      - save_cache:
+          key: yarn-cache-v1-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+
+jobs:
+  test:
+    executor: default
+    environment:
+      RAILS_ENV: test
+    steps:
+      - checkout
+      - setup
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - run:
+          name: Database setup
+          command: bin/rails db:schema:load --trace
+
+      - run:
+          name: RSpec を並列実行
+          command: |
+            bundle exec rspec --profile 10 \
+                              --format RspecJunitFormatter \
+                              --out test_results/rspec.xml \
+                              --format progress \
+                              $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+
+      - store_test_results:
+          path: test_results
+
+  deploy:
+    executor: default
+    steps:
+      - checkout
+      - setup
+      - add_ssh_keys:
+          fingerprints:
+            - 2e:c1:59:f0:c1:3c:be:14:18:8a:ea:56:ec:6f:9f:a0
+      - deploy:
+          name: Deploy with Capistrano
+          command: bundle exec cap production deploy
+
+workflows:
+  build_and_test:
+    jobs:
+      - test

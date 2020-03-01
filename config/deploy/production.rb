@@ -44,7 +44,7 @@ server "3.115.103.222", user: "deploy", roles: %w{app web}
 # Global options
 # --------------
 set :ssh_options, {
-  keys: %w[~/.ssh/client_rsa],
+  keys: ["#{ENV.fetch('PRODUCTION_SSH_KEY')}"],
   forward_agent: true,
   auth_methods: %w[publickey],
 }
