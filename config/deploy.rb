@@ -24,7 +24,7 @@ set :deploy_to, "/srv/#{fetch(:application)}"
 set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, "config/credentials/production.key"
+append :linked_files, "config/database.yml", "config/credentials/production.yml.enc"
 
 # Default value for linked_dirs is []
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "public/packs", "node_modules"
@@ -48,6 +48,7 @@ set :deploy_via, :remote_cache
 set :conditionally_migrate, true
 
 # linked_filesに記述してあるものを全てリモートサーバにコピー
+append :linked_files, "config/credentials/production.key"
 namespace :safe_deploy_to do
   task :push_config do
     next unless any? :linked_files
@@ -79,6 +80,9 @@ append :linked_dirs, ".bundle"
 
 # puma
 append :rbenv_map_bins, "puma", "pumactl"
+
+# assets:precompileをとばす
+set :assets_dependencies, %w(app/frontend lib/assets vendor/assets Gemfile.lock config/routes.rb)
 
 # sprocketsをスキップ
 Rake::Task["deploy:assets:backup_manifest"].clear_actions
