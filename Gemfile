@@ -28,15 +28,24 @@ gem "image_processing", "~> 1.2"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.4.2", require: false
 
+# not default
 gem "rails-i18n"
 gem "devise"
 gem "devise-i18n"
+gem "slim-rails"
+gem "html2slim"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: %i[mri mingw x64_mingw]
+
+  # not default
   gem "rspec-rails"
   gem "factory_bot_rails"
+  gem "pry-rails"
+  gem "pry-byebug"
+  gem "pry-doc"
+  gem "awesome_print"
 end
 
 group :development do
@@ -46,6 +55,8 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
+
+  # not default
   gem "capistrano-postgresql"
   gem "capistrano"
   gem "capistrano-safe-deploy-to"
@@ -56,6 +67,14 @@ group :development do
   gem "capistrano-faster-assets"
   gem "capistrano3-puma"
   gem "letter_opener_web"
+  gem "rubocop"
+  gem "rubocop-performance"
+  gem "rubocop-rails"
+  gem "slim_lint"
+  gem "better_errors"
+  gem "binding_of_caller"
+  gem "bullet"
+  gem "annotate"
 end
 
 group :test do
