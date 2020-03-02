@@ -1,0 +1,15 @@
+.bundle
+.dockerignore
+.envrc
+.env
+.env.*
+.git
+.rspec
+log
+tmp
+vendor
+node_modules
+public/system
+public/assets
+public/packs
+public/packs-test

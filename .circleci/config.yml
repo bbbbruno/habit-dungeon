@@ -2,7 +2,7 @@ version: 2.1
 
 executors:
   default:
-    working_directory: /srv/habit-dungeon
+    working_directory: ~/habit-dungeon
     docker:
       - image: circleci/ruby:2.6.5-node-browsers
         environment:
@@ -10,9 +10,9 @@ executors:
           BUNDLE_JOBS: "3"
           BUNDLE_RETRY: "3"
           BUNDLE_PATH: vendor/bundle
-          PGHOST: localhost
-          PGUSER: habit_dungeon
-          PGPASSWORD: ""
+          PG_HOST: localhost
+          PG_USER: habit_dungeon
+          PG_PASSWORD: ""
       - image: circleci/postgres:11.5-alpine
         environment:
           POSTGRES_USER: habit_dungeon
