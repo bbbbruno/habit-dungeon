@@ -1,8 +1,9 @@
 FROM ruby:2.6.5
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+  curl -sL https://deb.nodesource.com/setup_13.x | bash - && \
   apt-get update -qq && \
-  apt-get install -y nodejs yarn postgresql-client && \
+  apt-get install -y build-essential nodejs yarn postgresql-client && \
   apt-get install -y vim
 ENV RAILS_ROOT /srv/habit-dungeon/
 RUN mkdir -p $RAILS_ROOT
