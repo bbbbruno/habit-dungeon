@@ -7,9 +7,11 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.2.2",
     "eslint": "^6.8.0",
+    "eslint-plugin-vue": "^6.2.1",
     "turbolinks": "^5.2.0",
     "vue": "^2.6.11",
     "vue-loader": "^15.9.0",
+    "vue-sweetalert2": "^3.0.3",
     "vue-template-compiler": "^2.6.11",
     "vue-turbolinks": "^2.1.0"
   },

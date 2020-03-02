@@ -12,6 +12,8 @@ services:
     volumes:
       - .:/srv/habit-dungeon:cached
       - bundle:/usr/local/bundle:cached
+      - yarn-cache:/usr/local/share/.cache/yarn/v2:cached
+      - node_modules:/srv/habit-dungeon/node_modules:cached
     ports:
       - 3000:3000
     depends_on:
@@ -27,4 +29,5 @@ services:
       - 80:80
 volumes:
   bundle:
-    driver: local
+  yarn-cache:
+  node_modules:

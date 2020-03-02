@@ -1,16 +1,22 @@
 <template>
   <div id="app">
     <p>{{ message }}</p>
+    <button @click="showAlert">Hello world</button>
   </div>
 </template>
 
 <script>
 export default {
-  data: function () {
+  data: function() {
     return {
-      message: "Hello Vue!"
+      message: 'Hello Vue!',
     }
-  }
+  },
+  methods: {
+    showAlert() {
+      this.$swal('Hello Vue world!!!')
+    },
+  },
 }
 </script>
 
