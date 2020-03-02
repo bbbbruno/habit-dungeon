@@ -20,9 +20,9 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV.fetch("PG_USER") { "root" } %>
-  password: <%= ENV.fetch("PG_PASSWORD") { "password" } %>
-  host: <%= ENV.fetch("PG_HOST") { "localhost" } %>
+  username: <%= ENV.fetch("PG_USER") { "postgres" } %>
+  password: <%= ENV.fetch("PG_PASSWORD") { "" } %>
+  host: <%= ENV.fetch("PG_HOST") { "db" } %>
 
 development:
   <<: *default
@@ -79,6 +79,6 @@ test:
 production:
   <<: *default
   database: habit_dungeon_production
-  username: <%= Rails.application.credentials.postgres[:user] %>
-  password: <%= Rails.application.credentials.postgres[:password] %>
-  host: <%= Rails.application.credentials.postgres[:host] %>
+  username: <%= Rails.application.credentials.postgres[:user] if Rails.env.production? %>
+  password: <%= Rails.application.credentials.postgres[:password] if Rails.env.production? %>
+  host: <%= Rails.application.credentials.postgres[:host] if Rails.env.production? %>

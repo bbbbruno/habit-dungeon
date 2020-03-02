@@ -10,9 +10,9 @@ executors:
           BUNDLE_JOBS: "3"
           BUNDLE_RETRY: "3"
           BUNDLE_PATH: vendor/bundle
-          PGHOST: localhost
-          PGUSER: habit_dungeon
-          PGPASSWORD: ""
+          PG_HOST: localhost
+          PG_USER: habit_dungeon
+          PG_PASSWORD: ""
       - image: circleci/postgres:11.5-alpine
         environment:
           POSTGRES_USER: habit_dungeon
@@ -94,7 +94,7 @@ jobs:
       - setup
       - add_ssh_keys:
           fingerprints:
-            - b7:e6:45:ff:25:cf:d2:a4:38:6d:88:44:7b:2e:31:3e
+            - 2e:c1:59:f0:c1:3c:be:14:18:8a:ea:56:ec:6f:9f:a0
       - deploy:
           name: Deploy with Capistrano
           command: bundle exec cap production deploy

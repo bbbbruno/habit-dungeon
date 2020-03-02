@@ -4,15 +4,14 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
   apt-get update -qq && \
   apt-get install -y nodejs yarn postgresql-client && \
   apt-get install -y vim
-ENV RAILS_ROOT /srv/habit-dungeon
+ENV RAILS_ROOT /srv/habit-dungeon/
 RUN mkdir -p $RAILS_ROOT
 WORKDIR $RAILS_ROOT
-COPY Gemfile $RAILS_ROOT/Gemfile
+COPY Gemfile Gemfile.lock package.json yarn.lock $RAILS_ROOT
 COPY Gemfile.lock $RAILS_ROOT/Gemfile.lock
 RUN gem update bundler
-RUN bundle install
+RUN bundle install && yarn install
 COPY . $RAILS_ROOT
-RUN yarn install
 RUN mkdir -p tmp/sockets
 
 # Add a script to be executed every time the container starts.
