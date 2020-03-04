@@ -136,6 +136,7 @@ GEM
       factory_bot (~> 5.1.0)
       railties (>= 4.2.0)
     ffi (1.12.1)
+    foreman (0.87.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     hpricot (0.8.6)
@@ -366,6 +367,7 @@ DEPENDENCIES
   devise
   devise-i18n
   factory_bot_rails
+  foreman
   html2slim
   image_processing (~> 1.2)
   jbuilder (~> 2.7)

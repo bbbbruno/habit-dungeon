@@ -75,6 +75,7 @@ group :development do
   gem "binding_of_caller"
   gem "bullet"
   gem "annotate"
+  gem "foreman"
 end
 
 group :test do

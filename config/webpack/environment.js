@@ -4,4 +4,5 @@ const vue = require('./loaders/vue')
 
 environment.plugins.prepend('VueLoaderPlugin', new VueLoaderPlugin())
 environment.loaders.prepend('vue', vue)
+environment.loaders.get('sass').use.push('import-glob-loader')
 module.exports = environment
