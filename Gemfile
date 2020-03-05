@@ -66,6 +66,7 @@ group :development do
   gem "capistrano-rails"
   gem "capistrano-faster-assets"
   gem "capistrano3-puma"
+  gem "circleci-bundle-update-pr"
   gem "letter_opener_web"
   gem "rubocop"
   gem "rubocop-performance"

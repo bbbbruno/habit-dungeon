@@ -8,26 +8,33 @@ services:
     build:
       context: .
       dockerfile: ./docker/app/Dockerfile
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bash -c "rm -f tmp/pids/server.pid && ./bin/server"
     volumes:
-      - .:/srv/habit-dungeon:cached
+      - .:/srv/habit-dungeon
+      - public-data:/srv/habit-dungeon/public
+      - tmp-data:/srv/habit-dungeon/tmp
       - bundle:/usr/local/bundle:cached
       - yarn-cache:/usr/local/share/.cache/yarn/v2:cached
       - node_modules:/srv/habit-dungeon/node_modules:cached
     ports:
       - 3000:3000
+      - 3035:3035
     depends_on:
       - db
   web:
     build:
-      context: docker/web
+      context: ./docker/web
     volumes:
+      - public-data:/srv/habit-dungeon/public
+      - tmp-data:/srv/habit-dungeon/tmp
       - ./log:/var/log/nginx
     depends_on:
       - app
     ports:
       - 80:80
 volumes:
+  public-data:
+  tmp-data:
   bundle:
   yarn-cache:
   node_modules:
