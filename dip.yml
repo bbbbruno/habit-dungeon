@@ -38,6 +38,11 @@ interaction:
         service: app
         compose_run_options: [service-ports]
 
+  foreman:
+    description: Run rails and webpack-dev-server with foreman
+    service: app
+    command: ./bin/server
+
   rspec:
     description: Run Rspec commands
     service: app
