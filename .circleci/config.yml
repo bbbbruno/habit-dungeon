@@ -22,7 +22,6 @@ executors:
 commands:
   setup:
     steps:
-      - checkout
       - run:
           name: Update bundler
           command: gem update bundler
@@ -99,8 +98,17 @@ jobs:
           name: Deploy with Capistrano
           command: bundle exec cap production deploy
 
+  bundle_update:
+    executor: default
+    steps:
+      - checkout
+      - setup
+      - run:
+          name: bundle update
+          command: circleci-bundle-update-pr ${BUNDLE_UPDATE_GITHUB_USERNAME} ${BUNDLE_UPDATE_GITHUB_EMAIL}
+
 workflows:
-  build_and_test:
+  test_and_deploy:
     jobs:
       - test
       - deploy:
@@ -109,3 +117,12 @@ workflows:
           filters:
             branches:
               only: master
+  auto_bundle_update:
+    triggers:
+      - schedule:
+          cron: "00 1 * * 1" # 毎週月曜日
+          filters:
+            branches:
+              only: master
+    jobs:
+      - bundle_update
