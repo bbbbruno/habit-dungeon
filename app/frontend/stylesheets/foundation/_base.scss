@@ -1,0 +1,53 @@
+/* --------------------------------
+ * BASE
+ * -------------------------------- */
+// font ----------------
+@font-face {
+  font-family: 'Gold';
+  src: url('/fonts/GN-Kin-iro_SansSerif.ttf');
+}
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:400,500,700|Suez+One&display=swap&subset=japanese');
+
+// body ----------------
+body {
+  -webkit-font-smoothing: antialiased;
+  background-color: $bg;
+  font-family: $base;
+
+  @include media(md) {
+    font-size: 1.4rem;
+  }
+}
+
+// link
+a {
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+// image
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+// heading
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: $rpg;
+  font-weight: normal;
+}
+
+h2 {
+  font-size: 3rem;
+}
