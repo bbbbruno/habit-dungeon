@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @dungeon.title
+p
+  strong Description:
+  = @dungeon.description
+p
+  strong User:
+  = @dungeon.user
+
+=> link_to 'Edit', edit_dungeon_path(@dungeon)
+'|
+=< link_to 'Back', dungeons_path
