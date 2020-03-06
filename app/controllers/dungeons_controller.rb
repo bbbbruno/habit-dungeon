@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 class DungeonsController < ApplicationController
-  before_action :set_dungeon, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: %i[new create update destroy]
+  before_action :set_dungeon, only: %i[show edit update destroy]
 
   # GET /dungeons
   # GET /dungeons.json
@@ -28,7 +31,7 @@ class DungeonsController < ApplicationController
 
     respond_to do |format|
       if @dungeon.save
-        format.html { redirect_to @dungeon, notice: 'Dungeon was successfully created.' }
+        format.html { redirect_to @dungeon, notice: "Dungeon was successfully created." }
         format.json { render :show, status: :created, location: @dungeon }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class DungeonsController < ApplicationController
   def update
     respond_to do |format|
       if @dungeon.update(dungeon_params)
-        format.html { redirect_to @dungeon, notice: 'Dungeon was successfully updated.' }
+        format.html { redirect_to @dungeon, notice: "Dungeon was successfully updated." }
         format.json { render :show, status: :ok, location: @dungeon }
       else
         format.html { render :edit }
@@ -56,7 +59,7 @@ class DungeonsController < ApplicationController
   def destroy
     @dungeon.destroy
     respond_to do |format|
-      format.html { redirect_to dungeons_url, notice: 'Dungeon was successfully destroyed.' }
+      format.html { redirect_to dungeons_url, notice: "Dungeon was successfully destroyed." }
       format.json { head :no_content }
     end
   end

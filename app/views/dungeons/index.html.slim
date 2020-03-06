@@ -16,10 +16,10 @@ table
         td = dungeon.title
         td = dungeon.description
         td = dungeon.user
-        td = link_to 'Show', dungeon
-        td = link_to 'Edit', edit_dungeon_path(dungeon)
-        td = link_to 'Destroy', dungeon, data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to "Show", dungeon
+        td = link_to "Edit", edit_dungeon_path(dungeon)
+        td = link_to "Destroy", dungeon, data: { confirm: "Are you sure?" }, method: :delete
 
 br
 
-= link_to 'New Dungeon', new_dungeon_path
+= link_to "New Dungeon", new_dungeon_path

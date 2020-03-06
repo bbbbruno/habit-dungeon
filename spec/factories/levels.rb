@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :dungeon do
+  factory :level do
+    number { 1 }
     title { "MyString" }
-    description { "MyText" }
-    user { nil }
+    days { 1 }
+    dungeon { nil }
   end
 end
