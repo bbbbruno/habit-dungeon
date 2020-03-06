@@ -5,8 +5,19 @@
 // width -----------------------------------
 
 // font -------------------------------------
+@font-face {
+  font-family: 'GN';
+  src: url('/fonts/GN-Kin-iro_SansSerif.ttf');
+}
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:400,500,700|Suez+One&display=swap&subset=japanese');
+$rpg: 'GN', sans-serif;
+$base: 'M PLUS Rounded 1c', sans-serif;
 
 // color ------------------------------------
+$main: #9818d6;
+$sub: #ff5151;
+$other: #ffa41b;
+$bg: #ededed;
 
 // breakpoint -------------------------------
 $breakpoints: (

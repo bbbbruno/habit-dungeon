@@ -1,0 +1,18 @@
+header.header
+  .header-box
+    = link_to root_path do
+      = image_pack_tag "logo.png", class: "header-logo"
+      p.header-tit HabitDungeon
+
+  nav.header-gnav
+    ul.header-list
+      li.header-item = link_to "ダンジョン", "#"
+      li.header-item = link_to "プレイヤー", "#"
+
+  .header-wrap
+    - if user_signed_in?
+      = link_to "ユーザー編集", edit_user_registration_path
+      = link_to "ログアウト", destroy_user_session_path, method: :delete
+    - else
+      = link_to "新規登録", new_user_registration_path
+      = link_to "ログイン", new_user_session_path

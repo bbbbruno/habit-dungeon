@@ -7,21 +7,8 @@ html
     = csp_meta_tag
     = stylesheet_pack_tag "application", "data-turbolinks-track": "reload"
     = javascript_pack_tag "application", "data-turbolinks-track": "reload"
-  body
-    - if notice
-      p.notice
-        = notice
-    - if alert
-      p.alert
-        = alert
-    - if user_signed_in?
-      = link_to "ユーザー編集", edit_user_registration_path
-      |  |
-      = link_to "ログアウト", destroy_user_session_path, method: :delete
-    - else
-      = link_to "新規登録", new_user_registration_path
-      |  |
-      = link_to "ログイン", new_user_session_path
-
-    #app
-    = yield
+  body class="#{controller.controller_name}" id="#{controller.action_name}"
+    = render "header"
+    main.main
+      .container = yield
+    = render "footer"

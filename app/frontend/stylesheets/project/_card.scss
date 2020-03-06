@@ -1,0 +1,89 @@
+.card {
+  max-width: 700px;
+  background: #ffffff;
+  margin: 0 auto;
+  border-radius: 5px;
+
+  &-inner {
+    padding: 10px 20px;
+  }
+
+  &-tit {
+    text-align: center;
+    font-size: 4.5rem;
+    line-height: 1.2;
+    border-bottom: 1px solid #dfdfdf;
+    padding-top: 10px;
+    margin-bottom: 15px;
+  }
+
+  &-form {
+    label {
+      display: inline-block;
+      margin-bottom: 5px;
+      font-size: 18px;
+    }
+
+    .field {
+      margin-bottom: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+
+      &._checkbox {
+        label {
+          padding-top: 2px;
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .field_with_errors {
+      width: 100%;
+    }
+
+    .field-wrap {
+      display: flex;
+      width: 100%;
+      .field_with_errors {
+        width: auto;
+      }
+    }
+
+    input[type='text'],
+    input[type='email'],
+    input[type='password'] {
+      width: 100%;
+      padding: 10px;
+      font-size: 1.5rem;
+    }
+
+    input[type='checkbox'] {
+      margin-right: 5px;
+    }
+  }
+
+  &-btn {
+    display: block;
+    padding: 10px 30px;
+    color: #ffffff;
+    background: $main;
+    margin: 0 auto;
+    border: none;
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 5px;
+    &:hover {
+      cursor: pointer;
+      background: darken($main, 10%);
+    }
+  }
+
+  &-shared {
+    padding: 15px 0;
+
+    a {
+      margin: 2px 5px;
+    }
+  }
+}

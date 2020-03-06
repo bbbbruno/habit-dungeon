@@ -1,0 +1,55 @@
+.header {
+  background: $main;
+  display: flex;
+  align-items: center;
+  padding: 0 7px;
+  color: #fff;
+
+  &-box {
+    a {
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+
+  &-tit {
+    font-family: 'Suez One', serif;
+    font-size: 3rem;
+    margin-left: 5px;
+  }
+
+  &-logo {
+    width: 50px;
+    filter: brightness(0) invert(1);
+  }
+
+  &-list {
+    display: flex;
+    margin-left: 20px;
+  }
+
+  &-item {
+    font-weight: bold;
+    margin: 0 5px;
+    padding: 5px 0;
+
+    a {
+      display: block;
+      line-height: 5rem;
+    }
+  }
+
+  &-wrap {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+
+    a {
+      margin: 0 5px;
+    }
+  }
+}
