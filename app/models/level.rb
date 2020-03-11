@@ -23,4 +23,7 @@
 #
 class Level < ApplicationRecord
   belongs_to :dungeon
+
+  validates :title, presence: true
+  validates :days, presence: true, numericality: { only_integer: true }
 end

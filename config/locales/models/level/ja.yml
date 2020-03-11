@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    models:
+      level: レベル
+    attributes:
+      level:
+        title: 目標
+        days: 日数

@@ -23,4 +23,18 @@ class Dungeon < ApplicationRecord
   belongs_to :user
   has_one_attached :header
   has_many :levels, dependent: :destroy
+  accepts_nested_attributes_for :levels, allow_destroy: true
+
+  validates :title, presence: true
+  validates :description, presence: true
+  validate :levels_days_over_66
+
+  private
+    def levels_days_over_66
+      days_list = levels.map(&:days)
+      total = days_list.inject(0) { |result, days| result + days }
+      if total < 66
+        errors.add(:levels, "の合計日数は66日以上でなければなりません")
+      end
+    end
 end

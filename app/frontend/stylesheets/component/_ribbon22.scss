@@ -1,0 +1,139 @@
+.ribbon1 {
+  margin: 0 auto;
+  h1 {
+    line-height: 1;
+    margin: 0 auto 30px;
+    border-bottom: 2px solid $main;
+  }
+}
+
+.heading04 {
+  position: relative;
+  padding-bottom: 5px;
+  border-bottom: 3px solid #d4d4d4;
+  line-height: 1;
+  margin-bottom: 30px;
+
+  span {
+    border-bottom: 3px solid $main;
+    padding: 5px 20px 5px 5px;
+  }
+}
+// .heading04::after {
+//   width: 30%;
+//   height: 3px;
+//   background-color: $main;
+//   position: absolute;
+//   bottom: -3px;
+//   left: 0;
+//   z-index: 2;
+//   content: '';
+// }
+
+// .heading04 {
+//   background: $main;
+//   display: inline-block;
+//   padding: 10px 20px;
+//   position: relative;
+//   right: 30px;
+//   top: 30px;
+//   color: #ffffff;
+//   line-height: 1;
+//   transform: rotate(-5deg);
+// }
+
+// .head_test {
+//   margin: 0; /* デフォルトCSS打ち消し */
+//   font-size: 24px; /* 文字サイズ指定 */
+//   position: relative; /* 位置調整 */
+//   font-weight: normal; /* 文字の太さ調整 */
+//   margin-bottom: 15px; /* 周りの余白指定 */
+//   padding-top: 50px; /* 余白指定 */
+//   padding-left: 40px; /* 余白指定 */
+// }
+// p {
+//   margin: 0; /* デフォルトCSS打ち消し */
+//   line-height: 2; /* 行間調整 */
+//   padding-left: 40px; /* 余白指定 */
+// }
+// .head_test:before {
+//   content: ''; /* 空白の要素を作る */
+//   width: 0; /* 幅指定 */
+//   height: 0; /* 高さ指定 */
+//   border-style: solid; /* 三角を作る */
+//   border-width: 0px 0 110px 80px; /* 三角を作る */
+//   border-color: transparent transparent #a3d0e4 transparent; /* 三角を作る */
+//   position: absolute; /* 位置調整 */
+//   z-index: -1; /* 重なり調整 */
+//   transform: rotate(30deg); /* 回転 */
+//   top: -20px; /* 位置調整 */
+//   left: 30px; /* 位置調整 */
+// }
+
+// .wrap {
+//   max-width: 800px;
+//   margin: 0 auto;
+// }
+// h1.heading {
+//   line-height: 1;
+//   position: relative;
+//   padding: 0 0 2px 32px;
+//   border-bottom: 3px solid $main;
+//   margin-bottom: 39px;
+//   &:before,
+//   &:after {
+//     content: '';
+//     position: absolute;
+//     bottom: 0;
+//     width: 20px;
+//     height: 20px;
+//     border: 2px solid $sub;
+//     margin: auto;
+//   }
+//   &:before {
+//     top: -6px;
+//     left: 0px;
+//   }
+//   &:after {
+//     top: 6px;
+//     left: 6px;
+//   }
+// }
+
+.demo {
+  max-width: 500px;
+  margin: 0 auto 10px;
+  padding: 10px 0;
+  font-family: sans-serif;
+  font-size: 20px;
+}
+
+.demo4 .heading {
+  padding: 10px 5px;
+  border: solid 3px $main;
+  position: relative;
+  text-align: center;
+  border-radius: 3px;
+  background: $main;
+  color: #ffffff;
+  line-height: 1;
+}
+.demo4 .heading::after,
+.demo4 .heading::before {
+  content: '';
+  position: absolute;
+  bottom: -7px;
+  background: $main;
+  border: solid 2px $main;
+  width: 25px;
+  height: 20px;
+  z-index: -1;
+}
+.demo4 .heading::after {
+  left: 2px;
+  transform: rotate(120deg);
+}
+.demo4 .heading::before {
+  right: 2px;
+  transform: rotate(60deg);
+}

@@ -1,7 +1,6 @@
 .card {
-  max-width: 700px;
   background: #ffffff;
-  margin: 0 auto;
+  margin: 0 auto 30px;
   border-radius: 5px;
 
   &-inner {
@@ -59,7 +58,6 @@
         span {
           display: block;
           text-align: center;
-          margin-top: 5px;
           padding: 10px 15px;
           border: none;
           border-top: solid 1px #c1c5b9;
@@ -76,6 +74,7 @@
     }
 
     .field-wrap {
+      display: flex;
       label {
         width: auto;
       }
@@ -95,6 +94,12 @@
     input[type='checkbox'] {
       margin-right: 5px;
     }
+
+    textarea {
+      width: 100%;
+      height: 200px;
+      padding: 10px;
+    }
   }
 
   &-btn {
@@ -111,6 +116,12 @@
     &:hover {
       cursor: pointer;
       background: darken($main, 10%);
+    }
+    &[disabled] {
+      opacity: 0.6;
+      &:hover {
+        cursor: not-allowed;
+      }
     }
   }
 

@@ -48,7 +48,6 @@
 #               GET    /:id/attachments/:file(.:format) letter_opener_web/letters#attachment
 
 Rails.application.routes.draw do
-  resources :dungeons
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   if Rails.env.development?
@@ -57,5 +56,14 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     root to: "devise/sessions#new"
+  end
+  resources :dungeons
+
+  namespace :api, format: "json" do
+    devise_scope :user do
+      resources :dungeons, only: %i[] do
+        resources :levels, only: %i[index], controller: "dungeons/levels"
+      end
+    end
   end
 end

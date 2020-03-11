@@ -2,76 +2,61 @@
 
 class DungeonsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create update destroy]
-  before_action :set_dungeon, only: %i[show edit update destroy]
+  before_action :set_dungeon, only: %i[show]
+  before_action :set_my_dungeon, only: %i[edit update destroy]
 
-  # GET /dungeons
-  # GET /dungeons.json
   def index
     @dungeons = Dungeon.all
   end
 
-  # GET /dungeons/1
-  # GET /dungeons/1.json
   def show
   end
 
-  # GET /dungeons/new
   def new
     @dungeon = Dungeon.new
   end
 
-  # GET /dungeons/1/edit
   def edit
   end
 
-  # POST /dungeons
-  # POST /dungeons.json
   def create
     @dungeon = Dungeon.new(dungeon_params)
+    @dungeon.user = current_user
 
-    respond_to do |format|
-      if @dungeon.save
-        format.html { redirect_to @dungeon, notice: "Dungeon was successfully created." }
-        format.json { render :show, status: :created, location: @dungeon }
-      else
-        format.html { render :new }
-        format.json { render json: @dungeon.errors, status: :unprocessable_entity }
-      end
+    if @dungeon.save
+      redirect_to @dungeon, notice: "ダンジョンの作成に成功しました"
+    else
+      render :new
     end
   end
 
-  # PATCH/PUT /dungeons/1
-  # PATCH/PUT /dungeons/1.json
   def update
-    respond_to do |format|
-      if @dungeon.update(dungeon_params)
-        format.html { redirect_to @dungeon, notice: "Dungeon was successfully updated." }
-        format.json { render :show, status: :ok, location: @dungeon }
-      else
-        format.html { render :edit }
-        format.json { render json: @dungeon.errors, status: :unprocessable_entity }
-      end
+    if @dungeon.update(update_dungeon_params)
+      redirect_to @dungeon, notice: "ダンジョンの更新に成功しました"
+    else
+      render :edit
     end
   end
 
-  # DELETE /dungeons/1
-  # DELETE /dungeons/1.json
   def destroy
     @dungeon.destroy
-    respond_to do |format|
-      format.html { redirect_to dungeons_url, notice: "Dungeon was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to dungeons_url, notice: "ダンジョンの削除に成功しました"
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_dungeon
       @dungeon = Dungeon.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    def set_my_dungeon
+      @dungeon = current_user.dungeons.find(params[:id])
+    end
+
     def dungeon_params
-      params.require(:dungeon).permit(:title, :description, :user_id)
+      params.require(:dungeon).permit(:title, :description, :header, levels_attributes: %i[number title days])
+    end
+
+    def update_dungeon_params
+      params.require(:dungeon).permit(:title, :description, :header, levels_attributes: %i[id number title days _destroy])
     end
 end

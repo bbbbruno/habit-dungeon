@@ -1,15 +1,24 @@
-p#notice = notice
+h1.dungeons-pagetit
+  span ダンジョン詳細
 
-p
-  strong Title:
-  = @dungeon.title
-p
-  strong Description:
-  = @dungeon.description
-p
-  strong User:
-  = @dungeon.user
+.card
+  .overlay style="background: url(#{url_for(@dungeon.header)}) no-repeat center center/cover;"
+    h1.card-tit.dungeons-tit = @dungeon.title
+  .card-inner
+    .dungeons-box
+      h2.dungeons-heading 説明
+      p = simple_format h @dungeon.description
+    .dungeons-box
+      h2.dungeons-heading レベル
+      - @dungeon.levels.each do |level|
+        .levels-field
+          p.levels-number = "Lv " + level.number.to_s
+          p.levels-title = level.title
+          p.levels-days = level.days.to_s + "日"
 
-= link_to "Edit", edit_dungeon_path(@dungeon)
-|
-= link_to "Back", dungeons_path
+.bottom
+  button.bottom-action 挑戦する！
+  .bottom-links
+    = link_to "もどる", dungeons_path
+    - if current_user == @dungeon.user
+      = link_to "編集", edit_dungeon_path(@dungeon)
