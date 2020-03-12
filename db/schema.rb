@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,8 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_08_152928) do
-
+ActiveRecord::Schema.define(version: 2020_03_12_103528) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,12 +37,28 @@ ActiveRecord::Schema.define(version: 2020_03_08_152928) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "challenges", force: :cascade do |t|
+    t.string "challenger_type", null: false
+    t.bigint "challenger_id", null: false
+    t.bigint "dungeon_id", null: false
+    t.integer "progress"
+    t.integer "life"
+    t.integer "difficulty", default: 0
+    t.boolean "clear"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["challenger_type", "challenger_id"], name: "index_challenges_on_challenger_type_and_challenger_id"
+    t.index ["dungeon_id"], name: "index_challenges_on_dungeon_id"
+  end
+
   create_table "dungeons", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_dungeons_on_discarded_at"
     t.index ["user_id"], name: "index_dungeons_on_user_id"
   end
 
@@ -79,12 +96,15 @@ ActiveRecord::Schema.define(version: 2020_03_08_152928) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_users_on_discarded_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["user_id"], name: "index_users_on_user_id", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "challenges", "dungeons"
   add_foreign_key "dungeons", "users"
   add_foreign_key "levels", "dungeons"
 end

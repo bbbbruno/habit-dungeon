@@ -2,7 +2,7 @@ h1.dungeons-pagetit
   span ダンジョン詳細
 
 .card
-  .overlay style="background: url(#{url_for(@dungeon.header)}) no-repeat center center/cover;"
+  .overlay style="background: url(#{header_url(@dungeon)}) no-repeat center center/cover;"
     h1.card-tit.dungeons-tit = @dungeon.title
   .card-inner
     .dungeons-box
@@ -22,3 +22,24 @@ h1.dungeons-pagetit
     = link_to "もどる", dungeons_path
     - if current_user == @dungeon.user
       = link_to "編集", edit_dungeon_path(@dungeon)
+
+  = form_for Challenge.new do |f|
+    .field
+      = f.label :challenger_type_solo
+      = f.radio_button :challenger_type, :solo
+      = f.label :challenger_type_party
+      = f.radio_button :challenger_type, :party
+    .field
+      = f.hidden_field :dungeon_id, value: @dungeon.id
+    .field
+      = f.label :life
+      label
+        = f.radio_button :difficulty, :easy
+        | 易
+      label
+        = f.radio_button :difficulty, :normal
+        | 中
+      label
+        = f.radio_button :difficulty, :hard
+        | 難
+    .actions = f.submit

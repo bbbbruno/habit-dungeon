@@ -1,0 +1,22 @@
+h1
+
+p
+  strong challenger:
+  = @challenge.challenger
+p
+  strong Dungeon:
+  = @challenge.dungeon
+p
+  strong Progress:
+  = @challenge.progress
+p
+  strong life:
+  = @challenge.life
+
+.bottom
+  .bottom-links
+    = link_to "もどる", :back
+    .bottom-wrap
+      = link_to "くわしく", @challenge.dungeon
+      - if current_user == @challenge.challenger
+        = link_to "リタイア", @challenge, data: { confirm: "本当によろしいですか？" }, method: :delete

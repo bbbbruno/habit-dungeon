@@ -3,6 +3,7 @@
 # == Route Map
 #
 #                                Prefix Verb   URI Pattern                                                                              Controller#Action
+#                     letter_opener_web        /letter_opener                                                                           LetterOpenerWeb::Engine
 #                      new_user_session GET    /users/sign_in(.:format)                                                                 devise/sessions#new
 #                          user_session POST   /users/sign_in(.:format)                                                                 devise/sessions#create
 #                  destroy_user_session DELETE /users/sign_out(.:format)                                                                devise/sessions#destroy
@@ -18,8 +19,28 @@
 #                                       PUT    /users(.:format)                                                                         devise/registrations#update
 #                                       DELETE /users(.:format)                                                                         devise/registrations#destroy
 #                                       POST   /users(.:format)                                                                         devise/registrations#create
-#                     letter_opener_web        /letter_opener                                                                           LetterOpenerWeb::Engine
+#                 new_user_confirmation GET    /users/confirmation/new(.:format)                                                        devise/confirmations#new
+#                     user_confirmation GET    /users/confirmation(.:format)                                                            devise/confirmations#show
+#                                       POST   /users/confirmation(.:format)                                                            devise/confirmations#create
 #                                  root GET    /                                                                                        devise/sessions#new
+#                              dungeons GET    /dungeons(.:format)                                                                      dungeons#index
+#                                       POST   /dungeons(.:format)                                                                      dungeons#create
+#                           new_dungeon GET    /dungeons/new(.:format)                                                                  dungeons#new
+#                          edit_dungeon GET    /dungeons/:id/edit(.:format)                                                             dungeons#edit
+#                               dungeon GET    /dungeons/:id(.:format)                                                                  dungeons#show
+#                                       PATCH  /dungeons/:id(.:format)                                                                  dungeons#update
+#                                       PUT    /dungeons/:id(.:format)                                                                  dungeons#update
+#                                       DELETE /dungeons/:id(.:format)                                                                  dungeons#destroy
+#                    attacked_challenge GET    /challenges/:id/attacked(.:format)                                                       challenges/attacked#attacked
+#                            challenges GET    /challenges(.:format)                                                                    challenges#index
+#                                       POST   /challenges(.:format)                                                                    challenges#create
+#                         new_challenge GET    /challenges/new(.:format)                                                                challenges#new
+#                        edit_challenge GET    /challenges/:id/edit(.:format)                                                           challenges#edit
+#                             challenge GET    /challenges/:id(.:format)                                                                challenges#show
+#                                       PATCH  /challenges/:id(.:format)                                                                challenges#update
+#                                       PUT    /challenges/:id(.:format)                                                                challenges#update
+#                                       DELETE /challenges/:id(.:format)                                                                challenges#destroy
+#                    api_dungeon_levels GET    /api/dungeons/:dungeon_id/levels(.:format)                                               api/dungeons/levels#index {:format=>/json/}
 #         rails_mandrill_inbound_emails POST   /rails/action_mailbox/mandrill/inbound_emails(.:format)                                  action_mailbox/ingresses/mandrill/inbound_emails#create
 #         rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                  action_mailbox/ingresses/postmark/inbound_emails#create
 #            rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                     action_mailbox/ingresses/relay/inbound_emails#create
@@ -48,22 +69,23 @@
 #               GET    /:id/attachments/:file(.:format) letter_opener_web/letters#attachment
 
 Rails.application.routes.draw do
-  devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
+  devise_for :users
   devise_scope :user do
     root to: "devise/sessions#new"
   end
+
   resources :dungeons
+  resources :challenges do
+    resource :attacked, only: :show, controller: "challenges/attacked"
+  end
 
   namespace :api, format: "json" do
-    devise_scope :user do
-      resources :dungeons, only: %i[] do
-        resources :levels, only: %i[index], controller: "dungeons/levels"
-      end
+    resources :dungeons, only: %i[] do
+      resources :levels, only: %i[index], controller: "dungeons/levels"
     end
   end
 end

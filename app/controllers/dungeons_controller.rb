@@ -39,7 +39,7 @@ class DungeonsController < ApplicationController
   end
 
   def destroy
-    @dungeon.destroy
+    @dungeon.discard
     redirect_to dungeons_url, notice: "ダンジョンの削除に成功しました"
   end
 

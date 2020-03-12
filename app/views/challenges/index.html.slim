@@ -1,0 +1,35 @@
+h1 Listing challenges
+
+table
+  thead
+    tr
+      th challenger
+      th Dungeon
+      th Progress
+      th life
+      th Index
+      th Create
+      th Show
+      th Destroy
+      th
+      th
+      th
+
+  tbody
+    - @challenges.each do |challenge|
+      tr
+        td = challenge.challenger
+        td = challenge.dungeon
+        td = challenge.progress
+        td = challenge.life
+        td = challenge.index
+        td = challenge.create
+        td = challenge.show
+        td = challenge.destroy
+        td = link_to "Show", challenge
+        td = link_to "Edit", edit_challenge_path(challenge)
+        td = link_to "Destroy", challenge, data: { confirm: "Are you sure?" }, method: :delete
+
+br
+
+= link_to "New Challenge", new_challenge_path
