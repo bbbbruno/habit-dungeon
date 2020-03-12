@@ -57,4 +57,13 @@ Rails.application.routes.draw do
   devise_scope :user do
     root to: "devise/sessions#new"
   end
+  resources :dungeons
+
+  namespace :api, format: "json" do
+    devise_scope :user do
+      resources :dungeons, only: %i[] do
+        resources :levels, only: %i[index], controller: "dungeons/levels"
+      end
+    end
+  end
 end

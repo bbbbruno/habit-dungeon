@@ -6,8 +6,10 @@ header.header
 
   nav.header-gnav
     ul.header-list
-      li.header-item = link_to "ダンジョン", "#"
-      li.header-item = link_to "プレイヤー", "#"
+      li.header-item class="#{active_controller?("dungeons")}"
+        = link_to "ダンジョン", dungeons_path
+      li.header-item class="#{active_action?("user")}"
+        = link_to "プレイヤー", "#"
 
   .header-wrap
     - if user_signed_in?

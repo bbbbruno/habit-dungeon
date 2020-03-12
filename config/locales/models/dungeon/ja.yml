@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    models:
+      dungeon: ダンジョン
+    attributes:
+      dungeon:
+        title: 最終目標
+        description: 説明
+        levels: レベル
+        header: ヘッダー画像
+      dungeon/levels:
+        title: 目標
+        days: 日数

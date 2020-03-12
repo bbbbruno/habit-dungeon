@@ -1,0 +1,20 @@
+.flash {
+  position: relative;
+  color: #ffffff;
+  text-align: center;
+  font-weight: 500;
+
+  &-notice {
+    padding: 15px 0;
+    background: $info;
+  }
+
+  &-alert {
+    padding: 15px 0;
+    background: $danger;
+  }
+
+  input:checked + div {
+    display: none;
+  }
+}
