@@ -46,9 +46,10 @@ class User < ApplicationRecord
   include Discard::Model
   default_scope -> { kept }
 
+  include Challenger
+
   has_one_attached :avatar
   has_many :dungeons, dependent: :destroy
-  has_many :challenges, as: :challenger
 
   validates :user_id,
     presence: true,
@@ -61,6 +62,14 @@ class User < ApplicationRecord
 
   def active_for_authentication?
     super && !discarded?
+  end
+
+  def challenger_name
+    user_id
+  end
+
+  def all_challengers_avatar
+    [self.avatar]
   end
 
   def challenging?

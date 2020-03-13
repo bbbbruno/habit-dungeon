@@ -2,7 +2,7 @@
   h2.card-tit
     = t(".sign_in")
   .card-inner
-    = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "card-form" }) do |f|
+    = form_with model: @user, url: user_session_path, class: "card-form", local: true do |f|
       .field._txt
         = f.label :email
         = f.email_field :email, autofocus: true, autocomplete: "email"

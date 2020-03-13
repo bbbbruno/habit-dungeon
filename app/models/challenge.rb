@@ -43,6 +43,10 @@ class Challenge < ApplicationRecord
   validate :double_challenge
   validate :check_clear, if: :clear?
 
+  delegate :challenger_name, :all_challengers_avatar, to: :challenger
+  delegate :title, :levels, to: :dungeon
+  delegate :name, :image_url, to: :enemy, prefix: true
+
   def max_life
     life_list = { easy: 3, normal: 2, hard: 1 }
     life_list[difficulty.to_sym]
