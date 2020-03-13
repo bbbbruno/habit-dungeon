@@ -14,12 +14,12 @@ class ChallengesController < ApplicationController
     @challenge = Challenge.new(challenge_params)
     @challenge.challenger = current_user if solo?
     @challenge.life = @challenge.max_life
-    @challenge.progress = 1
+    @challenge.enemy = Enemy.choose(level: 1)
 
     if @challenge.save
       redirect_to @challenge, notice: "ダンジョンの攻略をはじめました"
     else
-      redirect_back fallback_location: root_path, alert: "エラーが発生しました"
+      redirect_back fallback_location: root_path, alert: @challenge.errors.full_messages[0]
     end
   end
 

@@ -22,10 +22,6 @@ table
         td = challenge.dungeon
         td = challenge.progress
         td = challenge.life
-        td = challenge.index
-        td = challenge.create
-        td = challenge.show
-        td = challenge.destroy
         td = link_to "Show", challenge
         td = link_to "Edit", edit_challenge_path(challenge)
         td = link_to "Destroy", challenge, data: { confirm: "Are you sure?" }, method: :delete

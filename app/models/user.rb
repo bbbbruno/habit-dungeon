@@ -48,6 +48,7 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
   has_many :dungeons, dependent: :destroy
+  has_many :challenges, as: :challenger
 
   validates :user_id,
     presence: true,
@@ -60,5 +61,9 @@ class User < ApplicationRecord
 
   def active_for_authentication?
     super && !discarded?
+  end
+
+  def challenging?
+    challenges.present?
   end
 end

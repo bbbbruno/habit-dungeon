@@ -17,29 +17,16 @@ h1.dungeons-pagetit
           p.levels-days = level.days.to_s + "日"
 
 .bottom
-  button.bottom-action 挑戦する！
+  - unless current_user.challenging?
+    label.bottom-action for="modal_toggle" 挑戦する！
   .bottom-links
     = link_to "もどる", dungeons_path
     - if current_user == @dungeon.user
       = link_to "編集", edit_dungeon_path(@dungeon)
 
-  = form_for Challenge.new do |f|
-    .field
-      = f.label :challenger_type_solo
-      = f.radio_button :challenger_type, :solo
-      = f.label :challenger_type_party
-      = f.radio_button :challenger_type, :party
-    .field
-      = f.hidden_field :dungeon_id, value: @dungeon.id
-    .field
-      = f.label :life
-      label
-        = f.radio_button :difficulty, :easy
-        | 易
-      label
-        = f.radio_button :difficulty, :normal
-        | 中
-      label
-        = f.radio_button :difficulty, :hard
-        | 難
-    .actions = f.submit
+= render "modal", dungeon: @dungeon
+
+- @enemy = Enemy.first
+p = "レベル #{@enemy.level}"
+p = @enemy.name
+p = image_pack_tag @enemy.image_url

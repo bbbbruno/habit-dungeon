@@ -1,0 +1,16 @@
+@mixin submit-btn {
+  display: block;
+  padding: 10px 30px;
+  color: #ffffff;
+  background: $main;
+  margin: 0 auto;
+  border: none;
+  font-size: 2rem;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: all 0.2s;
+  &:hover {
+    cursor: pointer;
+    background: darken($main, 10%);
+  }
+}

@@ -7,7 +7,7 @@
 #  id           :bigint           not null, primary key
 #  description  :text
 #  discarded_at :datetime
-#  title        :string
+#  title        :string           not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  user_id      :bigint           not null
@@ -32,20 +32,21 @@ class Dungeon < ApplicationRecord
   belongs_to :user
   has_one_attached :header
   has_many :levels, dependent: :destroy
-  has_many :challenges, as: :challenger
+  has_many :challenges
+  has_many :solos, through: :challenges, source: :challenger, source_type: "User"
 
   accepts_nested_attributes_for :levels, allow_destroy: true
 
   validates :title, presence: true
   validates :description, presence: true
-  validate :levels_days_over_66
+  validate :levels_days_exceed
 
   private
-    def levels_days_over_66
+    def levels_days_exceed(threshold = 66)
       days_list = levels.map(&:days)
       total = days_list.inject(0) { |result, days| result + days }
-      if total < 66
-        errors.add(:levels, "の合計日数は66日以上でなければなりません")
+      if total < threshold
+        errors.add(:levels, "の合計日数は#{threshold}日以上でなければなりません")
       end
     end
 end

@@ -7,7 +7,7 @@
 #  id           :bigint           not null, primary key
 #  description  :text
 #  discarded_at :datetime
-#  title        :string
+#  title        :string           not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  user_id      :bigint           not null

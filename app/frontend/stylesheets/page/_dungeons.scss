@@ -15,8 +15,8 @@
         }
         grid-template-columns: 45px 1fr 45px;
         box-shadow: inset 1px 1px 0 #dfdfdf;
-        border-bottom: solid 5px darken($main, 15%); /*ボタン色より暗めに*/
-        border-right: solid 5px $main; /*ボタン色より暗めに*/
+        border-bottom: solid 5px darken($main, 15%);
+        border-right: solid 5px $main;
         position: relative;
         padding: 5px 10px;
         border-width: 500;
