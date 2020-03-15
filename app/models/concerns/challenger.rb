@@ -11,6 +11,10 @@ module Challenger
     raise NotImplementedError
   end
 
+  def all_challengers
+    raise NotImplementedError
+  end
+
   def all_challengers_avatar
     raise NotImplementedError
   end

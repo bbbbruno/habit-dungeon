@@ -1,0 +1,52 @@
+.overlay style="background: url(#{header_url(challenge.dungeon)}) no-repeat center center/cover;"
+  h1.challenges-tit = challenge.title
+
+.challenges-battle style="background: url(#{asset_pack_path("media/images/default_dungeon.png")}) no-repeat center center/cover;"
+  .challenges-container
+    .challenges-challenger
+      = challenge.challenger_name
+      - avatar_urls(challenge.challenger).each do |url|
+        = image_tag url
+      = challenge.life
+    .challenges-enemy
+        = image_pack_tag challenge.enemy_image_url
+        - if challenge.current_level
+          = "Lv #{challenge.current_level}"
+        - else
+          = "Lv #{challenge.levels.last.number}"
+        = challenge.enemy_name
+        = challenge.enemy_life
+
+.challenges-container
+  .challenges-progress
+    h2 継続#{challenge.progress}日目
+    = challenge.levels.map(&:days)
+    = challenge.final_day
+    .challenges-levels
+      - counter = 0
+      - challenge.levels.each do |level|
+        - level.days.times do |i|
+          .step class="#{counter < challenge.progress ? "active" : ""}"
+            - if i == 0
+              p style="display: none;" = level.title
+              p = "Lv#{level.number}"
+            - if counter == challenge.progress
+              p.now now
+            span
+            - counter += 1
+      .step
+        p Clear
+        span
+
+.bottom
+  - if challenge.all_challengers.include?(current_user) && !challenge.attacked?
+    = form_with model: challenge, class: "challenges-form" do |f|
+      = f.hidden_field :attacked, value: true
+      = f.hidden_field :progress, value: challenge.progress + 1
+      = f.submit "こうげき！！", class: "bottom-action"
+  .bottom-links
+    = link_to "もどる", :back
+    .bottom-wrap
+      = link_to "くわしく", challenge.dungeon
+      - if current_user == challenge.challenger
+        = link_to "リタイア", challenge, data: { confirm: "本当によろしいですか？" }, method: :delete

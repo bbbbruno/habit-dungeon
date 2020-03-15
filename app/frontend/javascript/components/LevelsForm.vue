@@ -82,6 +82,7 @@
         class="card-btn"
         :data-disable-with="isEditPage ? '更新する' : '登録する'"
         :disabled="totalDays < 66"
+        :data-confirm="isEditPage ? confirmMessage : ''"
       />
     </div>
   </div>
@@ -120,6 +121,8 @@ export default {
       additionalLevels: [],
       error: null,
       isEditPage: false,
+      confirmMessage:
+        'ダンジョンを編集すると、このダンジョンを攻略中の他のユーザーのダンジョン情報も変更されます。\nよろしいですか？',
     }
   },
   computed: {

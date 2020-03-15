@@ -37,6 +37,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_decorator (1.3.2)
+      activesupport
     activejob (6.0.2.1)
       activesupport (= 6.0.2.1)
       globalid (>= 0.3.6)
@@ -149,6 +151,7 @@ GEM
     foreman (0.87.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    high_voltage (3.1.2)
     hpricot (0.8.6)
     html2slim (0.2.0)
       hpricot
@@ -365,6 +368,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_decorator
   annotate
   awesome_print
   better_errors
@@ -388,6 +392,7 @@ DEPENDENCIES
   discard
   factory_bot_rails
   foreman
+  high_voltage
   html2slim
   image_processing (~> 1.2)
   jbuilder (~> 2.7)

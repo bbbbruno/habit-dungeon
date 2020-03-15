@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeColumsNullOnLevels < ActiveRecord::Migration[6.0]
   def up
     change_column_null :levels, :number, false

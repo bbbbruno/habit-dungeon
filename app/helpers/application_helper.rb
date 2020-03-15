@@ -24,4 +24,11 @@ module ApplicationHelper
       nil
     end
   end
+
+  def avatar_urls(challenger)
+    avatar_size = "88x88>"
+    challenger.all_challengers_avatar.map do |avatar|
+      avatar.attached? ? url_for(avatar.variant(resize: avatar_size)) : asset_pack_path("media/images/default_avatar.png")
+    end
+  end
 end

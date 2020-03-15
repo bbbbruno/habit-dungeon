@@ -12,12 +12,12 @@ h1.dungeons-pagetit
       h2.dungeons-heading レベル
       - @dungeon.levels.each do |level|
         .levels-field
-          p.levels-number = "Lv " + level.number.to_s
+          p.levels-number = "Lv #{level.number}"
           p.levels-title = level.title
           p.levels-days = level.days.to_s + "日"
 
 .bottom
-  - unless current_user.challenging?
+  - unless current_user&.challenging?
     label.bottom-action for="modal_toggle" 挑戦する！
   .bottom-links
     = link_to "もどる", dungeons_path

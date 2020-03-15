@@ -7,7 +7,7 @@
         h3
           span 最終目標
         p = dungeon.title
-      = form_with model: Challenge.new, class: "modal-form" do |f|
+      = form_with model: Challenge.new, class: "modal-form", local: !user_signed_in? do |f|
         .field
           h3
             span メンバー

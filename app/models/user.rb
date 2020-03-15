@@ -68,8 +68,12 @@ class User < ApplicationRecord
     user_id
   end
 
+  def all_challengers
+    [self]
+  end
+
   def all_challengers_avatar
-    [self.avatar]
+    [avatar]
   end
 
   def challenging?

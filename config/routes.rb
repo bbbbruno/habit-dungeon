@@ -4,6 +4,7 @@
 #
 #                                Prefix Verb   URI Pattern                                                                              Controller#Action
 #                     letter_opener_web        /letter_opener                                                                           LetterOpenerWeb::Engine
+#                                  root GET    /                                                                                        home#index
 #                      new_user_session GET    /users/sign_in(.:format)                                                                 devise/sessions#new
 #                          user_session POST   /users/sign_in(.:format)                                                                 devise/sessions#create
 #                  destroy_user_session DELETE /users/sign_out(.:format)                                                                devise/sessions#destroy
@@ -22,7 +23,6 @@
 #                 new_user_confirmation GET    /users/confirmation/new(.:format)                                                        devise/confirmations#new
 #                     user_confirmation GET    /users/confirmation(.:format)                                                            devise/confirmations#show
 #                                       POST   /users/confirmation(.:format)                                                            devise/confirmations#create
-#                                  root GET    /                                                                                        devise/sessions#new
 #                              dungeons GET    /dungeons(.:format)                                                                      dungeons#index
 #                                       POST   /dungeons(.:format)                                                                      dungeons#create
 #                           new_dungeon GET    /dungeons/new(.:format)                                                                  dungeons#new
@@ -31,7 +31,7 @@
 #                                       PATCH  /dungeons/:id(.:format)                                                                  dungeons#update
 #                                       PUT    /dungeons/:id(.:format)                                                                  dungeons#update
 #                                       DELETE /dungeons/:id(.:format)                                                                  dungeons#destroy
-#                    attacked_challenge GET    /challenges/:id/attacked(.:format)                                                       challenges/attacked#attacked
+#                    challenge_attacked GET    /challenges/:challenge_id/attacked(.:format)                                             challenges/attacked#show
 #                            challenges GET    /challenges(.:format)                                                                    challenges#index
 #                                       POST   /challenges(.:format)                                                                    challenges#create
 #                         new_challenge GET    /challenges/new(.:format)                                                                challenges#new
@@ -73,10 +73,9 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
+  root to: "home#index"
+
   devise_for :users
-  devise_scope :user do
-    root to: "devise/sessions#new"
-  end
 
   resources :dungeons
   resources :challenges do

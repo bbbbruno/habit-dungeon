@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class ChallengesController < ApplicationController
+  before_action :authenticate_user!, only: %i[create update destroy]
   before_action :set_challenge, only: %i[show update destroy]
 
   def index
-    @challenges = Challenge.all
+    @challenges = Challenge.includes(:dungeon, challenger: { avatar_attachment: :blob }).all
   end
 
   def show
@@ -13,7 +14,6 @@ class ChallengesController < ApplicationController
   def create
     @challenge = Challenge.new(challenge_params)
     @challenge.challenger = current_user if solo?
-    @challenge.life = @challenge.max_life
     @challenge.enemy = Enemy.choose(level: 1)
 
     if @challenge.save
@@ -46,7 +46,7 @@ class ChallengesController < ApplicationController
     end
 
     def update_challenge_params
-      params.require(:challenge).permit(:attacked, :progress, :life, :clear)
+      params.require(:challenge).permit(:attacked, :progress, :clear)
     end
 
     def solo?

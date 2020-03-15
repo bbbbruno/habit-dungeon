@@ -13,7 +13,7 @@
         &:first-of-type {
           margin-top: 10px;
         }
-        grid-template-columns: 45px 1fr 45px;
+        grid-template-columns: 50px 1fr 45px;
         box-shadow: inset 1px 1px 0 #dfdfdf;
         border-bottom: solid 5px darken($main, 15%);
         border-right: solid 5px $main;
