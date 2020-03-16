@@ -10,7 +10,7 @@
 #  clear           :boolean          default("false"), not null
 #  difficulty      :string           default("easy"), not null
 #  life            :integer          default("3"), not null
-#  progress        :integer          default("1"), not null
+#  progress        :integer          default("0"), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  challenger_id   :bigint           not null

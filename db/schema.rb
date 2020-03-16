@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2020_03_13_055245) do
     t.string "challenger_type", null: false
     t.bigint "challenger_id", null: false
     t.bigint "dungeon_id", null: false
-    t.integer "progress", default: 1, null: false
+    t.integer "progress", default: 0, null: false
     t.integer "life", default: 3, null: false
     t.string "difficulty", default: "easy", null: false
     t.boolean "attacked", default: false, null: false
