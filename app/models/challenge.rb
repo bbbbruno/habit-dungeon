@@ -30,7 +30,7 @@
 #
 class Challenge < ApplicationRecord
   belongs_to :challenger, polymorphic: true
-  belongs_to :dungeon
+  belongs_to :dungeon, -> { unscope(where: :discarded_at).includes(:levels) }
   belongs_to :enemy
 
   validates :difficulty, inclusion: { in: %w[easy normal hard] }
@@ -41,6 +41,7 @@ class Challenge < ApplicationRecord
       message: "入力値が0~3の範囲外です",
     }
   validate :double_challenge, on: :create
+  validate :discarded_challenge, on: :create
   validate :check_clear, if: :clear?
 
   delegate :challenger_name, :all_challengers, :all_challengers_avatar, to: :challenger
@@ -88,10 +89,20 @@ class Challenge < ApplicationRecord
     self.life = max_life
   end
 
+  def deal_damage
+    update(life: life - 1)
+  end
+
   private
     def double_challenge
       if Challenge.find_by(challenger: challenger)
         errors.add(:base, "２つ以上のダンジョンを同時に攻略することはできません")
+      end
+    end
+
+    def discarded_challenge
+      if dungeon.discarded?
+        errors.add(:base, "削除されたダンジョンを攻略することはできません")
       end
     end
 
@@ -105,29 +116,23 @@ class Challenge < ApplicationRecord
     end
 
     def days_list
-      levels
-        .map(&:days)
-        .each.with_index(1)
-        .with_object({}) do |(days, index), hash|
-        hash[index] = days
-      end
+      levels.pluck(:number, :days).to_h
     end
 
     def total_days
-      days_list.values.sum
+      levels.pluck(:days).sum
     end
 
     def each_level_start
       levels
-        .map(&:days)
+        .pluck(:days)
         .each_with_index
         .with_object([0]) do |(days, index), array|
           array << array[index] + days
-        end.each
-        .with_index(1)
-        .with_object({}) do |(days, index), hash|
-          hash[index] = days
-        end
+        end.map
+        .with_index(1) do |days, index|
+          [index, days]
+        end.to_h
     end
 
     def max_life

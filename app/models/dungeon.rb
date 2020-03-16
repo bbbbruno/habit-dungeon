@@ -23,7 +23,7 @@
 #
 class Dungeon < ApplicationRecord
   include Discard::Model
-  default_scope -> { kept }
+  default_scope -> { kept  }
 
   after_discard do
     destroy unless challenges.exists?
@@ -40,6 +40,10 @@ class Dungeon < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
   validate :levels_days_exceed
+
+  def destroy_if_no_challenges
+    destroy unless challenges.exists?
+  end
 
   private
     def levels_days_exceed(threshold = 66)

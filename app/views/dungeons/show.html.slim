@@ -2,6 +2,8 @@ h1.dungeons-pagetit
   span ダンジョン詳細
 
 .card
+  - if @dungeon.discarded?
+    h1.stamp 削除済み
   .overlay style="background: url(#{header_url(@dungeon)}) no-repeat center center/cover;"
     h1.card-tit.dungeons-tit = @dungeon.title
   .card-inner
@@ -17,11 +19,11 @@ h1.dungeons-pagetit
           p.levels-days = level.days.to_s + "日"
 
 .bottom
-  - unless current_user&.challenging?
+  - unless current_user&.challenging? || @dungeon.discarded?
     label.bottom-action for="modal_toggle" 挑戦する！
   .bottom-links
-    = link_to "もどる", dungeons_path
-    - if current_user == @dungeon.user
+    = link_to "もどる", :back
+    - if current_user == @dungeon.user && !@dungeon.discarded?
       = link_to "編集", edit_dungeon_path(@dungeon)
 
 = render "modal", dungeon: @dungeon
