@@ -46,7 +46,7 @@ class ChallengesController < ApplicationController
     end
 
     def update_challenge_params
-      params.require(:challenge).permit(:attacked, :progress, :clear)
+      params.require(:challenge).permit(:attacked, :progress, :clear, :over_days)
     end
 
     def solo?

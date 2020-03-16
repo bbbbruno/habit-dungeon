@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_13_055245) do
+ActiveRecord::Schema.define(version: 2020_03_16_132925) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_03_13_055245) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "enemy_id", null: false
+    t.integer "over_days", default: 0, null: false
     t.index ["challenger_type", "challenger_id"], name: "index_challenges_on_challenger_type_and_challenger_id"
     t.index ["dungeon_id"], name: "index_challenges_on_dungeon_id"
     t.index ["enemy_id"], name: "index_challenges_on_enemy_id"

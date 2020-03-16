@@ -40,55 +40,181 @@
     background: #ffffff;
   }
 
+  &-progress {
+    border-radius: 5px;
+    padding: 30px 40px 10px;
+    h2 {
+      line-height: 1;
+      font-size: 6rem;
+      letter-spacing: 0.2rem;
+      margin: 0;
+    }
+  }
+
   &-levels {
     display: flex;
     flex-wrap: wrap;
     position: relative;
-    padding: 30px 0;
-    p {
+    padding: 30px 0 0;
+    margin: 0 calc(100% / 7 / 2 * 0.9 * -1);
+  }
+
+  &-step {
+    position: relative;
+    margin-bottom: 30px;
+    width: calc(100% / 7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    counter-increment: stepNum;
+
+    &:not(._clear)::before {
+      content: counter(stepNum);
+    }
+    &._clear {
+      &::before {
+        content: 'goal';
+        font-size: 1.3rem;
+      }
+      .level {
+        pointer-events: none;
+      }
+    }
+    &._final::before {
+      border: 2px solid $sub;
+      background: $sub;
+      color: #fff;
+    }
+    &._over {
+      &::before {
+        border: 2px solid $sub;
+        background: $sub;
+        color: #fff;
+      }
+      &::after {
+        background: $sub !important;
+      }
+    }
+
+    &::before {
+      display: block;
+      width: 36px;
+      height: 36px;
+      line-height: 32px;
+      text-align: center;
+      border: 2px solid #ccc;
+      border-radius: 50%;
+      position: relative;
+      z-index: 1;
+      font-weight: 500;
+      font-size: 1.4rem;
+      background: #ffffff;
+      color: #ccc;
+    }
+    &._passed {
+      &::before {
+        content: '\2713';
+        font-weight: bold;
+        background: $sub;
+        color: #ffffff;
+        border: 2px solid $sub;
+        font-size: 2rem;
+      }
+    }
+    &._now {
+      &::before {
+        border: 2px solid $sub;
+        color: $sub;
+      }
+
+      img {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 25px;
+        bottom: 38px;
+      }
+    }
+    &:not(:nth-of-type(7n)):not(:last-of-type) {
+      &::after {
+        content: '';
+        width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        position: absolute;
+        height: 8px;
+        right: -50%;
+        background: #ccc;
+      }
+
+      &._passed::after {
+        background: $sub;
+      }
+    }
+
+    .title {
       position: absolute;
-      bottom: 23px;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 30px;
+      opacity: 0;
+      transition: all 0.3s;
+      border: 2px solid $sub;
+      z-index: 5;
+      background: #fff;
+      color: $sub;
+      padding: 20px 0;
+      border-radius: 5px;
+      width: 250px;
+      text-align: center;
+      pointer-events: none;
+      font-family: $base;
+      font-size: 1.7rem;
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: -27px;
+        left: 50%;
+        margin-left: -17px;
+        border: 14px solid transparent;
+        border-top: 14px solid #fff;
+        z-index: 3;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -30px;
+        left: 50%;
+        margin-left: -17px;
+        border: 14px solid transparent;
+        border-top: 14px solid $sub;
+        z-index: 1;
+      }
+    }
+
+    .level {
+      position: absolute;
+      bottom: 38px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #333;
+      font-weight: 500;
+      font-family: $rpg;
+      letter-spacing: 0.1rem;
+      line-height: 1;
+      font-size: 2rem;
+      z-index: 10;
+      text-align: center;
+
       &.now {
         bottom: -23px;
       }
-    }
-    .step {
-      position: relative;
-      margin-bottom: 30px;
-      width: calc(100% / 7);
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      &:hover {
+        cursor: pointer;
 
-      span {
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        border: 1px solid #000;
-        border-radius: 50%;
-        background: #ffffff;
-        position: relative;
-        z-index: 1;
-      }
-      &.active {
-        span {
-          background: #000000;
-        }
-      }
-      &:not(:nth-of-type(7n)):not(:last-of-type) {
-        &::after {
-          content: '';
-          width: 100%;
-          top: 50%;
-          transform: translateY(-50%);
-          position: absolute;
-          height: 3px;
-          right: -50%;
-          background: #cccccc;
-        }
-
-        &.active::after {
-          background: #000;
+        .title {
+          opacity: 1;
+          pointer-events: auto;
         }
       }
     }

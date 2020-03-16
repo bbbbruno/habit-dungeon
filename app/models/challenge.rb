@@ -10,6 +10,7 @@
 #  clear           :boolean          default("false"), not null
 #  difficulty      :string           default("easy"), not null
 #  life            :integer          default("3"), not null
+#  over_days       :integer          default("0"), not null
 #  progress        :integer          default("0"), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
@@ -53,6 +54,7 @@ class Challenge < ApplicationRecord
   end
 
   before_update do
+    next unless current_level
     if life == 0
       rank_down
     elsif attacked? && progress >= each_level_start[current_level]
@@ -90,7 +92,7 @@ class Challenge < ApplicationRecord
   end
 
   def deal_damage
-    update(life: life - 1)
+    update(life: life - 1) if current_level
   end
 
   private

@@ -12,6 +12,7 @@
 body {
   -webkit-font-smoothing: antialiased;
   background-color: $bg;
+  color: #333333;
   font-family: $base;
 
   @include media(md) {

@@ -20,30 +20,34 @@
 .challenges-container
   .challenges-progress
     h2 継続#{challenge.progress}日目
-    = challenge.levels.map(&:days)
-    = challenge.final_day
-    .challenges-levels
+    ul.challenges-levels
       - counter = 0
       - challenge.levels.each do |level|
         - level.days.times do |i|
-          .step class="#{counter < challenge.progress ? "active" : ""}"
+          li.challenges-step class=step_classes(counter, challenge.progress)
             - if i == 0
-              p style="display: none;" = level.title
-              p = "Lv#{level.number}"
+              p.level
+                = "Lv#{level.number}"
+                span.title = level.title
             - if counter == challenge.progress
-              p.now now
-            span
+              = image_pack_tag "knight.png"
             - counter += 1
-      .step
-        p Clear
-        span
+      li.challenges-step._clear class=final_classes(challenge)
+        p.level Clear
+      - if challenge.over_days > 0
+        - challenge.over_days.times do
+          li.challenges-step class=step_classes(counter + 1, challenge.progress)
+          - counter += 1
 
 .bottom
   - if challenge.all_challengers.include?(current_user) && !challenge.attacked?
     = form_with model: challenge, class: "challenges-form" do |f|
       = f.hidden_field :attacked, value: true
       = f.hidden_field :progress, value: challenge.progress + 1
+      - if challenge.over_last_day?
+        = f.hidden_field :over_days, value: challenge.over_days + 7
       = f.submit "こうげき！！", class: "bottom-action"
+      = challenge.over_days
   .bottom-links
     = link_to "もどる", :back
     .bottom-wrap
