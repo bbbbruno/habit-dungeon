@@ -57,8 +57,9 @@ class Challenge < ApplicationRecord
     next unless current_level
     if life == 0
       rank_down
-    elsif attacked? && progress >= each_level_start[current_level]
+    elsif attacked? && progress == each_level_start[current_level]
       rank_up
+      life_up
     end
   end
 
@@ -78,10 +79,13 @@ class Challenge < ApplicationRecord
   end
 
   def rank_up
-    self.enemy = Enemy.choose(level: current_level) if current_level
+    return unless current_level
+    puts "RANK UPPED"
+    self.enemy = Enemy.choose(level: current_level)
   end
 
   def rank_down
+    return unless current_level
     if previous_level > 0
       self.progress = each_level_start[previous_level]
     else
@@ -91,8 +95,12 @@ class Challenge < ApplicationRecord
     self.life = max_life
   end
 
+  def life_up
+    self.life += 1 unless life == max_life
+  end
+
   def deal_damage
-    update(life: life - 1) if current_level
+    update(life: life - 1)
   end
 
   private

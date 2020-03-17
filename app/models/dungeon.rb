@@ -47,8 +47,7 @@ class Dungeon < ApplicationRecord
 
   private
     def levels_days_exceed(threshold = 66)
-      days_list = levels.map(&:days)
-      total = days_list.inject(0) { |result, days| result + days }
+      total = levels.map(&:days).sum
       if total < threshold
         errors.add(:levels, "の合計日数は#{threshold}日以上でなければなりません")
       end

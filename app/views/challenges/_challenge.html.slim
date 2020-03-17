@@ -29,8 +29,8 @@
               p.level
                 = "Lv#{level.number}"
                 span.title = level.title
-            - if counter == challenge.progress
-              = image_pack_tag "knight.png"
+            / - if counter == challenge.progress
+            /   = image_pack_tag "knight.png"
             - counter += 1
       li.challenges-step._clear class=final_classes(challenge)
         p.level Clear
@@ -47,7 +47,7 @@
       - if challenge.over_last_day?
         = f.hidden_field :over_days, value: challenge.over_days + 7
       = f.submit "こうげき！！", class: "bottom-action"
-      = challenge.over_days
+      = challenge.dungeon.all_uniq_challengers
   .bottom-links
     = link_to "もどる", :back
     .bottom-wrap
