@@ -27,14 +27,14 @@
         h3.name = challenge.enemy_name
         / p.life = challenge.enemy_life
         .gauge
-          - 1.step(17, 10) do |i|
+          - 1.step(challenge.enemy_max_life, 7) do |i|
             .gauge-wrap
               - if i == 1
                 .gauge-ttl
-                  span = "HP　#{8}／#{17}"
+                  span = "HP　#{challenge.enemy_life}／#{challenge.enemy_max_life}"
               .gauge-bg
                 ul.gauge-main
-                  - (8 - (i - 1)).times do
+                  - (challenge.enemy_life - (i - 1)).times do
                     li.gauge-block
 
 .challenges-container

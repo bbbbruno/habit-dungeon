@@ -2,7 +2,7 @@
   .main {
     padding: 0;
   }
-  .container {
+  &#show .container {
     max-width: 100%;
     padding: 0;
   }
@@ -43,11 +43,15 @@
   &-challenger {
     width: 45%;
     border-radius: 5px;
-    padding: 15px;
+    padding: 15px 20px;
     background: #ffffff;
     max-width: 300px;
     margin: 0 auto;
 
+    h3 {
+      font-weight: 500;
+      letter-spacing: 0.1rem;
+    }
     p {
       letter-spacing: 0.2rem;
       font-family: $rpg;
@@ -79,9 +83,8 @@
       display: flex;
       align-items: center;
       border-radius: 5px;
-      padding: 5px 10px;
       background: #ffffff;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       img {
         width: 70px;
         margin-right: 20px;
@@ -91,7 +94,6 @@
     &-lifes {
       background: #ffffff;
       border-radius: 5px;
-      padding: 15px 10px;
       display: flex;
       max-width: 300px;
       span {
@@ -118,7 +120,7 @@
       }
     }
     &-status {
-      padding: 15px;
+      padding: 15px 20px;
       background: #ffffff;
       border-radius: 5px;
       h3 {

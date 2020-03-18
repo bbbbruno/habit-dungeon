@@ -18,6 +18,11 @@ body {
   @include media(md) {
     font-size: 1.4rem;
   }
+
+  .inner {
+    width: 100%;
+    overflow: hidden;
+  }
 }
 
 // link

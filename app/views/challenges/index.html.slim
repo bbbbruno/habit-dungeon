@@ -17,7 +17,6 @@ table
         td
           - avatar_urls(challenge.challenger).each do |url|
             = image_tag url
-        td = challenge.dungeon
         td = challenge.progress
         td = challenge.life
         td = link_to "Show", challenge

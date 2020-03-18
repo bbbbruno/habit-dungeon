@@ -1,12 +1,4 @@
 .dungeons {
-  &#new,
-  &#show,
-  &#edit {
-    .container {
-      max-width: 900px;
-    }
-  }
-
   &#show {
     .levels {
       &-field {

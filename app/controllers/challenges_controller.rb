@@ -2,10 +2,11 @@
 
 class ChallengesController < ApplicationController
   before_action :authenticate_user!, only: %i[create update destroy]
-  before_action :set_challenge, only: %i[show update destroy]
+  before_action :set_challenge, only: %i[show]
+  before_action :set_my_challenge, only: %i[update destroy]
 
   def index
-    @challenges = Challenge.includes(:dungeon, challenger: { avatar_attachment: :blob }).all
+    @challenges = Challenge.includes(challenger: { avatar_attachment: :blob }).all
   end
 
   def show
@@ -39,6 +40,10 @@ class ChallengesController < ApplicationController
   private
     def set_challenge
       @challenge = Challenge.find(params[:id])
+    end
+
+    def set_my_challenge
+      @challenge = current_user.challenges.find(params[:id])
     end
 
     def challenge_params
