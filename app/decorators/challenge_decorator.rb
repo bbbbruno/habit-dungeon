@@ -8,4 +8,8 @@ module ChallengeDecorator
   def over_last_day?
     progress >= total_days + over_days
   end
+
+  def enemy_max_life
+    days_list[current_level]
+  end
 end

@@ -98,24 +98,24 @@ export default {
     return {
       levels: [
         {
-          title: '',
-          days: 0,
+          title: '〜を毎日〜する',
+          days: 10,
         },
         {
-          title: '',
-          days: 0,
+          title: '〜を毎日〜する',
+          days: 10,
         },
         {
-          title: '',
-          days: 0,
+          title: '〜を毎日〜する',
+          days: 10,
         },
         {
-          title: '',
-          days: 0,
+          title: '〜を毎日〜する',
+          days: 10,
         },
         {
-          title: '',
-          days: 0,
+          title: '〜を毎日〜する',
+          days: 10,
         },
       ],
       additionalLevels: [],

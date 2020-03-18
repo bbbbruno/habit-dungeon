@@ -53,6 +53,8 @@ class Challenge < ApplicationRecord
     self.life = max_life
   end
 
+  # レベルの開始位置にいてattackedがtrueの時、
+  # deal_damageでダメージを与えるとrank_upとlife_upが作動して、ダメージを受けない
   before_update do
     next unless current_level
     if life == 0
@@ -61,6 +63,15 @@ class Challenge < ApplicationRecord
       rank_up
       life_up
     end
+  end
+
+  def max_life
+    life_list = { easy: 3, normal: 2, hard: 1 }
+    life_list[difficulty.to_sym]
+  end
+
+  def days_list
+    levels.pluck(:number, :days).to_h
   end
 
   def current_level
@@ -80,7 +91,6 @@ class Challenge < ApplicationRecord
 
   def rank_up
     return unless current_level
-    puts "RANK UPPED"
     self.enemy = Enemy.choose(level: current_level)
   end
 
@@ -125,10 +135,6 @@ class Challenge < ApplicationRecord
       end
     end
 
-    def days_list
-      levels.pluck(:number, :days).to_h
-    end
-
     def total_days
       levels.pluck(:days).sum
     end
@@ -143,11 +149,6 @@ class Challenge < ApplicationRecord
         .with_index(1) do |days, index|
           [index, days]
         end.to_h
-    end
-
-    def max_life
-      life_list = { easy: 3, normal: 2, hard: 1 }
-      life_list[difficulty.to_sym]
     end
 
     def previous_level

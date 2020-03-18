@@ -1,21 +1,41 @@
 .overlay style="background: url(#{header_url(challenge.dungeon)}) no-repeat center center/cover;"
   h1.challenges-tit = challenge.title
 
-.challenges-battle style="background: url(#{asset_pack_path("media/images/default_dungeon.png")}) no-repeat center center/cover;"
+.challenges-battle style="background: url(#{asset_pack_path("media/images/dungeons/23.jpg")}) no-repeat center center/cover;"
   .challenges-container
     .challenges-challenger
-      = challenge.challenger_name
-      - avatar_urls(challenge.challenger).each do |url|
-        = image_tag url
-      = challenge.life
+      h3 = "#{challenge.challenger_name}"
+      .challenges-challenger-wrap
+        .challenges-challenger-avatars
+          p メンバー
+          - avatar_urls(challenge.challenger).each do |url|
+            = image_tag url, style: "border-radius: 50%;"
+        .challenges-challenger-lifes
+          p ライフ
+          - challenge.life.times do
+            i.fas.fa-heart
+          - (challenge.max_life - challenge.life).times do
+            i.far.fa-heart
     .challenges-enemy
+      .challenges-enemy-image
         = image_pack_tag challenge.enemy_image_url
+      .challenges-enemy-status
         - if challenge.current_level
-          = "Lv #{challenge.current_level}"
+          h3.level = "Lv #{challenge.current_level}"
         - else
-          = "Lv #{challenge.levels.last.number}"
-        = challenge.enemy_name
-        = challenge.enemy_life
+          h3.level = "Lv #{challenge.levels.last.number}"
+        h3.name = challenge.enemy_name
+        / p.life = challenge.enemy_life
+        .gauge
+          - 1.step(17, 10) do |i|
+            .gauge-wrap
+              - if i == 1
+                .gauge-ttl
+                  span = "HP　#{8}／#{17}"
+              .gauge-bg
+                ul.gauge-main
+                  - (8 - (i - 1)).times do
+                    li.gauge-block
 
 .challenges-container
   .challenges-progress
@@ -39,18 +59,18 @@
           li.challenges-step class=step_classes(counter + 1, challenge.progress)
           - counter += 1
 
-.bottom
-  - if challenge.all_challengers.include?(current_user) && !challenge.attacked?
-    = form_with model: challenge, class: "challenges-form" do |f|
-      = f.hidden_field :attacked, value: true
-      = f.hidden_field :progress, value: challenge.progress + 1
-      - if challenge.over_last_day?
-        = f.hidden_field :over_days, value: challenge.over_days + 7
-      = f.submit "こうげき！！", class: "bottom-action"
-      = challenge.dungeon.all_uniq_challengers
-  .bottom-links
-    = link_to "もどる", :back
-    .bottom-wrap
-      = link_to "くわしく", challenge.dungeon
-      - if current_user == challenge.challenger
-        = link_to "リタイア", challenge, data: { confirm: "本当によろしいですか？" }, method: :delete
+  .bottom
+    - if challenge.all_challengers.include?(current_user) && !challenge.attacked?
+      = form_with model: challenge, class: "challenges-form" do |f|
+        = f.hidden_field :attacked, value: true
+        = f.hidden_field :progress, value: challenge.progress + 1
+        - if challenge.over_last_day?
+          = f.hidden_field :over_days, value: challenge.over_days + 7
+        = f.submit "こうげき！！", class: "bottom-action"
+        / = challenge.dungeon.all_uniq_challengers
+    .bottom-links
+      = link_to "もどる", :back
+      .bottom-wrap
+        = link_to "くわしく", challenge.dungeon
+        - if current_user == challenge.challenger
+          = link_to "リタイア", challenge, data: { confirm: "本当によろしいですか？" }, method: :delete
