@@ -1,0 +1,5 @@
+- if @challenges.present?
+  = render @challenges
+- else
+  h1 今すぐダンジョンに挑戦しよう！
+  = link_to "ダンジョンをみてみる", dungeons_path

@@ -10,6 +10,7 @@ class DungeonsController < ApplicationController
   end
 
   def show
+    flash.now.notice = "このダンジョンは削除済みです。閲覧のみ可能です。" if @dungeon.discarded?
   end
 
   def new
@@ -39,13 +40,13 @@ class DungeonsController < ApplicationController
   end
 
   def destroy
-    @dungeon.destroy
+    @dungeon.discard
     redirect_to dungeons_url, notice: "ダンジョンの削除に成功しました"
   end
 
   private
     def set_dungeon
-      @dungeon = Dungeon.find(params[:id])
+      @dungeon = Dungeon.with_discarded.find(params[:id])
     end
 
     def set_my_dungeon

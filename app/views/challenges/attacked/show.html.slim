@@ -1,0 +1,37 @@
+.wrap-900
+  .card
+    h1.card-tit ダメージを与えました！
+    .attacked-enemy
+      .attacked-enemy-image
+        = image_pack_tag @challenge.enemy_image_url
+      .attacked-enemy-status
+        - if @challenge.current_level
+          h3.level = "Lv #{@challenge.current_level}"
+        - else
+          h3.level = "Lv #{@challenge.levels.last.number}"
+        h3.name = @challenge.enemy_name
+        .gauge
+          - 1.step(@challenge.enemy_max_life, 7) do |i|
+            .gauge-wrap
+              - if i == 1
+                .gauge-ttl
+                  span = "HP　#{@challenge.enemy_life}／#{@challenge.enemy_max_life}"
+              .gauge-bg
+                ul.gauge-main
+                  - (@challenge.enemy_life - (i - 1)).times do
+                    li.gauge-block
+    .card-inner
+      .attacked-status
+        .attacked-status-progress
+          h2 継続日数
+          p = "#{@challenge.progress}日"
+        .attacked-status-line
+        .attacked-status-remain
+          h2 次のレベルまであと
+          p = "#{@challenge.enemy_life}日"
+      .attacked-share
+        h3 Twitterでシェアする
+        = link_to "シェア", ""
+  .bottom
+    .bottom-links
+      = link_to "もどる", root_path

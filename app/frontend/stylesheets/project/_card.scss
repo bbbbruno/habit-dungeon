@@ -2,6 +2,8 @@
   background: #ffffff;
   margin: 0 auto 30px;
   border-radius: 5px;
+  overflow: hidden;
+  position: relative;
 
   &-inner {
     padding: 10px 20px;
@@ -103,20 +105,7 @@
   }
 
   &-btn {
-    display: block;
-    padding: 10px 30px;
-    color: #ffffff;
-    background: $main;
-    margin: 0 auto;
-    border: none;
-    font-size: 2rem;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: all 0.2s;
-    &:hover {
-      cursor: pointer;
-      background: darken($main, 10%);
-    }
+    @include submit-btn;
     &[disabled] {
       opacity: 0.6;
       &:hover {
