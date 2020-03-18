@@ -1,0 +1,89 @@
+.attacked {
+  .card-tit {
+    margin-bottom: 0;
+    font-size: 6.5rem;
+    border-bottom: none;
+    letter-spacing: 0.3rem;
+  }
+
+  .card-inner {
+    padding: 30px 0 50px;
+  }
+
+  &-enemy {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    background: url('../images/default_dungeon.png') no-repeat center
+      center/cover;
+
+    &-image {
+      max-width: 30%;
+      text-align: center;
+    }
+
+    &-status {
+      background: #ffffff;
+      padding: 15px 20px;
+      border-radius: 5px;
+      margin-left: 50px;
+
+      h3 {
+        font-family: $rpg;
+        font-size: 4rem;
+        letter-spacing: 0.2rem;
+        line-height: 1;
+        margin-bottom: 5px;
+      }
+    }
+  }
+
+  &-status {
+    display: flex;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 30px;
+
+    h2 {
+      font-size: 6rem;
+      line-height: 1;
+      letter-spacing: 0.2rem;
+    }
+
+    p {
+      font-size: 5.5rem;
+      font-weight: 500;
+      font-family: $rpg;
+      letter-spacing: 0.2rem;
+    }
+
+    &-progress {
+      width: 50%;
+    }
+
+    &-line {
+      width: 2px;
+      background: #dfdfdf;
+      border-radius: 1px;
+    }
+
+    &-remain {
+      width: 50%;
+    }
+  }
+
+  &-share {
+    text-align: center;
+    h3 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    a {
+      @include submit-btn;
+      max-width: 300px;
+      font-size: 2.5rem;
+    }
+  }
+}

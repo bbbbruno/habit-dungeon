@@ -1,12 +1,5 @@
 .toggle-checkbox {
-  height: 0;
-  width: 0;
-  display: block;
-  position: fixed;
-  left: 0;
-  opacity: 0;
-  overflow: hidden;
-  visibility: hidden;
+  display: none;
 
   &:checked + div {
     display: none;

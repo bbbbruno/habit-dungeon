@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      challenge: ダンジョン攻略
+    attributes:
+      challenge:
+        life: ライフ
+        difficulty: 難易度
+        description: 説明
+        progress: 継続日数

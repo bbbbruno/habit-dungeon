@@ -1,0 +1,28 @@
+dungeon_1:
+  title: 本を毎日読む
+  description: |-
+    本を毎日読む習慣をつけるためのダンジョンです。
+    誰でも挑戦ウェルカムです。
+  user_id: 1
+  header: "sky.png"
+  levels:
+    - title: "本を毎日１ページ読む"
+      days: 10
+    - title: "本を毎日２ページ読む"
+      days: 10
+    - title: "本を毎日３ページ読む"
+      days: 8
+    - title: "本を毎日５ページ読む"
+      days: 8
+    - title: "本を毎日８ページ読む"
+      days: 6
+    - title: "本を毎日１３ページ読む"
+      days: 6
+    - title: "本を毎日２１ページ読む"
+      days: 5
+    - title: "本を毎日３４ページ読む"
+      days: 5
+    - title: "本を毎日５５ページ読む"
+      days: 4
+    - title: "本を毎日８９ページ読む"
+      days: 4

@@ -1,0 +1,39 @@
+.modal
+  = check_box_tag :modal_toggle
+  .modal-overlay
+    label.modal-trigger for="modal_toggle"
+    .modal-content
+      .modal-tit
+        h3
+          span 最終目標
+        p = dungeon.title
+      = form_with model: Challenge.new, class: "modal-form", local: !user_signed_in? do |f|
+        .field
+          h3
+            span メンバー
+          .field-group
+            = f.radio_button :challenger_type, :solo, checked: true
+            = f.label :challenger_type_solo, "ソロ"
+          .field-group
+            = f.radio_button :challenger_type, :party, disabled: true
+            = f.label :challenger_type_party, "パーティ", disabled: true
+            span ※現在は利用できません（近々リリース予定！）
+        .field
+          = f.hidden_field :dungeon_id, value: dungeon.id
+        .field
+          h3
+            span 難易度
+          .field-wrap
+            .field-group
+              = f.radio_button :difficulty, :easy, checked: true
+              = f.label :difficulty_easy, "易"
+            .field-group
+              = f.radio_button :difficulty, :normal
+              = f.label :difficulty_normal, "中"
+            .field-group
+              = f.radio_button :difficulty, :hard
+              = f.label :difficulty_hard, "難"
+        .modal-txt
+          p この内容でダンジョン攻略をはじめます。<br>よろしいですか？
+        = f.submit "はじめる！", class: "modal-btn", data: { confirm: "本当によろしいですか？" }
+        label.modal-cancel for="modal_toggle" キャンセル

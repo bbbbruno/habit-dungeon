@@ -37,6 +37,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_decorator (1.3.2)
+      activesupport
     activejob (6.0.2.1)
       activesupport (= 6.0.2.1)
       globalid (>= 0.3.6)
@@ -116,6 +118,7 @@ GEM
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
     childprocess (3.0.0)
+    chronic (0.10.2)
     circleci-bundle-update-pr (1.19.0)
       compare_linker (>= 1.4.0)
       octokit
@@ -135,6 +138,8 @@ GEM
     devise-i18n (1.9.0)
       devise (>= 4.7.1)
     diff-lcs (1.3)
+    discard (1.2.0)
+      activerecord (>= 4.2, < 7)
     erubi (1.9.0)
     factory_bot (5.1.1)
       activesupport (>= 4.2.0)
@@ -147,6 +152,7 @@ GEM
     foreman (0.87.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    high_voltage (3.1.2)
     hpricot (0.8.6)
     html2slim (0.2.0)
       hpricot
@@ -354,6 +360,8 @@ GEM
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
+    whenever (1.0.0)
+      chronic (>= 0.6.3)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yard (0.9.24)
@@ -363,6 +371,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_decorator
   annotate
   awesome_print
   better_errors
@@ -383,8 +392,10 @@ DEPENDENCIES
   circleci-bundle-update-pr
   devise
   devise-i18n
+  discard
   factory_bot_rails
   foreman
+  high_voltage
   html2slim
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
@@ -411,6 +422,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
+  whenever
 
 RUBY VERSION
    ruby 2.6.5p114

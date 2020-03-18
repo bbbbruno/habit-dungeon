@@ -12,10 +12,16 @@
 body {
   -webkit-font-smoothing: antialiased;
   background-color: $bg;
+  color: #333333;
   font-family: $base;
 
   @include media(md) {
     font-size: 1.4rem;
+  }
+
+  .inner {
+    width: 100%;
+    overflow: hidden;
   }
 }
 

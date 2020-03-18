@@ -1,6 +1,6 @@
 .card
   .card-inner
-    = form_for @dungeon, html: { class: "card-form dungeons-form" } do |f|
+    = form_with model: @dungeon, class: "card-form dungeons-form" do |f|
       - if @dungeon.errors.any?
         #error_explanation
           h2 = "#{pluralize(@dungeon.errors.count, "error")} prohibited this dungeon from being saved:"
