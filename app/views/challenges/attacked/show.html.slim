@@ -3,7 +3,7 @@
     h1.card-tit ダメージを与えました！
     .attacked-enemy
       .attacked-enemy-image
-        = image_pack_tag @challenge.enemy_image_url
+        = image_tag @challenge.enemy_image
       .attacked-enemy-status
         - if @challenge.current_level
           h3.level = "Lv #{@challenge.current_level}"

@@ -63,11 +63,14 @@ enemies = YAML.load_file(Rails.root.join("db", "seeds", "enemies.yml"))
 enemies.each.with_index(1) do |(enemy_level, enemy_list), index|
   enemy_list.each do |enemy|
     name = enemy["name"]
-    image_path = enemy["image_path"]
-    Enemy.create!(
+    image = enemy["image"]
+    created_enemy = Enemy.create!(
       level: index,
       name: name,
-      image_url: "level#{index}/#{image_path}.png"
     )
+    image_file = image
+    path = Rails.root.join("app", "frontend", "images", "level#{index}", image_file)
+    file = File.open(path)
+    created_enemy.image.attach(io: file, filename: image_file, content_type: "image/png")
   end
 end
