@@ -1,3 +1,5 @@
+- title "アカウント確認メール再送"
+
 h2
   = t(".resend_confirmation_instructions")
 = form_with model: @user, url: user_confirmation_path, method: :post, local: true do |f|

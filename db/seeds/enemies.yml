@@ -1,9 +1,9 @@
 level_1:
   - name: スライム
-    image_path: slime
+    image: slime.png
 level_2:
   - name: スネーク
-    image_path: snake
+    image: snake.png
 level_3:
   - name: ヒドラ
-    image_path: hydra
+    image: hydra.png

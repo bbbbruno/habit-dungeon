@@ -12,4 +12,8 @@ module ChallengeDecorator
   def enemy_max_life
     days_list[current_level]
   end
+
+  def current_level_title
+    levels.pluck(:number, :title).to_h[current_level]
+  end
 end

@@ -25,6 +25,41 @@ module ApplicationHelper
     end
   end
 
+  def default_meta_tags
+    {
+      site: "Habit Dungeon",
+      reverse: true,
+      charset: "utf-8",
+      description: "習慣化×ダンジョン攻略がテーマの習慣化支援サービスです。モンスターを倒し、レベル上げていき、少しずつダンジョンを攻略することで理想の習慣を身につけることができます。",
+      keywords: "習慣化,ダンジョン,RPG,ゲーミフィケーション",
+      canonical: request.original_url,
+      separator: "|",
+      icon: [
+        { href: "/favicon.png", sizes: "32x32 96x96", type: "image/png" },
+        { href: "/icon_itouch_precomp.png", rel: "apple-touch-icon-precomposed", sizes: "32x32", type: "image/png" },
+      ],
+      og: {
+        site_name: :site,
+        title: :title,
+        description: :description,
+        type: "website",
+        url: request.original_url,
+        # image: asset_pack_url("media/images/chomeko blog....jpg"),
+        local: "ja-JP",
+      },
+      fb: {
+        app_id: "***"
+      },
+      twitter: {
+        card: "summary",
+        site: "@bbbbruno69",
+        # image: asset_pack_url("media/images/twitter_icon.png"),
+        width: 100,
+        height: 100
+      }
+    }
+  end
+
   def avatar_urls(challenger)
     avatar_size = [88, 88]
     challenger.all_challengers_avatar.map do |avatar|

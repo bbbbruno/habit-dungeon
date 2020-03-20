@@ -47,7 +47,7 @@ class Challenge < ApplicationRecord
 
   delegate :challenger_name, :all_challengers, :all_challengers_avatar, to: :challenger
   delegate :title, :levels, to: :dungeon
-  delegate :name, :image_url, to: :enemy, prefix: true
+  delegate :name, :image, to: :enemy, prefix: true
 
   before_create do
     self.life = max_life

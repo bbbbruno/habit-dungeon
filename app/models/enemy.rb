@@ -5,7 +5,6 @@
 # Table name: enemies
 #
 #  id         :bigint           not null, primary key
-#  image_url  :string           not null
 #  level      :integer          not null
 #  name       :string           not null
 #  created_at :datetime         not null
@@ -13,6 +12,7 @@
 #
 class Enemy < ApplicationRecord
   has_many :challenges
+  has_one_attached :image
 
   validates :level,
     presence: true,
@@ -23,7 +23,6 @@ class Enemy < ApplicationRecord
       message: "入力値が1~10の範囲外です",
     }
   validates :name, presence: true
-  validates :image_url, presence: true
 
   def self.choose(level:)
     where(level: level).sample
