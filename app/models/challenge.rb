@@ -31,7 +31,7 @@
 #
 class Challenge < ApplicationRecord
   belongs_to :challenger, polymorphic: true
-  belongs_to :dungeon, -> { unscope(where: :discarded_at).includes(:levels) }
+  belongs_to :dungeon, -> { unscope(where: :discarded_at) }
   belongs_to :enemy
 
   validates :difficulty, inclusion: { in: %w[easy normal hard] }
@@ -49,21 +49,8 @@ class Challenge < ApplicationRecord
   delegate :title, :levels, to: :dungeon
   delegate :name, :image, to: :enemy, prefix: true
 
-  before_create do
-    self.life = max_life
-  end
-
-  # レベルの開始位置にいてattackedがtrueの時、
-  # deal_damageでダメージを与えるとrank_upとlife_upが作動して、ダメージを受けない
-  before_update do
-    next unless current_level
-    if life == 0
-      rank_down
-    elsif attacked? && progress == each_level_start[current_level]
-      rank_up
-      life_up
-    end
-  end
+  before_validation :set_initial_life_and_enemy, on: :create
+  before_update :check_rank_up_or_rank_down
 
   def max_life
     life_list = { easy: 3, normal: 2, hard: 1 }
@@ -111,6 +98,11 @@ class Challenge < ApplicationRecord
 
   def deal_damage
     update(life: life - 1)
+    Notification.notify_challenge_damaged(self) unless life_before_last_save == 1
+  end
+
+  def at_level_start?
+    progress == each_level_start[current_level]
   end
 
   private
@@ -132,6 +124,24 @@ class Challenge < ApplicationRecord
       end
       if progress <= total_days
         errors.add(:base, "最終レベルをクリアしていないとダンジョンはクリアできません")
+      end
+    end
+
+    def set_initial_life_and_enemy
+      self.life = max_life
+      self.enemy = Enemy.choose(level: 1)
+    end
+
+    # レベルの開始位置にいてattackedがtrueの時、
+    # deal_damageでダメージを与えるとrank_upとlife_upが作動して、ダメージを受けない
+    def check_rank_up_or_rank_down
+      return unless current_level
+      if life == 0
+        rank_down
+        Notification.notify_rank_downed(self)
+      elsif attacked? && at_level_start?
+        rank_up
+        life_up
       end
     end
 

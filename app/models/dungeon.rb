@@ -23,7 +23,7 @@
 #
 class Dungeon < ApplicationRecord
   include Discard::Model
-  default_scope -> { kept  }
+  default_scope -> { kept }
 
   after_discard do
     destroy unless challenges.exists?
@@ -43,6 +43,10 @@ class Dungeon < ApplicationRecord
 
   def destroy_if_no_challenges
     destroy unless challenges.exists?
+  end
+
+  def all_uniq_challengers
+    solos.uniq
   end
 
   private

@@ -15,9 +15,9 @@ class ChallengesController < ApplicationController
   def create
     @challenge = Challenge.new(challenge_params)
     @challenge.challenger = current_user if solo?
-    @challenge.enemy = Enemy.choose(level: 1)
 
     if @challenge.save
+      Notification.notify_dungeon_challenged(@challenge) unless @challenge.all_challengers.include?(@challenge.dungeon.user)
       redirect_to @challenge, notice: "ダンジョンの攻略をはじめました"
     else
       redirect_back fallback_location: root_path, alert: @challenge.errors.full_messages[0]

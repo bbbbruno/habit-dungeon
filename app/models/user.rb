@@ -50,6 +50,8 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
   has_many :dungeons, dependent: :destroy
+  has_many :notifications, dependent: :destroy
+  has_many :sent_notifications, as: :sender, class_name: "Notification", dependent: :destroy
 
   validates :user_id,
     presence: true,

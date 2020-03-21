@@ -2,10 +2,11 @@
 
 module Challenges::AttackedHelper
   def share_queries(challenge)
+    title = challenge.at_level_start? ? "ランクアップしました！" : "ダメージを与えました！"
     {
       url: challenge_url(challenge),
       text: <<~"EOS",
-      ダメージを与えました！
+      #{title}
       継続日数: #{challenge.progress}日
       次のレベルまであと: #{challenge.enemy_life}日
       EOS

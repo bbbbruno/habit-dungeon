@@ -4,7 +4,7 @@ module Challenger
   extend ActiveSupport::Concern
 
   included do
-    has_many :challenges, as: :challenger
+    has_many :challenges, as: :challenger, dependent: :destroy
   end
 
   def challenger_name

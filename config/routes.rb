@@ -69,6 +69,8 @@
 #               GET    /:id/attachments/:file(.:format) letter_opener_web/letters#attachment
 
 Rails.application.routes.draw do
+  get 'notifications/index'
+  get 'notifications/update'
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
@@ -76,11 +78,13 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   devise_for :users
+  resources :users, only: %i[index show]
 
   resources :dungeons
   resources :challenges do
     resource :attacked, only: :show, controller: "challenges/attacked"
   end
+  resources :notifications, only: %i[index update]
 
   namespace :api, format: "json" do
     resources :dungeons, only: %i[] do

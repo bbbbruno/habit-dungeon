@@ -2,7 +2,7 @@
 
 .wrap-900
   .card
-    h1.card-tit ダメージを与えました！
+    h1.card-tit = "#{@challenge.at_level_start? ? "ランクアップしました！" : "ダメージを与えました！"}"
     .attacked-enemy
       .attacked-enemy-image
         = image_tag @challenge.enemy_image

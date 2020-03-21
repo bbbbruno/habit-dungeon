@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_19_090229) do
+ActiveRecord::Schema.define(version: 2020_03_21_041506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,20 @@ ActiveRecord::Schema.define(version: 2020_03_19_090229) do
     t.index ["number", "dungeon_id"], name: "index_levels_on_number_and_dungeon_id", unique: true
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "sender_type", null: false
+    t.bigint "sender_id", null: false
+    t.string "message", null: false
+    t.string "path", null: false
+    t.integer "kind", null: false
+    t.boolean "read", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["sender_type", "sender_id"], name: "index_notifications_on_sender_type_and_sender_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -118,4 +132,5 @@ ActiveRecord::Schema.define(version: 2020_03_19_090229) do
   add_foreign_key "challenges", "enemies"
   add_foreign_key "dungeons", "users"
   add_foreign_key "levels", "dungeons"
+  add_foreign_key "notifications", "users"
 end

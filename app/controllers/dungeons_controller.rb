@@ -33,6 +33,7 @@ class DungeonsController < ApplicationController
 
   def update
     if @dungeon.update(update_dungeon_params)
+      Notification.notify_dungeon_edited(@dungeon)
       redirect_to @dungeon, notice: "ダンジョンの更新に成功しました"
     else
       render :edit
