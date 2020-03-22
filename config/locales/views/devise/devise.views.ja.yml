@@ -26,8 +26,14 @@ ja:
         unlock_token: ロック解除用トークン
         updated_at: 更新日
         avatar: プロフィール画像
+        header: ヘッダー画像
         user_id: ユーザーID
         name: 氏名
+        self_introduction: 自己紹介
+        twitter_url: Twitter URL
+        facebook_url: FaceBook URL
+        instagram_url: Instagram URL
+        youtube_url: Youtube URL
     models:
       user: ユーザ
   devise:

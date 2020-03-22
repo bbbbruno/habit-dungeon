@@ -8,8 +8,8 @@ header.header
     ul.header-list
       li.header-item class="#{active_controller?("dungeons")}"
         = link_to "ダンジョン", dungeons_path
-      li.header-item class="#{active_action?("user")}"
-        = link_to "プレイヤー", "#"
+      li.header-item class="#{active_controller?("users")}"
+        = link_to "プレイヤー", users_path
 
   .header-wrap
     - if user_signed_in?

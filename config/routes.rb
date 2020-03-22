@@ -69,15 +69,17 @@
 #               GET    /:id/attachments/:file(.:format) letter_opener_web/letters#attachment
 
 Rails.application.routes.draw do
-  get 'notifications/index'
-  get 'notifications/update'
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
   root to: "home#index"
 
-  devise_for :users
+  devise_for :users,
+    controllers: {
+      registrations: "users/registrations",
+      sessions: "users/sessions",
+    }
   resources :users, only: %i[index show]
 
   resources :dungeons

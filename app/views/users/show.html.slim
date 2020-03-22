@@ -1,0 +1,41 @@
+- title "マイページ"
+
+h1.pagetit
+  span マイページ
+.users-wrap
+  .users-left.card
+    .users-header style="background: url('#{header_url(@user)}') no-repeat center center/cover"
+      = image_tag avatar_url(@user)
+    .users-profile
+      h2 = @user.user_id
+      h3 = @user.name
+      ul.users-sns
+        li.users-sns-icon class="#{"inactive" if @user.facebook_url.blank?}"
+          = link_to @user.facebook_url do
+            i.fab.fa-facebook-square
+        li.users-sns-icon class="#{"inactive" if @user.twitter_url.blank?}"
+          = link_to @user.twitter_url do
+            i.fab.fa-twitter
+        li.users-sns-icon class="#{"inactive" if @user.instagram_url.blank?}"
+          = link_to @user.instagram_url do
+            i.fab.fa-instagram
+        li.users-sns-icon class="#{"inactive" if @user.youtube_url.blank?}"
+          = link_to @user.youtube_url do
+            i.fab.fa-youtube
+      .users-self_introduction = simple_format h @user.self_introduction
+  .users-right
+    .users-challenges.card
+      h2.card-tit 攻略中のダンジョン
+      .users-challenges-inner
+        = render partial: "users/challenge", collection: @user.challenges
+    .users-progress.card
+      h2.card-tit 継続日数
+      h3 = "#{@user.max_progress}日"
+    .users-dungeons.card
+      h2.card-tit 作成したダンジョン
+      .users-dungeons-inner
+        = render partial: "users/dungeon", collection: @user.dungeons
+
+.bottom
+  .bottom-links
+    = link_to "もどる", users_path

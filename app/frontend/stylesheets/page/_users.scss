@@ -1,0 +1,187 @@
+.users {
+  img {
+    border-radius: 50%;
+  }
+
+  .card {
+    margin: 0 0 30px;
+    &-tit {
+      text-align: left;
+      font-size: 3.2rem;
+      line-height: 1;
+      padding: 8px 15px 5px;
+      margin-bottom: 0;
+    }
+  }
+
+  &-wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-left {
+    width: 43%;
+  }
+
+  &-header {
+    position: relative;
+    height: 130px;
+    margin-bottom: 40px;
+
+    img {
+      position: absolute;
+      border: 5px solid #fff;
+      bottom: -40px;
+      left: 50%;
+      transform: translate(-50%);
+    }
+  }
+
+  &-profile {
+    text-align: center;
+    padding: 5px 15px 15px;
+
+    h2 {
+      font-size: 4rem;
+      line-height: 1;
+    }
+    h3 {
+      font-size: 2.3rem;
+      margin-bottom: 10px;
+    }
+  }
+
+  &-sns {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #efefef;
+
+    &-icon {
+      border: 1px solid #efefef;
+
+      &:first-child {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+      }
+      &:last-child {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
+      &:not(:last-child) {
+        margin-right: -1px;
+      }
+      &.inactive {
+        a {
+          pointer-events: none;
+
+          i {
+            color: #9c9c9c !important;
+          }
+        }
+      }
+
+      a {
+        display: block;
+        font-size: 2rem;
+        padding: 5px 10px;
+      }
+
+      i {
+        &.fa-facebook-square {
+          color: #3c5a99;
+        }
+        &.fa-twitter {
+          color: #1da1f2;
+        }
+        &.fa-instagram {
+          color: #cf2e92;
+        }
+        &.fa-youtube {
+          color: #da1725;
+        }
+      }
+    }
+  }
+
+  &-self_introduction {
+    padding-top: 10px;
+    text-align: left;
+  }
+
+  &-right {
+    width: 55%;
+
+    h3 {
+      font-family: $rpg;
+      font-weight: normal;
+      letter-spacing: 0.2rem;
+    }
+  }
+
+  &-challenges {
+    &-inner {
+      display: block;
+      padding: 10px 15px 15px;
+    }
+
+    &-tit {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      h3 {
+        font-size: 3.5rem;
+        line-height: 1;
+      }
+      .circle-stamp {
+        flex-shrink: 0;
+      }
+    }
+
+    &-details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &-level {
+      font-size: 2.5rem;
+      line-height: 1;
+      margin-right: 10px;
+      padding-top: 5px;
+    }
+
+    &-links {
+      display: flex;
+      align-items: center;
+      a {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  &-progress {
+    h3 {
+      font-size: 3.2rem;
+      padding: 5px 20px 0;
+    }
+  }
+
+  &-dungeons {
+    &-inner {
+      padding: 10px 15px;
+      a {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #efefef;
+        margin-bottom: 5px;
+
+        h3 {
+          font-size: 3.2rem;
+          line-height: 1;
+          padding-top: 5px;
+        }
+      }
+    }
+  }
+}
