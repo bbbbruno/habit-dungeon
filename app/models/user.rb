@@ -44,10 +44,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :trackable
 
-  include Discard::Model
-  default_scope -> { kept }
-
   include Challenger
+  scope :recent_challenges, ->(count) { challenges.order(updated_at: :desc).limit(count) }
 
   has_one_attached :avatar
   has_one_attached :header

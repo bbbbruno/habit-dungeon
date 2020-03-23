@@ -46,7 +46,7 @@ class Challenge < ApplicationRecord
   validate :check_clear, if: :clear?
 
   delegate :challenger_name, :all_challengers, :all_challengers_avatar, to: :challenger
-  delegate :title, :levels, to: :dungeon
+  delegate :title, :levels, :header, to: :dungeon
   delegate :name, :image, to: :enemy, prefix: true
 
   before_validation :set_initial_life_and_enemy, on: :create

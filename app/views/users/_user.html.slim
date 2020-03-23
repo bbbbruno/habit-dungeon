@@ -1,1 +1,21 @@
-p = link_to user.user_id, user
+li.card-list-item
+  = image_tag avatar_url(user), class: "card-list-icon _left"
+  .card-list-top
+    h2 = user.user_id
+    h3 = user.name
+  .overlay style="background: url('#{challenge_header_url(user.challenge)}') center center/cover"
+    h2.card-list-tit = "#{user.challenge ? user.challenge.title : "なし"}"
+  ul.card-list-inner
+    - if user.challenge
+      li.card-list-txt
+        p Lv
+        p = user.challenge.current_level
+      li.card-list-txt
+        p 継続日数
+        p = user.challenge.progress
+      li.card-list-txt
+        p こうげき
+        p.circle-stamp class="#{user.challenge.attacked? ? "" : "yet"}" = "#{user.challenge.attacked? ? "済" : "未"}"
+    - else
+      p 攻略しているダンジョンはありません
+    p.card-list-link = link_to "くわしく", user

@@ -17,6 +17,7 @@
   &-wrap {
     display: flex;
     justify-content: space-between;
+    align-items: start;
   }
 
   &-left {
@@ -142,6 +143,10 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      img {
+        width: 50px;
+      }
     }
 
     &-level {
