@@ -86,7 +86,11 @@ Rails.application.routes.draw do
   resources :challenges do
     resource :attacked, only: :show, controller: "challenges/attacked"
   end
-  resources :notifications, only: %i[index update]
+  resources :notifications, only: %i[index update] do
+    collection do
+      resources :allmarks, only: %i[create], on: :collection, controller: "notifications/allmarks"
+    end
+  end
 
   namespace :api, format: "json" do
     resources :dungeons, only: %i[] do

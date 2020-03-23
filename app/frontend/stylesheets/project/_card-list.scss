@@ -9,15 +9,17 @@
     background: #ffffff;
     border-radius: 5px;
     position: relative;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 0.0625rem 0.125rem;
   }
 
   &-icon {
     position: absolute;
-    width: 64px;
-    height: 64px;
+    width: 67px;
+    height: 67px;
+    border: 3px solid #fff;
     &._left {
       left: -15px;
-      top: -20px;
+      top: -15px;
     }
   }
 

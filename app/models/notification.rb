@@ -25,7 +25,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Notification < ApplicationRecord
-  scope :recent, ->(count) { order(created_at: :desc).limit(count) }
+  scope :recent, ->(count) { includes(:sender).order(created_at: :desc).limit(count) }
 
   belongs_to :user
   belongs_to :sender, polymorphic: true

@@ -2,7 +2,7 @@
 
 .card
   h2.card-tit
-    = t(".title", resource: @user.model_name.human)
+    = "ユーザー設定"
   .card-inner
     = form_with model: @user, url: user_registration_path, method: :put, class: "card-form", local: true do |f|
       = render "devise/shared/error_messages", resource: @user
