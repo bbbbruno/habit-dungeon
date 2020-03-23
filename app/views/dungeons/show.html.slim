@@ -1,13 +1,12 @@
 - title "「#{@dungeon.title}」のダンジョン詳細"
 
 .wrap-900
-  h1.dungeons-pagetit
+  h1.pagetit
     span ダンジョン詳細
-
   .card
     - if @dungeon.discarded?
       h1.stamp 削除済み
-    .overlay style="background: url(#{header_url(@dungeon)}) no-repeat center center/cover;"
+    .overlay style="background: url(#{dungeon_header_url(@dungeon)}) no-repeat center center/cover;"
       h1.card-tit.dungeons-tit = @dungeon.title
     .card-inner
       .dungeons-box

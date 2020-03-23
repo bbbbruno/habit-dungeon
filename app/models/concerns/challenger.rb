@@ -4,7 +4,14 @@ module Challenger
   extend ActiveSupport::Concern
 
   included do
-    has_many :challenges, as: :challenger
+    has_many :challenges,
+      -> { order(updated_at: :desc) },
+      as: :challenger,
+      dependent: :destroy
+
+    def challenge
+      challenges.first
+    end
   end
 
   def challenger_name

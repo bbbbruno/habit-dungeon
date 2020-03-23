@@ -1,0 +1,20 @@
+.toggle-menu._notifications
+  = label_tag "hidden-checkbox-notificaitons" do
+    i.fas.fa-bell
+    - if current_user.notifications.unread.present?
+      span.unread = current_user.notifications.unread.count
+  input#hidden-checkbox-notificaitons type="checkbox"
+  .toggle-menu-content
+    label for="hidden-checkbox-notificaitons"
+    p.toggle-menu-txt あなたへの通知
+    ul.toggle-menu-list._scroll
+      - current_user.notifications.recent(10).each do |notification|
+        li.toggle-menu-item class="#{notification.read? ? "_read" : ""}"
+          = link_to notification, method: :patch do
+            = image_tag avatar_url(notification.sender)
+            .toggle-menu-message
+              p = notification.message
+              span = notification.created_at.strftime("%Y/%m/%d")
+    .toggle-menu-links
+      p = link_to "全ての通知", notifications_path
+      p = link_to "全て既読にする", allmarks_path, method: :post

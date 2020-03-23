@@ -74,3 +74,13 @@ enemies.each.with_index(1) do |(enemy_level, enemy_list), index|
     created_enemy.image.attach(io: file, filename: image_file, content_type: "image/png")
   end
 end
+
+users = User.all
+dungeon = Dungeon.first
+users.each do |user|
+  user.challenges.create!(
+    dungeon_id: dungeon.id,
+    challenger: user,
+    difficulty: "easy",
+  )
+end

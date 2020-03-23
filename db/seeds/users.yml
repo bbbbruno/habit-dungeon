@@ -6,3 +6,15 @@ user_1:
 user_2:
   email: strongman@example.com
   user_id: strongman
+
+user_3:
+  email: ichigo@example.com
+  user_id: ichigo
+
+user_4:
+  email: smilelife@example.com
+  user_id: smilelife
+
+user_5:
+  email: fatboy@example.com
+  user_id: fatboy

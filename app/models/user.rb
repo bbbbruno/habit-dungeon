@@ -25,6 +25,7 @@
 #  sign_in_count          :integer          default("0"), not null
 #  twitter_url            :string
 #  unconfirmed_email      :string
+#  youtube_url            :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  user_id                :string           default(""), not null
@@ -43,13 +44,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :trackable
 
-  include Discard::Model
-  default_scope -> { kept }
-
   include Challenger
+  scope :recent_challenges, ->(count) { challenges.order(updated_at: :desc).limit(count) }
 
   has_one_attached :avatar
+  has_one_attached :header
   has_many :dungeons, dependent: :destroy
+  has_many :notifications, dependent: :destroy
+  has_many :sent_notifications, as: :sender, class_name: "Notification", dependent: :destroy
 
   validates :user_id,
     presence: true,
@@ -59,10 +61,6 @@ class User < ApplicationRecord
       with: /\A\w+\z/,
       message: "は半角英数字と_（アンダースコア）のみが使用できます"
     }
-
-  def active_for_authentication?
-    super && !discarded?
-  end
 
   def challenger_name
     user_id

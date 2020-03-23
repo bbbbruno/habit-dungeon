@@ -75,11 +75,21 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
-  devise_for :users
+  devise_for :users,
+    controllers: {
+      registrations: "users/registrations",
+      sessions: "users/sessions",
+    }
+  resources :users, only: %i[index show]
 
   resources :dungeons
   resources :challenges do
     resource :attacked, only: :show, controller: "challenges/attacked"
+  end
+  resources :notifications, only: %i[index update] do
+    collection do
+      resources :allmarks, only: %i[create], on: :collection, controller: "notifications/allmarks"
+    end
   end
 
   namespace :api, format: "json" do

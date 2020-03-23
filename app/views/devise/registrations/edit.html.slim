@@ -2,40 +2,60 @@
 
 .card
   h2.card-tit
-    = t(".title", resource: @user.model_name.human)
-  = form_with model: @user, url: user_registration_path, method: :put, class: "card-form", local: true do |f|
-    = render "devise/shared/error_messages", resource: @user
-    .field
-      = f.label :email
-      = f.email_field :email, autofocus: true, autocomplete: "email"
-    - if devise_mapping.confirmable? && @user.pending_reconfirmation?
-      div
-        = t(".currently_waiting_confirmation_for_email", email: @user.unconfirmed_email)
-    .field
-      = f.label :password
-      i
-        | (
-        = t(".leave_blank_if_you_don_t_want_to_change_it")
-        | )
-      = f.password_field :password, autocomplete: "new-password"
-      - if @minimum_password_length
-        em
-          = t("devise.shared.minimum_password_length", count: @minimum_password_length)
-    .field
-      = f.label :password_confirmation
-      = f.password_field :password_confirmation, autocomplete: "new-password"
-    .field
-      = f.label :current_password
-      i
-        | (
-        = t(".we_need_your_current_password_to_confirm_your_changes")
-        | )
-      = f.password_field :current_password, autocomplete: "current-password"
-    .actions
-      = f.submit t(".update"), class: "card-btn"
-  h3
-    = t(".cancel_my_account")
-  p
-    = t(".unhappy")
-    = button_to t(".cancel_my_account"), user_registration_path, data: { confirm: t(".are_you_sure") }, method: :delete
-  = link_to t("devise.shared.links.back"), :back
+    = "ユーザー設定"
+  .card-inner
+    = form_with model: @user, url: user_registration_path, method: :put, class: "card-form", local: true do |f|
+      = render "devise/shared/error_messages", resource: @user
+      .field
+        = f.label :email
+        = f.email_field :email, autofocus: true, autocomplete: "email"
+      - if devise_mapping.confirmable? && @user.pending_reconfirmation?
+        div = t(".currently_waiting_confirmation_for_email", email: @user.unconfirmed_email)
+      .field
+        = f.label :user_id
+        = f.text_field :user_id
+      .field._file
+        = f.label :name
+        = f.text_field :name
+      .field
+        = f.label :self_introduction
+        = f.text_area :self_introduction
+      .field._file
+        = f.label :avatar
+        = f.label :avatar, class: "preview" do
+          = image_tag "#{@user.avatar.attached? ? url_for(@user.avatar.variant(resize_to_fill: [100, 100]).processed) : asset_pack_path("media/images/default_avatar.png")}"
+          span 画像を選択
+          = f.file_field :avatar, style: "display: none"
+      .field._file._large
+        = f.label :header
+        = f.label :header, class: "preview" do
+          = image_tag "#{@user.header.attached? ? url_for(@user.header) : asset_pack_path("media/images/default_dungeon.png")}"
+          span 画像を選択
+          = f.file_field :header, style: "display: none"
+      .field
+        = f.label :facebook_url
+        = f.text_field :facebook_url
+      .field
+        = f.label :twitter_url
+        = f.text_field :twitter_url
+      .field
+        = f.label :instagram_url
+        = f.text_field :instagram_url
+      .field
+        = f.label :youtube_url
+        = f.text_field :youtube_url
+      .field
+        = f.label :password
+        i = "(#{t(".leave_blank_if_you_don_t_want_to_change_it")})"
+        = f.password_field :password, autocomplete: "new-password"
+        - if @minimum_password_length
+          em = t("devise.shared.minimum_password_length", count: @minimum_password_length)
+      .field
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, autocomplete: "new-password"
+      .actions
+        = f.submit t(".update"), class: "card-btn"
+    h3 = t(".cancel_my_account")
+    p
+      = link_to "退会する", user_registration_path, data: { confirm: "一度退会するともう二度と復旧はできません。よろしいですか？" }, method: :delete
+    = link_to t("devise.shared.links.back"), :back

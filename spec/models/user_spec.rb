@@ -25,6 +25,7 @@
 #  sign_in_count          :integer          default("0"), not null
 #  twitter_url            :string
 #  unconfirmed_email      :string
+#  youtube_url            :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  user_id                :string           default(""), not null
