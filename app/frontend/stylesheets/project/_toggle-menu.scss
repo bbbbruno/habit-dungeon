@@ -49,7 +49,8 @@
   &-list {
     position: relative;
     &._scroll {
-      height: 420px;
+      min-height: 64px;
+      max-height: 420px;
       overflow-y: scroll;
     }
   }
@@ -117,8 +118,10 @@
       border-radius: 25px;
       background: $sub;
     }
-    .toggle-menu-item {
+    .toggle-menu-list {
       min-width: 450px;
+    }
+    .toggle-menu-item {
       &:not(:last-child) {
         border-bottom: 1px solid #e1e0e3;
       }
