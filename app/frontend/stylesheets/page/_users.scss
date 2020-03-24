@@ -1,4 +1,11 @@
 .users {
+  &#index {
+    .card-list {
+      &-item {
+        overflow: visible;
+      }
+    }
+  }
   img {
     border-radius: 50%;
   }

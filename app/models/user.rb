@@ -75,6 +75,6 @@ class User < ApplicationRecord
   end
 
   def challenging?
-    challenges.present?
+    challenges.exists?
   end
 end

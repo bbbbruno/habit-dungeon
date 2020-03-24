@@ -5,6 +5,11 @@ class NotificationsController < ApplicationController
   before_action :set_my_notification, only: %i[update]
 
   def index
+    @notifications = current_user
+                      .notifications
+                      .includes(:sender)
+                      .order(created_at: :desc)
+                      .page(params[:page])
   end
 
   def update

@@ -1,7 +1,7 @@
 .toggle-menu._notifications
   = label_tag "hidden-checkbox-notificaitons" do
     i.fas.fa-bell
-    - if current_user.notifications.unread.present?
+    - if current_user.notifications.unread.exists?
       span.unread = current_user.notifications.unread.count
   input#hidden-checkbox-notificaitons type="checkbox"
   .toggle-menu-content

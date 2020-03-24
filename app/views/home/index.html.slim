@@ -1,8 +1,8 @@
 - title "ホーム"
 - description "ホーム画面です。"
 
-- if @challenges.present?
-  = render @challenges
+- if @challenges.exists?
+  = render partial: "challenge", collection: @challenges
 - else
   h1 今すぐダンジョンに挑戦しよう！
   = link_to "ダンジョンをみてみる", dungeons_path

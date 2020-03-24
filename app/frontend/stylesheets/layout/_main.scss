@@ -1,8 +1,10 @@
 .main {
   padding: 30px 0;
+  min-height: calc(100vh - 122px);
 
   .container {
     max-width: 1200px;
+    flex: 0 1 1200px;
     margin: 0 auto;
     padding: 0 30px;
     @include media(md) {

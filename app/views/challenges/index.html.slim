@@ -1,30 +1,9 @@
 - title "攻略中のダンジョン一覧"
 
-h1 Listing challenges
+h1.pagetit
+  span 攻略中のダンジョン一覧
 
-table
-  thead
-    tr
-      th challenger
-      th Dungeon
-      th Progress
-      th life
-      th
-      th
-      th
+ul.card-list._challenge
+  = render @challenges
 
-  tbody
-    - @challenges.each do |challenge|
-      tr
-        td
-          - avatar_urls(challenge.challenger).each do |url|
-            = image_tag url
-        td = challenge.progress
-        td = challenge.life
-        td = link_to "Show", challenge
-        td = link_to "Edit", edit_challenge_path(challenge)
-        td = link_to "Destroy", challenge, data: { confirm: "Are you sure?" }, method: :delete
-
-br
-
-= link_to "New Challenge", new_challenge_path
+= paginate @challenges

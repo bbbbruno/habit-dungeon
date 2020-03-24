@@ -1,9 +1,0 @@
-.notifications {
-  > input {
-    display: none;
-
-    &:checked + div {
-      display: block;
-    }
-  }
-}

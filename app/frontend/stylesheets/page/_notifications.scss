@@ -1,0 +1,37 @@
+.notifications {
+  &-list {
+    background: #ffffff;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 0.0625rem 0.125rem;
+    margin-bottom: 30px;
+  }
+
+  &-item {
+    &:not(:last-child) {
+      border-bottom: 1px solid #e1e0e3;
+    }
+    &._read {
+      color: #9c9c9c;
+    }
+
+    a {
+      display: flex;
+      padding: 15px;
+      &:hover {
+        opacity: 1;
+        background: #efefef;
+        p {
+          text-decoration: underline;
+        }
+      }
+      img {
+        width: 42px;
+        border-radius: 50%;
+        margin-right: 15px;
+      }
+      span {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}

@@ -3,26 +3,43 @@ dungeon_1:
   description: |-
     本を毎日読む習慣をつけるためのダンジョンです。
     誰でも挑戦ウェルカムです。
-  user_id: 1
+  user_id: 2
   header: "sky.png"
   levels:
-    - title: "本を毎日１ページ読む"
+    - title: "本を毎日１ページ読む" # Lv 1
       days: 10
-    - title: "本を毎日２ページ読む"
+    - title: "本を毎日２ページ読む" # Lv 2
       days: 10
-    - title: "本を毎日３ページ読む"
+    - title: "本を毎日３ページ読む" # Lv 3
       days: 8
-    - title: "本を毎日５ページ読む"
+    - title: "本を毎日５ページ読む" # Lv 4
       days: 8
-    - title: "本を毎日８ページ読む"
+    - title: "本を毎日８ページ読む" # Lv 5
       days: 6
-    - title: "本を毎日１３ページ読む"
+    - title: "本を毎日１３ページ読む" # Lv 6
       days: 6
-    - title: "本を毎日２１ページ読む"
+    - title: "本を毎日２１ページ読む" # Lv 7
       days: 5
-    - title: "本を毎日３４ページ読む"
+    - title: "本を毎日３４ページ読む" # Lv 8
       days: 5
-    - title: "本を毎日５５ページ読む"
+    - title: "本を毎日５５ページ読む" # Lv 9
       days: 4
-    - title: "本を毎日８９ページ読む"
+    - title: "本を毎日８９ページ読む" # Lv 10
       days: 4
+
+dungeon_2:
+  title: 毎日走る
+  description: |-
+    毎日走る習慣を身に付けるためのダンジョンです。
+  user_id: 3
+  levels:
+    - title: "毎日１分走る" # Lv 1
+      days: 15
+    - title: "毎日５分走る" # Lv 2
+      days: 14
+    - title: "本を毎日１０ページ読む" # Lv 3
+      days: 13
+    - title: "本を毎日１５ページ読む" # Lv 4
+      days: 12
+    - title: "本を毎日３０ページ読む" # Lv 5
+      days: 12

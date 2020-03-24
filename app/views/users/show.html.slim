@@ -34,7 +34,7 @@ h1.pagetit
     .users-dungeons.card
       h2.card-tit 作成したダンジョン
       .users-dungeons-inner
-        = render partial: "users/dungeon", collection: @user.dungeons
+        = render partial: "users/dungeon", collection: @user.dungeons.includes(:challenges, :solos)
 
 .bottom
   .bottom-links

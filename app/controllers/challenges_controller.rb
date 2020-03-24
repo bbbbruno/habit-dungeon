@@ -6,7 +6,10 @@ class ChallengesController < ApplicationController
   before_action :set_my_challenge, only: %i[update destroy]
 
   def index
-    @challenges = Challenge.includes(challenger: { avatar_attachment: :blob }).all
+    @challenges = Challenge
+                    .includes(:dungeon, challenger: { avatar_attachment: :blob })
+                    .recent_updated
+                    .page(params[:page])
   end
 
   def show
