@@ -26,6 +26,15 @@ users.each.with_index(1) do |(user, attributes), index|
   file = File.open(path)
   created_user.avatar.attach(io: file, filename: image_file, content_type: "image/#{extension}")
 end
+20.times do |i|
+  User.create!(
+    email: "user#{i}@example.com",
+    user_id: "user_#{i}",
+    password: "testtest",
+    password_confirmation: "testtest",
+    confirmed_at: Time.current,
+  )
+end
 
 dungeons = YAML.load_file(Rails.root.join("db", "seeds", "dungeons.yml"))
 dungeons.each.with_index(1) do |(dungeon, attributes), index|
@@ -57,6 +66,30 @@ dungeons.each.with_index(1) do |(dungeon, attributes), index|
   path = Rails.root.join("app", "frontend", "images", "headers", image_file)
   file = File.open(path)
   created_dungeon.header.attach(io: file, filename: image_file, content_type: "image/png")
+end
+levels = 1.upto(10).with_object([]) do |i, array|
+  array << Level.new(
+    number: i,
+    title: "〜を毎日#{i}〜する",
+    days: 8,
+  )
+end
+20.times do |i|
+  Dungeon.create!(
+    title: "毎日学習する",
+    description: <<~EOS,
+    毎日学習するためのダンジョン。
+    毎日学習するためのダンジョン。
+    毎日学習するためのダンジョン。
+    毎日学習するためのダンジョン。
+    毎日学習するためのダンジョン。
+    毎日学習するためのダンジョン。
+    毎日学習するためのダンジョン。
+    毎日学習するためのダンジョン。
+    EOS
+    user: User.first,
+    levels: levels,
+  )
 end
 
 enemies = YAML.load_file(Rails.root.join("db", "seeds", "enemies.yml"))

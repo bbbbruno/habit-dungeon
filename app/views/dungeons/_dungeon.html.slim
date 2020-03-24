@@ -1,0 +1,9 @@
+li.card-list-item
+  .overlay style="background: url('#{dungeon_header_url(dungeon)}') center center/cover"
+    h2.card-list-tit = dungeon.title
+  .card-list-inner
+    .card-list-content
+      h3 説明
+      = simple_format truncate(dungeon.description, length: 60)
+      h4 = "#{dungeon.all_uniq_challengers.count}人が挑戦中！"
+    p.card-list-link = link_to "くわしく", dungeon

@@ -1,10 +1,58 @@
 .challenges {
-  .main {
-    padding: 0;
+  &#index {
+    .card-list {
+      &-item {
+        position: relative;
+        overflow: visible;
+        .overlay {
+          border-radius: 5px;
+          &::after {
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+          }
+        }
+        .circle-stamp {
+          position: absolute;
+          width: 70px;
+          height: 70px;
+          font-size: 4.3rem;
+          line-height: 64px;
+          top: -20px;
+          right: -20px;
+          z-index: 10;
+          background: #ffffff;
+        }
+      }
+      &-tit {
+        border-radius: 5px;
+      }
+      &-inner {
+        height: auto;
+      }
+      &-txt {
+        margin-bottom: 5px;
+        p:last-child {
+          width: 50px;
+        }
+        a {
+          transition: all 0.3s;
+        }
+        img {
+          width: 38px;
+          border-radius: 50%;
+        }
+      }
+    }
   }
-  &#show .container {
-    max-width: 100%;
-    padding: 0;
+
+  &#show {
+    .main {
+      padding: 0;
+    }
+    .container {
+      max-width: 100%;
+      padding: 0;
+    }
   }
 
   &-container {

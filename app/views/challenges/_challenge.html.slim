@@ -1,81 +1,17 @@
-.overlay style="background: url(#{challenge_header_url(challenge)}) no-repeat center center/cover;"
-  h1.challenges-tit = challenge.title
-
-.challenges-battle style="background: url(#{asset_pack_path("media/images/dungeons/23.jpg")}) no-repeat center center/cover;"
-  .challenges-container
-    .challenges-challenger
-      h3 = "#{challenge.challenger_name}"
-      .challenges-challenger-wrap
-        .challenges-challenger-avatars
-          p メンバー
-          - avatar_urls(challenge.challenger).each do |url|
-            = image_tag url, style: "border-radius: 50%;"
-        .challenges-challenger-lifes
-          p ライフ
-          - challenge.life.times do
-            i.fas.fa-heart
-          - (challenge.max_life - challenge.life).times do
-            i.far.fa-heart
-    .challenges-enemy#target
-      .challenges-enemy-image
-        = image_tag challenge.enemy_image
-      .challenges-enemy-status
-        - if challenge.current_level
-          h3.level = "Lv #{challenge.current_level}"
-        - else
-          h3.level = "Lv #{challenge.levels.last.number}"
-        h3.name = challenge.enemy_name
-        / p.life = challenge.enemy_life
-        .gauge
-          - 1.step(challenge.enemy_max_life, 7) do |i|
-            .gauge-wrap
-              - if i == 1
-                .gauge-ttl
-                  span = "HP　#{challenge.enemy_life}／#{challenge.enemy_max_life}"
-              .gauge-bg
-                ul.gauge-main
-                  - if (challenge.enemy_life - (i - 1)) >= 7
-                    - 7.times do
-                      li.gauge-block
-                  - else
-                    - (challenge.enemy_life - (i - 1)).times do
-                      li.gauge-block
-
-#result
-.challenges-container
-  .challenges-progress
-    h2 継続#{challenge.progress}日目
-    ul.challenges-levels
-      - counter = 0
-      - challenge.levels.each do |level|
-        - level.days.times do |i|
-          li.challenges-step class=step_classes(counter, challenge.progress)
-            - if i == 0
-              p.level
-                = "Lv#{level.number}"
-                span.title = level.title
-            / - if counter == challenge.progress
-            /   = image_pack_tag "knight.png"
-            - counter += 1
-      li.challenges-step._clear class=final_classes(challenge)
-        p.level Clear
-      - if challenge.over_days > 0
-        - challenge.over_days.times do
-          li.challenges-step class=step_classes(counter + 1, challenge.progress)
-          - counter += 1
-
-  .bottom
-    - if challenge.all_challengers.include?(current_user) && !challenge.attacked?
-      = form_with model: challenge, class: "challenges-form" do |f|
-        = f.hidden_field :attacked, value: true
-        = f.hidden_field :progress, value: challenge.progress + 1
-        - if challenge.over_last_day?
-          = f.hidden_field :over_days, value: challenge.over_days + 7
-        = f.submit "こうげき！！", class: "bottom-action"
-        / = challenge.dungeon.all_uniq_challengers
-    .bottom-links
-      = link_to "もどる", :back
-      .bottom-wrap
-        = link_to "くわしく", challenge.dungeon
-        - if current_user == challenge.challenger
-          = link_to "リタイア", challenge, data: { confirm: "本当によろしいですか？" }, method: :delete
+li.card-list-item
+  .circle-stamp = difficulty_in_japanese(challenge)
+  .overlay style="background: url('#{challenge_header_url(challenge)}') center center/cover"
+    h2.card-list-tit = challenge.title
+  ul.card-list-inner
+    li.card-list-txt
+      p メンバー
+      p
+        - challenge.all_challengers.each do |challenger|
+          = link_to image_tag(avatar_url(challenger)), challenger
+    li.card-list-txt
+      p 現在のレベル
+      p = "Lv#{challenge.current_level}"
+    li.card-list-txt
+      p 次のレベルまで
+      p = "#{challenge.enemy_life}日"
+    p.card-list-link = link_to "くわしく", challenge

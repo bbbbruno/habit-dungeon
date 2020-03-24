@@ -30,6 +30,10 @@ class Notification < ApplicationRecord
   belongs_to :user
   belongs_to :sender, polymorphic: true
 
+  validates :kind, presence: true
+  validates :message, presence: true
+  validates :path, presence: true
+
   enum kind: {
     dungeon_challenged: 0,
     challenge_damaged: 1,
@@ -50,7 +54,7 @@ class Notification < ApplicationRecord
     end
 
     def notify_challenge_damaged(challenge)
-      admin = User.find_by(user_id: "bbbbruno")
+      admin = User.find(1)
       message = "ダメージを受けました。残りライフは#{challenge.life}です。"
       challenge.challenger.all_challengers.each do |challenger|
         challenger.notifications.create!(
@@ -63,7 +67,7 @@ class Notification < ApplicationRecord
     end
 
     def notify_rank_downed(challenge)
-      admin = User.find_by(user_id: "bbbbruno")
+      admin = User.find(1)
       message = "ライフが0になったため、ランクダウンしました。Lv#{challenge.current_level}から再スタートしましょう！"
       challenge.challenger.all_challengers.each do |challenger|
         challenger.notifications.create!(

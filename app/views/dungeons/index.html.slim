@@ -1,26 +1,14 @@
 - title "ダンジョン一覧"
 
-h1 Listing dungeons
+h1.pagetit
+  span ダンジョン一覧
 
-table
-  thead
-    tr
-      th Title
-      th Description
-      th User
-      th
-      th
-      th
+ul.card-list._dungeons
+  = render @dungeons
 
-  tbody
-    - @dungeons.each do |dungeon|
-      tr
-        td = dungeon.title
-        td = dungeon.description
-        td = link_to "Show", dungeon
-        td = link_to "Edit", edit_dungeon_path(dungeon)
-        td = link_to "Destroy", dungeon, data: { confirm: "Are you sure?" }, method: :delete
+= paginate @dungeons
 
-br
-
-= link_to "New Dungeon", new_dungeon_path
+.fixed-btn
+  = link_to new_dungeon_path do
+    i.far.fa-flag
+    span ダンジョン作成

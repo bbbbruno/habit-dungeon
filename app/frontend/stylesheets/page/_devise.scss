@@ -1,5 +1,10 @@
 .sessions,
 .registrations {
+  .main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .card {
     max-width: 800px;
   }

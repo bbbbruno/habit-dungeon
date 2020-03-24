@@ -6,7 +6,9 @@ class DungeonsController < ApplicationController
   before_action :set_my_dungeon, only: %i[edit update destroy]
 
   def index
-    @dungeons = Dungeon.all
+    @dungeons = Dungeon
+                  .includes(:challenges, :solos, header_attachment: :blob)
+                  .page(params[:page])
   end
 
   def show
@@ -47,7 +49,7 @@ class DungeonsController < ApplicationController
 
   private
     def set_dungeon
-      @dungeon = Dungeon.with_discarded.find(params[:id])
+      @dungeon = Dungeon.with_discarded.includes(solos: { avatar_attachment: :blob }).find(params[:id])
     end
 
     def set_my_dungeon

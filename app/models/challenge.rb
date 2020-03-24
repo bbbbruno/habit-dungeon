@@ -34,6 +34,8 @@ class Challenge < ApplicationRecord
   belongs_to :dungeon, -> { unscope(where: :discarded_at) }
   belongs_to :enemy
 
+  scope :recent_updated, -> { order(updated_at: :desc) }
+
   validates :difficulty, inclusion: { in: %w[easy normal hard] }
   validates :life,
     numericality: {

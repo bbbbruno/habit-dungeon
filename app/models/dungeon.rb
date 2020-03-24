@@ -46,7 +46,7 @@ class Dungeon < ApplicationRecord
   end
 
   def all_uniq_challengers
-    solos.includes(:challenges).uniq
+    solos.uniq
   end
 
   private
