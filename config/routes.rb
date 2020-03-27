@@ -79,8 +79,11 @@ Rails.application.routes.draw do
     controllers: {
       registrations: "users/registrations",
       sessions: "users/sessions",
+      omniauth_callbacks: "users/omniauth_callbacks",
     }
-  resources :users, only: %i[index show]
+  resources :users, only: %i[index show] do
+    resources :user_auths, param: :provider, only: %i[destroy], controller: "users/user_auths"
+  end
 
   resources :dungeons
   resources :challenges do
@@ -88,7 +91,7 @@ Rails.application.routes.draw do
   end
   resources :notifications, only: %i[index update] do
     collection do
-      resources :allmarks, only: %i[create], on: :collection, controller: "notifications/allmarks"
+      resources :allmarks, only: %i[create], controller: "notifications/allmarks"
     end
   end
 

@@ -10,11 +10,11 @@
 users = YAML.load_file(Rails.root.join("db", "seeds", "users.yml"))
 users.each.with_index(1) do |(user, attributes), index|
   email = attributes["email"]
-  user_id = attributes["user_id"]
+  username = attributes["username"]
   avatar = attributes["avatar"]
   created_user = User.create!(
     email: email,
-    user_id: user_id,
+    username: username,
     password: "testtest",
     password_confirmation: "testtest",
     confirmed_at: Time.current,
@@ -29,7 +29,7 @@ end
 20.times do |i|
   User.create!(
     email: "user#{i}@example.com",
-    user_id: "user_#{i}",
+    username: "user_#{i}",
     password: "testtest",
     password_confirmation: "testtest",
     confirmed_at: Time.current,

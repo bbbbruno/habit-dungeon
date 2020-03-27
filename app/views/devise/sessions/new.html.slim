@@ -4,17 +4,21 @@
   h2.card-tit
     = t(".sign_in")
   .card-inner
-    = form_with model: @user, url: user_session_path, class: "card-form", local: true do |f|
-      .field._txt
+    = render "devise/shared/snslogin"
+
+    p.division あるいは
+
+    = form_with model: @user, url: user_session_path, class: "form", local: true do |f|
+      .form-field._txt
         = f.label :email
         = f.email_field :email, autofocus: true, autocomplete: "email"
-      .field._txt
+      .form-field._txt
         = f.label :password
         = f.password_field :password, autocomplete: "current-password"
       - if devise_mapping.rememberable?
-        .field._checkbox
+        .form-field._checkbox
           = f.check_box :remember_me
           = f.label :remember_me
-      .actions
-        = f.submit t(".sign_in"), class: "card-btn"
+      .form-btn._margin-none
+        = f.submit t(".sign_in")
     = render "devise/shared/links"

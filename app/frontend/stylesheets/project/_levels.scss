@@ -92,4 +92,8 @@
       margin-left: 10px;
     }
   }
+
+  &-submit {
+    @extend .form-btn;
+  }
 }

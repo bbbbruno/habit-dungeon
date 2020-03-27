@@ -5,11 +5,11 @@
     h2.card-tit
       = t(".forgot_your_password")
     .card-inner
-      = form_with model: @user, url: user_password_path, method: :post, class: "card-form", local: true do |f|
+      = form_with model: @user, url: user_password_path, method: :post, class: "form", local: true do |f|
         = render "devise/shared/error_messages", resource: @user
-        .field
+        .form-field
           = f.label :email
           = f.email_field :email, autofocus: true, autocomplete: "email"
-        .actions
-          = f.submit t(".send_me_reset_password_instructions"), class: "card-btn"
+        .form-btn
+          = f.submit t(".send_me_reset_password_instructions")
       = render "devise/shared/links"

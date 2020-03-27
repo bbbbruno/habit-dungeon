@@ -4,5 +4,4 @@
 - if @challenges.exists?
   = render partial: "challenge", collection: @challenges
 - else
-  h1 今すぐダンジョンに挑戦しよう！
-  = link_to "ダンジョンをみてみる", dungeons_path
+  = render "no-challenge"

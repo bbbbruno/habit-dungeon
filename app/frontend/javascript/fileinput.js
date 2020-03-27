@@ -1,5 +1,5 @@
 document.addEventListener('turbolinks:load', () => {
-  const inputs = document.querySelectorAll('.field._file input[type=file]')
+  const inputs = document.querySelectorAll('.form-field._file input[type=file]')
   if (inputs) {
     for (let input of inputs) {
       input.addEventListener('change', e => {

@@ -25,17 +25,17 @@
 #  sign_in_count          :integer          default("0"), not null
 #  twitter_url            :string
 #  unconfirmed_email      :string
+#  username               :string           default(""), not null
 #  youtube_url            :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  user_id                :string           default(""), not null
 #
 # Indexes
 #
 #  index_users_on_discarded_at          (discarded_at)
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
-#  index_users_on_user_id               (user_id) UNIQUE
+#  index_users_on_username              (username) UNIQUE
 #
 require "rails_helper"
 

@@ -20,9 +20,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    params[:user][:email] = params[:user][:new_email] if params[:user][:new_email].present?
+    super
+  end
 
   # DELETE /resource
   # def destroy
@@ -40,7 +41,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
     def additional_colums
-      %i[user_id name self_introduction avatar header twitter_url facebook_url instagram_url youtube_url]
+      %i[username name self_introduction avatar header twitter_url facebook_url instagram_url youtube_url]
     end
     # If you have extra params to permit, append them to the sanitizer.
     def configure_sign_up_params
@@ -58,7 +59,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     def update_resource(resource, params)
       if params[:password].present?
-        resource.update_attributes(params)
+        resource.update(params)
       else
         resource.update_without_password(params)
       end

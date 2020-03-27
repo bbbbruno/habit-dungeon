@@ -63,7 +63,6 @@
     display: flex;
     justify-content: center;
     padding-bottom: 15px;
-    border-bottom: 1px solid #efefef;
 
     &-icon {
       border: 1px solid #efefef;
@@ -113,8 +112,29 @@
   }
 
   &-self_introduction {
-    padding-top: 10px;
+    padding: 10px 5px;
     text-align: left;
+    border-top: 1px solid #efefef;
+    border-bottom: 1px solid #efefef;
+  }
+
+  &-edit {
+    display: inline-block;
+    border-radius: 5px;
+    padding-top: 15px;
+    a {
+      padding: 10px 30px;
+      display: block;
+      border: 1px solid #d1d1d1;
+      font-weight: bold;
+      border-radius: 5px;
+      font-size: 1.5rem;
+      transition: all 0.3s;
+      &:hover {
+        opacity: 1;
+        background: #efefef;
+      }
+    }
   }
 
   &-right {
