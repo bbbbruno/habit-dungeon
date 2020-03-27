@@ -69,6 +69,8 @@
 #               GET    /:id/attachments/:file(.:format) letter_opener_web/letters#attachment
 
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end

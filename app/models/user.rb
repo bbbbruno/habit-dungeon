@@ -48,11 +48,14 @@ class User < ApplicationRecord
          omniauth_providers: %i[facebook twitter google]
   has_many :user_auths, dependent: :destroy
 
+  include Discard::Model
+  default_scope -> { kept }
+
   include Challenger
   scope :recent_challenges, ->(count) { challenges.order(updated_at: :desc).limit(count) }
 
-  has_one_attached :avatar
-  has_one_attached :header
+  has_one_attached :avatar, dependent: :destroy
+  has_one_attached :header, dependent: :destroy
   has_many :dungeons, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_many :sent_notifications, as: :sender, class_name: "Notification", dependent: :destroy
@@ -124,6 +127,10 @@ class User < ApplicationRecord
   def update_attributes_only_if_blank(attributes)
     attributes.each { |k, v| attributes.delete(k) unless read_attribute(k).blank? }
     update(attributes)
+  end
+
+  def active_for_authentication?
+    super && !discarded?
   end
 
   def challenger_name

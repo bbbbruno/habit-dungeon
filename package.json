@@ -2,6 +2,7 @@
   "name": "habit_dungeon",
   "private": true,
   "dependencies": {
+    "@activeadmin/activeadmin": "^2.6.1",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",

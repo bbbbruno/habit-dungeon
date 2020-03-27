@@ -54,7 +54,7 @@ class Notification < ApplicationRecord
     end
 
     def notify_challenge_damaged(challenge)
-      admin = User.find(1)
+      admin = AdminUser.first
       message = "ダメージを受けました。残りライフは#{challenge.life}です。"
       challenge.challenger.all_challengers.each do |challenger|
         challenger.notifications.create!(
@@ -67,7 +67,7 @@ class Notification < ApplicationRecord
     end
 
     def notify_rank_downed(challenge)
-      admin = User.find(1)
+      admin = AdminUser.first
       message = "ライフが0になったため、ランクダウンしました。Lv#{challenge.current_level}から再スタートしましょう！"
       challenge.challenger.all_challengers.each do |challenger|
         challenger.notifications.create!(

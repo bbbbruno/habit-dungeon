@@ -86,6 +86,6 @@
 
     .form-unsubscribe
       h3.form-unsubscribe-tit = t(".cancel_my_account")
-      p.form-unsubscribe-link = link_to "退会する", user_registration_path, data: { confirm: "一度退会するともう二度と復旧はできません。よろしいですか？" }, class: "btn", method: :delete
+      p.form-unsubscribe-link = link_to "退会する", user_registration_path, data: { confirm: "一度退会するともうログインできなくなります。よろしいですか？" }, class: "btn", method: :delete
 
     = link_to t("devise.shared.links.back"), :back

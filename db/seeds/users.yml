@@ -1,25 +1,20 @@
 user_1:
-  email: habitdungeon@example.com
-  username: habitdungeon
-  avatar: logo.jpg
-
-user_2:
   email: bbbbruno@example.com
   username: bbbbruno
   avatar: bbbbruno.jpg
 
-user_3:
+user_2:
   email: strongman@example.com
   username: strongman
 
-user_4:
+user_3:
   email: ichigo@example.com
   username: ichigo
 
-user_5:
+user_4:
   email: smilelife@example.com
   username: smilelife
 
-user_6:
+user_5:
   email: fatboy@example.com
   username: fatboy
