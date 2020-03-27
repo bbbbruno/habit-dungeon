@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_21_160617) do
+ActiveRecord::Schema.define(version: 2020_03_27_095428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string "namespace"
+    t.text "body"
+    t.string "resource_type"
+    t.bigint "resource_id"
+    t.string "author_type"
+    t.bigint "author_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
+    t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
+    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -34,6 +48,18 @@ ActiveRecord::Schema.define(version: 2020_03_21_160617) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "admin_users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_admin_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
   create_table "challenges", force: :cascade do |t|
@@ -97,6 +123,24 @@ ActiveRecord::Schema.define(version: 2020_03_21_160617) do
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
+  create_table "user_auths", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "uid", default: "", null: false
+    t.string "provider", default: "", null: false
+    t.string "name"
+    t.string "nickname"
+    t.string "email"
+    t.string "url"
+    t.string "image_url"
+    t.string "description"
+    t.text "credentials"
+    t.text "raw_info"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["uid", "provider"], name: "index_user_auths_on_uid_and_provider", unique: true
+    t.index ["user_id"], name: "index_user_auths_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -109,7 +153,7 @@ ActiveRecord::Schema.define(version: 2020_03_21_160617) do
     t.string "unconfirmed_email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "user_id", default: "", null: false
+    t.string "username", default: "", null: false
     t.string "name"
     t.text "self_introduction"
     t.string "twitter_url"
@@ -125,7 +169,7 @@ ActiveRecord::Schema.define(version: 2020_03_21_160617) do
     t.index ["discarded_at"], name: "index_users_on_discarded_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["user_id"], name: "index_users_on_user_id", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -134,4 +178,5 @@ ActiveRecord::Schema.define(version: 2020_03_21_160617) do
   add_foreign_key "dungeons", "users"
   add_foreign_key "levels", "dungeons"
   add_foreign_key "notifications", "users"
+  add_foreign_key "user_auths", "users"
 end

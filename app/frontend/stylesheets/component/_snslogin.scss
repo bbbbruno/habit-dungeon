@@ -1,0 +1,15 @@
+.snslogin {
+  &-list {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-item {
+    width: 32%;
+    background: $info;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+}

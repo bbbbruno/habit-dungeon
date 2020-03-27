@@ -20,14 +20,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    params[:user][:email] = params[:user][:new_email] if params[:user][:new_email].present?
+    super
+  end
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  def destroy
+    resource.discard
+    Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
+    set_flash_message! :notice, :destroyed
+    yield resource if block_given?
+    respond_with_navigational(resource) { redirect_to after_sign_out_path_for(resource_name) }
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -40,7 +45,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
     def additional_colums
-      %i[user_id name self_introduction avatar header twitter_url facebook_url instagram_url youtube_url]
+      %i[username name self_introduction avatar header twitter_url facebook_url instagram_url youtube_url]
     end
     # If you have extra params to permit, append them to the sanitizer.
     def configure_sign_up_params
@@ -58,7 +63,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     def update_resource(resource, params)
       if params[:password].present?
-        resource.update_attributes(params)
+        resource.update(params)
       else
         resource.update_without_password(params)
       end

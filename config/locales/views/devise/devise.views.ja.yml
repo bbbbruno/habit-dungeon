@@ -27,11 +27,11 @@ ja:
         updated_at: 更新日
         avatar: プロフィール画像
         header: ヘッダー画像
-        user_id: ユーザーID
+        username: ユーザー名
         name: 氏名
         self_introduction: 自己紹介
         twitter_url: Twitter URL
-        facebook_url: FaceBook URL
+        facebook_url: Facebook URL
         instagram_url: Instagram URL
         youtube_url: Youtube URL
     models:
@@ -117,6 +117,9 @@ ja:
       update_needs_confirmation: アカウント情報を変更しました。変更されたメールアドレスの本人確認のため、本人確認用メールより確認処理をおこなってください。
       updated: アカウント情報を変更しました。
       updated_but_not_signed_in: あなたのアカウントは正常に更新されましたが、パスワードが変更されたため、再度ログインしてください。
+      after_omniauth_signup:
+        title: ユーザーID設定
+        sign_up: アカウント登録
     sessions:
       already_signed_out: 既にログアウト済みです。
       new:
@@ -130,9 +133,10 @@ ja:
         didn_t_receive_unlock_instructions: アカウントの凍結解除方法のメールを受け取っていませんか?
         forgot_your_password: パスワードを忘れましたか?
         sign_in: ログイン
-        sign_in_with_provider: "%{provider}でログイン"
         sign_up: アカウント登録
       minimum_password_length: "（%{count}字以上）"
+      snslogin:
+        sign_in_with_provider: "%{provider}でログイン"
     unlocks:
       new:
         resend_unlock_instructions: アカウントの凍結解除方法を再送する

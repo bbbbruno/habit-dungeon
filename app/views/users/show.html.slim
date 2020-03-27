@@ -7,7 +7,7 @@ h1.pagetit
     .users-header style="background: url('#{user_header_url(@user)}') no-repeat center center/cover"
       = image_tag avatar_url(@user)
     .users-profile
-      h2 = @user.user_id
+      h2 = @user.username
       h3 = @user.name
       ul.users-sns
         li.users-sns-icon class="#{"inactive" if @user.facebook_url.blank?}"
@@ -23,6 +23,8 @@ h1.pagetit
           = link_to @user.youtube_url do
             i.fab.fa-youtube
       .users-self_introduction = simple_format h @user.self_introduction
+      p.users-edit = link_to "ユーザー設定", edit_user_registration_path
+
   .users-right
     .users-challenges.card
       h2.card-tit 攻略中のダンジョン

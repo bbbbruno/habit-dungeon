@@ -71,7 +71,7 @@
       </div>
     </div>
 
-    <div class="levels-actions">
+    <div class="levels-submit">
       <p v-if="totalDays < 66" class="levels-error">
         合計日数が66日以上になるように設定してください
       </p>
@@ -79,7 +79,6 @@
         type="submit"
         name="commit"
         :value="isEditPage ? '更新する' : '登録する'"
-        class="card-btn"
         :data-disable-with="isEditPage ? '更新する' : '登録する'"
         :disabled="totalDays < 66"
         :data-confirm="isEditPage ? confirmMessage : ''"

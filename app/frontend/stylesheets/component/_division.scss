@@ -1,0 +1,22 @@
+.division {
+  display: flex;
+  align-items: center;
+  margin: 30px 0;
+
+  &::before {
+    display: block;
+    content: '';
+    height: 2px;
+    background: #00000029;
+    flex: 1 1 auto;
+    margin-right: 15px;
+  }
+  &::after {
+    display: block;
+    content: '';
+    height: 2px;
+    background: #00000029;
+    flex: 1 1 auto;
+    margin-left: 15px;
+  }
+}

@@ -1,11 +1,17 @@
 .sessions,
-.registrations {
+.registrations,
+.confirmations,
+.passwords,
+.omniauth_callbacks {
+  .card {
+    max-width: 800px;
+  }
+}
+
+.sessions {
   .main {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  .card {
-    max-width: 800px;
   }
 }
