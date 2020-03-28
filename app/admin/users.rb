@@ -16,6 +16,12 @@ ActiveAdmin.register User do
   #   permitted
   # end
 
+  controller do
+    def scoped_collection
+      User.with_discarded
+    end
+  end
+
   form do |f|
     f.inputs do
       f.input :email
