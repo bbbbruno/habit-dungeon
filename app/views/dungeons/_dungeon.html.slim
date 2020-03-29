@@ -6,4 +6,4 @@ li.card-list-item
       h3 説明
       = simple_format truncate(dungeon.description, length: 60)
       h4 = "#{dungeon.all_uniq_challengers.count}人が挑戦中！"
-    p.card-list-link = link_to "くわしく", dungeon
+    p.card-list-link = link_to 'くわしく', dungeon

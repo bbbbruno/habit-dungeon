@@ -6,12 +6,12 @@ html
     = csrf_meta_tags
     = csp_meta_tag
     script src="https://kit.fontawesome.com/b1e280d09e.js" crossorigin="anonymous"
-    = stylesheet_pack_tag "application", "data-turbolinks-track": "reload"
-    = javascript_pack_tag "application", "data-turbolinks-track": "reload"
+    = stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body class=controller.controller_name id=controller.action_name
     .inner
-      = render "header"
-      = render "flash"
+      = render 'header'
+      = render 'flash'
       main.main
         .container = yield
-      = render "footer"
+      = render 'footer'

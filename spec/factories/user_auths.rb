@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: user_auths
@@ -29,15 +31,15 @@
 FactoryBot.define do
   factory :user_auth do
     user { nil }
-    uid { "MyString" }
-    provider { "MyString" }
-    name { "MyString" }
-    nickname { "MyString" }
-    email { "MyString" }
-    url { "MyString" }
-    image_url { "MyString" }
-    description { "MyString" }
-    credentials { "MyText" }
-    raw_info { "MyText" }
+    uid { 'MyString' }
+    provider { 'MyString' }
+    name { 'MyString' }
+    nickname { 'MyString' }
+    email { 'MyString' }
+    url { 'MyString' }
+    image_url { 'MyString' }
+    description { 'MyString' }
+    credentials { 'MyText' }
+    raw_info { 'MyText' }
   end
 end

@@ -23,7 +23,7 @@ ActiveAdmin.register Dungeon do
       f.input :description
       f.input :discarded_at
       f.has_many :levels,
-        heading: "レベル",
+        heading: 'レベル',
         allow_destroy: true,
         new_record: false do |l|
           l.input :number
@@ -39,7 +39,7 @@ ActiveAdmin.register Dungeon do
     id_column
     column :title
     column :description
-    column "挑戦者数" do |dungeon|
+    column '挑戦者数' do |dungeon|
       dungeon.all_uniq_challengers.count
     end
     column :created_at
@@ -50,23 +50,23 @@ ActiveAdmin.register Dungeon do
 
   show do |dungeon|
     attributes_table(*dungeon.class.columns.collect { |column| column.name.to_sym })
-    panel "レベル一覧" do
+    panel 'レベル一覧' do
       table_for dungeon.levels do
         column :number
         column :title
         column :days
       end
     end
-    panel "攻略一覧" do
+    panel '攻略一覧' do
       table_for dungeon.challenges.includes(:challenger, :dungeon) do
-        column "挑戦者" do |challenge|
+        column '挑戦者' do |challenge|
           challenge.challenger_name
         end
         column :created_at
-        column "現在のレベル" do |challenge|
+        column '現在のレベル' do |challenge|
           challenge.current_level
         end
-        column "継続日数" do |challenge|
+        column '継続日数' do |challenge|
           challenge.progress
         end
       end

@@ -38,7 +38,7 @@
 #  index_users_on_username              (username) UNIQUE
 #
 
-require "open-uri"
+require 'open-uri'
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -50,15 +50,17 @@ class User < ApplicationRecord
 
   include Discard::Model
   default_scope -> { kept }
+  def active_for_authentication?
+    super && !discarded?
+  end
 
   include Challenger
-  scope :recent_challenges, ->(count) { challenges.order(updated_at: :desc).limit(count) }
 
   has_one_attached :avatar, dependent: :destroy
   has_one_attached :header, dependent: :destroy
   has_many :dungeons, dependent: :destroy
   has_many :notifications, dependent: :destroy
-  has_many :sent_notifications, as: :sender, class_name: "Notification", dependent: :destroy
+  has_many :sent_notifications, as: :sender, class_name: 'Notification', dependent: :destroy
 
   validates :username,
     presence: true,
@@ -66,7 +68,7 @@ class User < ApplicationRecord
     length: { maximum: 30 },
     format: {
       with: /\A\w+\z/,
-      message: "は半角英数字と_（アンダースコア）のみが使用できます"
+      message: 'は半角英数字と_（アンダースコア）のみが使用できます'
     }
 
   def self.from_omniauth(auth, current_user)
@@ -98,16 +100,16 @@ class User < ApplicationRecord
 
   def add_oauth_authorization(data)
     case data.provider
-    when "facebook"
+    when 'facebook'
       nickname = SecureRandom.alphanumeric(10)
-      url = ""
+      url = ''
       update(facebook_url: url)
-    when "twitter"
+    when 'twitter'
       nickname = data.info.nickname
       url = data.info.urls.Twitter
       update(twitter_url: url)
-    when "google"
-      nickname = data.info.email.split("@").first
+    when 'google'
+      nickname = data.info.email.split('@').first
       url = data.extra.raw_info.profile
     end
     user_auths.build({
@@ -127,10 +129,6 @@ class User < ApplicationRecord
   def update_attributes_only_if_blank(attributes)
     attributes.each { |k, v| attributes.delete(k) unless read_attribute(k).blank? }
     update(attributes)
-  end
-
-  def active_for_authentication?
-    super && !discarded?
   end
 
   def challenger_name
@@ -156,9 +154,9 @@ class User < ApplicationRecord
         password: Devise.friendly_token[0, 20],
       })
       oauth = user.add_oauth_authorization(auth)
-      user.username = oauth.nickname.delete(".")
+      user.username = oauth.nickname.delete('.')
       user.self_introduction = oauth.description
-      user.avatar.attach(io: open(oauth.image_url), filename: "#{user.username}_avatar.jpg", content_type: "image/jpg")
+      user.avatar.attach(io: open(oauth.image_url), filename: "#{user.username}_avatar.jpg", content_type: 'image/jpg')
       user.skip_confirmation!
       user.save
       user

@@ -1,24 +1,24 @@
-- title "ログイン"
+- title 'ログイン'
 
 .card
   h2.card-tit
-    = t(".sign_in")
+    = t('.sign_in')
   .card-inner
-    = render "devise/shared/snslogin"
+    = render 'devise/shared/snslogin'
 
     p.division あるいは
 
-    = form_with model: @user, url: user_session_path, class: "form", local: true do |f|
+    = form_with model: @user, url: user_session_path, class: 'form', local: true do |f|
       .form-field._txt
         = f.label :email
-        = f.email_field :email, autofocus: true, autocomplete: "email"
+        = f.email_field :email, autofocus: true, autocomplete: 'email'
       .form-field._txt
         = f.label :password
-        = f.password_field :password, autocomplete: "current-password"
+        = f.password_field :password, autocomplete: 'current-password'
       - if devise_mapping.rememberable?
         .form-field._checkbox
           = f.check_box :remember_me
           = f.label :remember_me
       .form-btn._margin-none
-        = f.submit t(".sign_in")
-    = render "devise/shared/links"
+        = f.submit t('.sign_in')
+    = render 'devise/shared/links'

@@ -12,7 +12,7 @@ class DungeonsController < ApplicationController
   end
 
   def show
-    flash.now.notice = "このダンジョンは削除済みです。閲覧のみ可能です。" if @dungeon.discarded?
+    flash.now.notice = 'このダンジョンは削除済みです。閲覧のみ可能です。' if @dungeon.discarded?
   end
 
   def new
@@ -27,7 +27,7 @@ class DungeonsController < ApplicationController
     @dungeon.user = current_user
 
     if @dungeon.save
-      redirect_to @dungeon, notice: "ダンジョンの作成に成功しました"
+      redirect_to @dungeon, notice: 'ダンジョンの作成に成功しました'
     else
       render :new
     end
@@ -36,7 +36,7 @@ class DungeonsController < ApplicationController
   def update
     if @dungeon.update(update_dungeon_params)
       Notification.notify_dungeon_edited(@dungeon)
-      redirect_to @dungeon, notice: "ダンジョンの更新に成功しました"
+      redirect_to @dungeon, notice: 'ダンジョンの更新に成功しました'
     else
       render :edit
     end
@@ -44,7 +44,7 @@ class DungeonsController < ApplicationController
 
   def destroy
     @dungeon.discard
-    redirect_to dungeons_url, notice: "ダンジョンの削除に成功しました"
+    redirect_to dungeons_url, notice: 'ダンジョンの削除に成功しました'
   end
 
   private

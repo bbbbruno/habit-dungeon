@@ -9,6 +9,6 @@ class HomeController < ApplicationController
 
   private
     def logged_in?
-      redirect_to page_path("about") unless user_signed_in?
+      redirect_to page_path('about') unless user_signed_in?
     end
 end

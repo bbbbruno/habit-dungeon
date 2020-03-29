@@ -35,7 +35,7 @@ ActiveAdmin.register Challenge do
   index do
     selectable_column
     id_column
-    column "挑戦者" do |challenge|
+    column '挑戦者' do |challenge|
       challenge.challenger_name
     end
     column :dungeon

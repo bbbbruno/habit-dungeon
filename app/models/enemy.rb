@@ -20,7 +20,7 @@ class Enemy < ApplicationRecord
       only_integer: true,
       greater_than_or_equal_to: 1,
       less_than_or_equal_to: 10,
-      message: "入力値が1~10の範囲外です",
+      message: '入力値が1~10の範囲外です',
     }
   validates :name, presence: true
 

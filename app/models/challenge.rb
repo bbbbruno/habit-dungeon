@@ -41,7 +41,7 @@ class Challenge < ApplicationRecord
     numericality: {
       greater_than_or_equal_to: 0,
       less_than_or_equal_to: 3,
-      message: "入力値が0~3の範囲外です",
+      message: '入力値が0~3の範囲外です',
     }
   validate :double_challenge, on: :create
   validate :discarded_challenge, on: :create
@@ -85,6 +85,7 @@ class Challenge < ApplicationRecord
 
   def rank_down
     return unless current_level
+    previous_level = current_level - 1
     if previous_level > 0
       self.progress = each_level_start[previous_level]
     else
@@ -110,13 +111,13 @@ class Challenge < ApplicationRecord
   private
     def double_challenge
       if Challenge.find_by(challenger: challenger)
-        errors.add(:base, "２つ以上のダンジョンを同時に攻略することはできません")
+        errors.add(:base, '２つ以上のダンジョンを同時に攻略することはできません')
       end
     end
 
     def discarded_challenge
       if dungeon.discarded?
-        errors.add(:base, "削除されたダンジョンを攻略することはできません")
+        errors.add(:base, '削除されたダンジョンを攻略することはできません')
       end
     end
 
@@ -125,7 +126,7 @@ class Challenge < ApplicationRecord
         errors.add(:progress, "が#{threshold}日以上でないとダンジョンはクリアできません")
       end
       if progress <= total_days
-        errors.add(:base, "最終レベルをクリアしていないとダンジョンはクリアできません")
+        errors.add(:base, '最終レベルをクリアしていないとダンジョンはクリアできません')
       end
     end
 
@@ -161,9 +162,5 @@ class Challenge < ApplicationRecord
         .with_index(1) do |days, index|
           [index, days]
         end.to_h
-    end
-
-    def previous_level
-      current_level - 1
     end
 end

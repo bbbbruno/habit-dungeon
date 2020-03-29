@@ -1,4 +1,4 @@
-- title "「#{@dungeon.title}」のダンジョン詳細"
+- title '「#{@dungeon.title}」のダンジョン詳細'
 
 .wrap-900
   h1.pagetit
@@ -18,17 +18,17 @@
           .levels-field
             p.levels-number = "Lv #{level.number}"
             p.levels-title = level.title
-            p.levels-days = level.days.to_s + "日"
+            p.levels-days = level.days.to_s + '日'
 
   .bottom
     - unless current_user&.challenging? || @dungeon.discarded?
       label.bottom-action for="modal_toggle" 挑戦する！
     .bottom-links
-      = link_to "もどる", :back
+      = link_to 'もどる', :back
       - if current_user == @dungeon.user && !@dungeon.discarded?
-        = link_to "編集", edit_dungeon_path(@dungeon)
+        = link_to '編集', edit_dungeon_path(@dungeon)
 
-  = render "modal", dungeon: @dungeon
+  = render 'modal', dungeon: @dungeon
 
 .challengers
   h2 挑戦中のユーザー

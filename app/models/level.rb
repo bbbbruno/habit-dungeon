@@ -26,13 +26,14 @@ class Level < ApplicationRecord
 
   belongs_to :dungeon
 
+  validates_uniqueness_of :number, scope: :dungeon_id
   validates :number,
     presence: true,
     numericality: {
       only_integer: true,
       greater_than_or_equal_to: 1,
       less_than_or_equal_to: 10,
-      message: "入力値が1~10の範囲外です",
+      message: '入力値が1~10の範囲外です',
     }
   validates :title, presence: true
   validates :days,
@@ -41,6 +42,6 @@ class Level < ApplicationRecord
       only_integer: true,
       greater_than_or_equal_to: 1,
       less_than_or_equal_to: 31,
-      message: "入力値が1~31の範囲外です",
+      message: '入力値が1~31の範囲外です',
     }
 end

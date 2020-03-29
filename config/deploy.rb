@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.12.0"
+lock '~> 3.12.0'
 
-set :application, "habit-dungeon"
-set :repo_url, "git@github.com:bbbbruno/habit-dungeon.git"
-set :user, "deploy"
+set :application, 'habit-dungeon'
+set :repo_url, 'git@github.com:bbbbruno/habit-dungeon.git'
+set :user, 'deploy'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -24,10 +24,10 @@ set :deploy_to, "/srv/#{fetch(:application)}"
 set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, "config/database.yml", "config/credentials/production.yml.enc"
+append :linked_files, 'config/database.yml', 'config/credentials/production.yml.enc'
 
 # Default value for linked_dirs is []
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "public/packs", "node_modules"
+append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system', 'public/packs', 'node_modules'
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -48,41 +48,41 @@ set :deploy_via, :remote_cache
 set :conditionally_migrate, true
 
 # linked_filesに記述してあるものを全てリモートサーバにコピー
-append :linked_files, "config/credentials/production.key"
+append :linked_files, 'config/credentials/production.key'
 namespace :safe_deploy_to do
   task :push_config do
     next unless any? :linked_files
     on roles(:app) do
       fetch(:linked_files).each do |file|
         unless test "[ -f #{shared_path.join file} ]"
-          execute :mkdir, "-p", shared_path.join(File.dirname(file))
+          execute :mkdir, '-p', shared_path.join(File.dirname(file))
           upload! file, "#{shared_path.join file}"
         end
       end
     end
   end
-  after "safe_deploy_to:ensure", "safe_deploy_to:push_config"
+  after 'safe_deploy_to:ensure', 'safe_deploy_to:push_config'
 end
 
 # rbenv
 set :rbenv_type, :user
-set :rbenv_custom_path, "/home/deploy/.anyenv/envs/rbenv"
-set :rbenv_ruby, File.read(".ruby-version").strip
+set :rbenv_custom_path, '/home/deploy/.anyenv/envs/rbenv'
+set :rbenv_ruby, File.read('.ruby-version').strip
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
 set :rbenv_map_bins, %w[rake gem bundle ruby rails]
 set :rbenv_roles, :all
 
 # node
-set :default_env, { NODE_ENV: "production" }
+set :default_env, { NODE_ENV: 'production' }
 
 # bundler
-append :linked_dirs, ".bundle"
+append :linked_dirs, '.bundle'
 
 # puma
-append :rbenv_map_bins, "puma", "pumactl"
+append :rbenv_map_bins, 'puma', 'pumactl'
 
 # assets:precompileをとばす
 set :assets_dependencies, %w(app/frontend lib/assets vendor/assets Gemfile.lock config/routes.rb)
 
 # sprocketsをスキップ
-Rake::Task["deploy:assets:backup_manifest"].clear_actions
+Rake::Task['deploy:assets:backup_manifest'].clear_actions

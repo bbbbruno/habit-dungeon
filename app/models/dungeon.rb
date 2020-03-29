@@ -33,9 +33,10 @@ class Dungeon < ApplicationRecord
   has_one_attached :header
   has_many :levels, dependent: :destroy
   has_many :challenges
-  has_many :solos, through: :challenges, source: :challenger, source_type: "User"
+  has_many :solos, through: :challenges, source: :challenger, source_type: 'User'
 
   accepts_nested_attributes_for :levels, allow_destroy: true
+  validates_associated :levels
 
   validates :title, presence: true
   validates :description, presence: true

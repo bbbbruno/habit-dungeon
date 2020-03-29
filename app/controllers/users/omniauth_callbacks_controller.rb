@@ -31,7 +31,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
       end
     else
-      session["devise.omniauth_data"] = auth_data.except("extra")
+      session['devise.omniauth_data'] = auth_data.except('extra')
       msg = @user.errors.full_messages.join("\n")
       redirect_to new_user_registration_url, alert: msg
     end
@@ -52,7 +52,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   private
     def auth_data
-      request.env["omniauth.auth"]
+      request.env['omniauth.auth']
     end
 
   protected
@@ -62,7 +62,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # end
     def after_sign_in_path_for(resource)
       if resource.sign_in_count == 1
-        flash.alert = "好きなユーザー名を設定してください"
+        flash.alert = '好きなユーザー名を設定してください'
         edit_user_registration_path
       else
         super(resource)

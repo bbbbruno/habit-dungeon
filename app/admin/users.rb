@@ -44,20 +44,20 @@ ActiveAdmin.register User do
 
   show do |user|
     attributes_table(*user.class.columns.collect { |column| column.name.to_sym })
-    panel "ダンジョン一覧" do
+    panel 'ダンジョン一覧' do
       table_for user.dungeons do
         column :title
         column :created_at
       end
     end
-    panel "攻略一覧" do
+    panel '攻略一覧' do
       table_for user.challenges do
         column :title
         column :created_at
-        column "現在のレベル" do |challenge|
+        column '現在のレベル' do |challenge|
           challenge.current_level
         end
-        column "継続日数" do |challenge|
+        column '継続日数' do |challenge|
           challenge.progress
         end
       end
