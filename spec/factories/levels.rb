@@ -23,9 +23,9 @@
 #
 FactoryBot.define do
   factory :level do
+    dungeon
     number { 1 }
-    title { "MyString" }
-    days { 1 }
-    dungeon { nil }
+    sequence(:title) { |n| "本を毎日#{n}ページ読む" }
+    days { 11 }
   end
 end

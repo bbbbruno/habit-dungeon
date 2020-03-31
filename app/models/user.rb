@@ -22,7 +22,7 @@
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
 #  self_introduction      :text
-#  sign_in_count          :integer          default("0"), not null
+#  sign_in_count          :integer          default(0), not null
 #  twitter_url            :string
 #  unconfirmed_email      :string
 #  username               :string           default(""), not null
@@ -38,7 +38,7 @@
 #  index_users_on_username              (username) UNIQUE
 #
 
-require "open-uri"
+require 'open-uri'
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -50,15 +50,17 @@ class User < ApplicationRecord
 
   include Discard::Model
   default_scope -> { kept }
+  def active_for_authentication?
+    super && !discarded?
+  end
 
   include Challenger
-  scope :recent_challenges, ->(count) { challenges.order(updated_at: :desc).limit(count) }
 
   has_one_attached :avatar, dependent: :destroy
   has_one_attached :header, dependent: :destroy
-  has_many :dungeons, dependent: :destroy
+  has_many :dungeons
   has_many :notifications, dependent: :destroy
-  has_many :sent_notifications, as: :sender, class_name: "Notification", dependent: :destroy
+  has_many :sent_notifications, as: :sender, class_name: 'Notification', dependent: :destroy
 
   validates :username,
     presence: true,
@@ -66,8 +68,10 @@ class User < ApplicationRecord
     length: { maximum: 30 },
     format: {
       with: /\A\w+\z/,
-      message: "は半角英数字と_（アンダースコア）のみが使用できます"
+      message: 'は半角英数字と_（アンダースコア）のみが使用できます'
     }
+
+  DEFAULT_MAX_CHALLENGE = 1
 
   def self.from_omniauth(auth, current_user)
     # returning users
@@ -98,17 +102,17 @@ class User < ApplicationRecord
 
   def add_oauth_authorization(data)
     case data.provider
-    when "facebook"
+    when 'facebook'
       nickname = SecureRandom.alphanumeric(10)
-      url = ""
+      url = ''
       update(facebook_url: url)
-    when "twitter"
+    when 'twitter'
       nickname = data.info.nickname
       url = data.info.urls.Twitter
       update(twitter_url: url)
-    when "google"
-      nickname = data.info.email.split("@").first
-      url = data.extra.raw_info.profile
+    when 'google'
+      nickname = data.info.email.split('@').first.tr('.', '_')
+      url = ''
     end
     user_auths.build({
       provider: data.provider,
@@ -129,10 +133,6 @@ class User < ApplicationRecord
     update(attributes)
   end
 
-  def active_for_authentication?
-    super && !discarded?
-  end
-
   def challenger_name
     username
   end
@@ -145,10 +145,6 @@ class User < ApplicationRecord
     [avatar]
   end
 
-  def challenging?
-    challenges.exists?
-  end
-
   private
     def self.create_new_user_from_oauth(auth, email)
       user = User.new({
@@ -156,9 +152,9 @@ class User < ApplicationRecord
         password: Devise.friendly_token[0, 20],
       })
       oauth = user.add_oauth_authorization(auth)
-      user.username = oauth.nickname.delete(".")
+      user.username = oauth.nickname
       user.self_introduction = oauth.description
-      user.avatar.attach(io: open(oauth.image_url), filename: "#{user.username}_avatar.jpg", content_type: "image/jpg")
+      user.avatar.attach(io: open(oauth.image_url), filename: "#{user.username}_avatar.jpg", content_type: 'image/jpg')
       user.skip_confirmation!
       user.save
       user

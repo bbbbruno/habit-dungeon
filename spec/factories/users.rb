@@ -22,7 +22,7 @@
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
 #  self_introduction      :text
-#  sign_in_count          :integer          default("0"), not null
+#  sign_in_count          :integer          default(0), not null
 #  twitter_url            :string
 #  unconfirmed_email      :string
 #  username               :string           default(""), not null
@@ -39,5 +39,39 @@
 #
 FactoryBot.define do
   factory :user do
+    sequence(:email, 'a') { |n| "user_#{n}@example.com" }
+    sequence(:username, 'a') { |n| "user_#{n}" }
+    password { 'password' }
+    confirmed_at { Time.current }
+
+    trait :with_avatar do
+      after(:build) do |user|
+        user.avatar.attach(
+          io: File.open(Rails.root.join('spec', 'factories', 'images', 'test_avatar.jpg')),
+          filename: 'test_avatar.jpg',
+          content_type: 'image/jpg'
+        )
+      end
+    end
+
+    factory :user_with_dungeons do
+      transient do
+        dungeons_count { 3 }
+      end
+
+      after(:build) do |user, evaluator|
+        user.dungeons = build_list(:dungeon, evaluator.dungeons_count, user: user)
+      end
+    end
+
+    factory :user_with_challenges do
+      transient do
+        challenges_count { 1 }
+      end
+
+      after(:build) do |user, evaluator|
+        user.challenges = build_list(:challenge, evaluator.challenges_count, challenger: user)
+      end
+    end
   end
 end

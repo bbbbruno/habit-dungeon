@@ -1,15 +1,15 @@
-- title "パスワード再設定メール送信"
+- title 'パスワード再設定メール送信'
 
 .wrap-900
   .card
     h2.card-tit
-      = t(".forgot_your_password")
+      = t('.forgot_your_password')
     .card-inner
-      = form_with model: @user, url: user_password_path, method: :post, class: "form", local: true do |f|
-        = render "devise/shared/error_messages", resource: @user
+      = form_with model: @user, url: user_password_path, method: :post, class: 'form', local: true do |f|
+        = render 'devise/shared/error_messages', resource: @user
         .form-field
           = f.label :email
-          = f.email_field :email, autofocus: true, autocomplete: "email"
+          = f.email_field :email, autofocus: true, autocomplete: 'email'
         .form-btn
-          = f.submit t(".send_me_reset_password_instructions")
-      = render "devise/shared/links"
+          = f.submit t('.send_me_reset_password_instructions')
+      = render 'devise/shared/links'

@@ -5,7 +5,7 @@
 .overlay style="background: url(#{challenge_header_url(@challenge)}) no-repeat center center/cover;"
   h1.challenges-tit = @challenge.title
 
-.challenges-battle style="background: url(#{asset_pack_path("media/images/dungeons/23.jpg")}) no-repeat center center/cover;"
+.challenges-battle style="background: url(#{asset_pack_path('media/images/dungeons/23.jpg')}) no-repeat center center/cover;"
   .challenges-container
     .challenges-challenger
       h3 = "#{@challenge.challenger_name}"
@@ -13,7 +13,7 @@
         .challenges-challenger-avatars
           p メンバー
           - avatar_urls(@challenge.challenger).each do |url|
-            = image_tag url, style: "border-radius: 50%;"
+            = image_tag url, style: 'border-radius: 50%;'
         .challenges-challenger-lifes
           p ライフ
           - @challenge.life.times do
@@ -67,15 +67,15 @@
 
   .bottom
     - if @challenge.all_challengers.include?(current_user) && !@challenge.attacked?
-      = form_with model: @challenge, class: "challenges-form" do |f|
+      = form_with model: @challenge, class: 'challenges-form' do |f|
         = f.hidden_field :attacked, value: true
         = f.hidden_field :progress, value: @challenge.progress + 1
         - if @challenge.over_last_day?
           = f.hidden_field :over_days, value: @challenge.over_days + 7
-        = f.submit "こうげき！！", class: "bottom-action"
+        = f.submit 'こうげき！！', class: 'bottom-action'
     .bottom-links
-      = link_to "もどる", :back
+      = link_to 'もどる', :back
       .bottom-wrap
-        = link_to "くわしく", @challenge.dungeon
+        = link_to 'くわしく', @challenge.dungeon
         - if current_user == @challenge.challenger
-          = link_to "リタイア", @challenge, data: { confirm: "本当によろしいですか？" }, method: :delete
+          = link_to 'リタイア', @challenge, data: { confirm: '本当によろしいですか？' }, method: :delete

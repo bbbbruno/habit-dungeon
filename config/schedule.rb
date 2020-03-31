@@ -7,8 +7,8 @@
 
 # Example:
 #
-set :output, "log/cron_log.log"
-set :environment, ENV.fetch("RAILS_ENV") { :development }
+set :output, 'log/cron_log.log'
+set :environment, ENV.fetch('RAILS_ENV') { :development }
 #
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
@@ -20,12 +20,12 @@ set :environment, ENV.fetch("RAILS_ENV") { :development }
 #   runner "AnotherModel.prune_old_records"
 # end
 every 1.day do
-  rake "midnight_action:deal_damage"
-  rake "midnight_action:reset_flag"
+  rake 'midnight_action:deal_damage'
+  rake 'midnight_action:reset_flag'
 end
 
 every :month do
-  rake "monthly_clear:clear_discarded_dungeon"
+  rake 'monthly_clear:clear_discarded_dungeon'
 end
 
 # Learn more: http://github.com/javan/whenever

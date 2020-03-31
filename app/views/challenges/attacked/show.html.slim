@@ -1,8 +1,8 @@
-- title "攻撃後ページ"
+- title '攻撃後ページ'
 
 .wrap-900
   .card
-    h1.card-tit = "#{@challenge.at_level_start? ? "ランクアップしました！" : "ダメージを与えました！"}"
+    h1.card-tit = "#{@challenge.at_level_start? ? 'ランクアップしました！' : 'ダメージを与えました！'}"
     .attacked-enemy
       .attacked-enemy-image
         = image_tag @challenge.enemy_image
@@ -33,7 +33,7 @@
           p = "#{@challenge.enemy_life}日"
       .attacked-share
         h3 Twitterでシェアする
-        = link_to "シェア", "https://twitter.com/share?#{share_queries(@challenge)}"
+        = link_to 'シェア', "https://twitter.com/share?#{share_queries(@challenge)}"
   .bottom
     .bottom-links
-      = link_to "もどる", root_path
+      = link_to 'もどる', root_path

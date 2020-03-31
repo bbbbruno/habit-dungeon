@@ -73,19 +73,24 @@
       }
 
       &.circle-stamp {
-        width: 25px;
-        height: 25px;
-        line-height: 23px;
-        font-size: 1.6rem;
-        letter-spacing: 0;
-        border-width: 2px;
-        font-weight: bold;
-        mask-size: 300px 192px;
-        mask-position: 1rem 3rem;
+        span  {
+          display: block;
+          width: 25px;
+          height: 25px;
+          line-height: 23px;
+          font-size: 1.6rem;
+          letter-spacing: 0;
+          border-width: 2px;
+          font-weight: bold;
+          mask-size: 300px 192px;
+          mask-position: 1rem 3rem;
+        }
 
         &.yet {
-          border-color: #9da4a7;
-          color: #9da4a7;
+          span {
+            border-color: #9da4a7;
+            color: #9da4a7;
+          }
         }
       }
     }

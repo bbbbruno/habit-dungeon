@@ -10,14 +10,15 @@
       <input
         type="hidden"
         :name="`dungeon[levels_attributes][${index}][number]`"
+        :id="`dungeon_levels_attributes_${index}_number`"
         :value="index + 1"
       />
       <input
-        :id="`level-${index}`"
         v-model="level.title"
         type="text"
         class="levels-title"
         :name="`dungeon[levels_attributes][${index}][title]`"
+        :id="`dungeon_levels_attributes_${index}_title`"
         @keydown.13.prevent
         required
       />
@@ -28,6 +29,7 @@
           type="number"
           v-model="level.days"
           :name="`dungeon[levels_attributes][${index}][days]`"
+          :id="`dungeon_levels_attributes_${index}_days`"
           required
         />
         日
@@ -36,12 +38,16 @@
         type="hidden"
         :value="level.id"
         :name="`dungeon[levels_attributes][${index}][id]`"
+        :id="`dungeon_levels_attributes_${index}_id`"
+        v-if="isEditPage"
       />
       <input
         type="hidden"
         :name="`dungeon[levels_attributes][${index}][_destroy]`"
+        :id="`dungeon_levels_attributes_${index}__destroy`"
         :value="level.destroy ? '1' : '0'"
         style="display: none;"
+        v-if="isEditPage"
       />
       <div class="levels-btns">
         <i
@@ -78,8 +84,8 @@
       <input
         type="submit"
         name="commit"
-        :value="isEditPage ? '更新する' : '登録する'"
-        :data-disable-with="isEditPage ? '更新する' : '登録する'"
+        :value="isEditPage ? '更新する' : '作成する'"
+        :data-disable-with="isEditPage ? '更新する' : '作成する'"
         :disabled="totalDays < 66"
         :data-confirm="isEditPage ? confirmMessage : ''"
       />

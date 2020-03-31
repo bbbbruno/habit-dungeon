@@ -25,5 +25,5 @@ class AdminUser < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :avatar, dependent: :destroy
-  has_many :sent_notifications, as: :sender, class_name: "Notification", dependent: :destroy
+  has_many :sent_notifications, as: :sender, class_name: 'Notification', dependent: :destroy
 end

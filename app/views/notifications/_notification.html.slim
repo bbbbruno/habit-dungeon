@@ -1,6 +1,6 @@
-li.notifications-item class="#{notification.read? ? "_read" : ""}"
+li.notifications-item class="#{notification.read? ? '_read' : ''}"
   = link_to notification, method: :patch do
     = image_tag avatar_url(notification.sender)
     .noftifications-content
       p = notification.message
-      span = notification.created_at.strftime("%Y/%m/%d")
+      span = notification.created_at.strftime('%Y/%m/%d')

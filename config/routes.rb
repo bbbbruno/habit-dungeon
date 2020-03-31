@@ -72,34 +72,34 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+    mount LetterOpenerWeb::Engine, at: '/letter_opener'
   end
 
-  root to: "home#index"
+  root to: 'home#index'
 
   devise_for :users,
     controllers: {
-      registrations: "users/registrations",
-      sessions: "users/sessions",
-      omniauth_callbacks: "users/omniauth_callbacks",
+      registrations: 'users/registrations',
+      sessions: 'users/sessions',
+      omniauth_callbacks: 'users/omniauth_callbacks',
     }
   resources :users, only: %i[index show] do
-    resources :user_auths, param: :provider, only: %i[destroy], controller: "users/user_auths"
+    resources :user_auths, param: :provider, only: %i[destroy], controller: 'users/user_auths'
   end
 
   resources :dungeons
   resources :challenges do
-    resource :attacked, only: :show, controller: "challenges/attacked"
+    resource :attacked, only: :show, controller: 'challenges/attacked'
   end
   resources :notifications, only: %i[index update] do
     collection do
-      resources :allmarks, only: %i[create], controller: "notifications/allmarks"
+      resources :allmarks, only: %i[create], controller: 'notifications/allmarks'
     end
   end
 
-  namespace :api, format: "json" do
+  namespace :api, format: 'json' do
     resources :dungeons, only: %i[] do
-      resources :levels, only: %i[index], controller: "dungeons/levels"
+      resources :levels, only: %i[index], controller: 'dungeons/levels'
     end
   end
 end

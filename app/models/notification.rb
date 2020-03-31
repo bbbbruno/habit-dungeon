@@ -8,7 +8,7 @@
 #  kind        :integer          not null
 #  message     :string           not null
 #  path        :string           not null
-#  read        :boolean          default("false"), not null
+#  read        :boolean          default("unread"), not null
 #  sender_type :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

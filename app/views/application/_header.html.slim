@@ -1,23 +1,23 @@
 header.header
   .header-box
     = link_to root_path do
-      = image_pack_tag "logo.png", class: "header-logo"
+      = image_pack_tag 'logo.png', class: 'header-logo'
       p.header-tit HabitDungeon
 
   nav.header-gnav
     ul.header-list
-      li.header-item class="#{active_controller?("dungeons") || active_controller_and_action?("challenges", "index")}"
-        = link_to "ダンジョン", dungeons_path
+      li.header-item class="#{active_controller?('dungeons') || active_controller_and_action?('challenges', 'index')}"
+        = link_to 'ダンジョン', dungeons_path
         ul.header-menu
-          li = link_to "ダンジョン一覧", dungeons_path, class: active_controller_and_action?("dungeons", "index")
-          li = link_to "攻略一覧", challenges_path, class: active_controller_and_action?("challenges", "index")
-      li.header-item class="#{active_controller?("users")}"
-        = link_to "プレイヤー", users_path
+          li = link_to 'ダンジョン一覧', dungeons_path, class: active_controller_and_action?('dungeons', 'index')
+          li = link_to '攻略一覧', challenges_path, class: active_controller_and_action?('challenges', 'index')
+      li.header-item class="#{active_controller?('users')}"
+        = link_to 'プレイヤー', users_path
 
   .header-wrap
     - if user_signed_in?
-      = render "notifications"
-      = render "toggle-menu"
+      = render 'notifications'
+      = render 'toggle-menu'
     - else
-      = link_to "新規登録", new_user_registration_path
-      = link_to "ログイン", new_user_session_path
+      = link_to '新規登録', new_user_registration_path
+      = link_to 'ログイン', new_user_session_path

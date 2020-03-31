@@ -7,7 +7,7 @@ class ChallengesController < ApplicationController
 
   def index
     @challenges = Challenge
-                    .includes(:dungeon, challenger: { avatar_attachment: :blob })
+                    .includes(dungeon: { header_attachment: :blob }, challenger: { avatar_attachment: :blob })
                     .recent_updated
                     .page(params[:page])
   end
@@ -21,7 +21,7 @@ class ChallengesController < ApplicationController
 
     if @challenge.save
       Notification.notify_dungeon_challenged(@challenge) unless @challenge.all_challengers.include?(@challenge.dungeon.user)
-      redirect_to @challenge, notice: "ダンジョンの攻略をはじめました"
+      redirect_to @challenge, notice: 'ダンジョンの攻略をはじめました'
     else
       redirect_back fallback_location: root_path, alert: @challenge.errors.full_messages[0]
     end
@@ -29,15 +29,15 @@ class ChallengesController < ApplicationController
 
   def update
     if @challenge.update(update_challenge_params)
-      redirect_to challenge_attacked_url(@challenge), notice: "おめでとうございます！"
+      redirect_to challenge_attacked_url(@challenge), notice: 'おめでとうございます！'
     else
-      redirect_back fallback_location: root_path, alert: "エラーが発生しました"
+      redirect_back fallback_location: root_path, alert: 'エラーが発生しました'
     end
   end
 
   def destroy
     @challenge.destroy
-    redirect_to dungeons_url, notice: "ダンジョン攻略をリタイアしました"
+    redirect_to dungeons_url, notice: 'ダンジョン攻略をリタイアしました'
   end
 
   private
@@ -58,6 +58,6 @@ class ChallengesController < ApplicationController
     end
 
     def solo?
-      params[:challenge][:challenger_type] == "solo"
+      params[:challenge][:challenger_type] == 'solo'
     end
 end

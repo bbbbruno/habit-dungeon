@@ -7,7 +7,7 @@ class CreateChallenges < ActiveRecord::Migration[6.0]
       t.references :dungeon, null: false, foreign_key: true
       t.integer :progress, null: false, default: 0
       t.integer :life, null: false, default: 3
-      t.string :difficulty, null: false, default: "easy"
+      t.string :difficulty, null: false, default: 'easy'
       t.boolean :attacked, null: false, default: false
       t.boolean :clear, null: false, default: false
 

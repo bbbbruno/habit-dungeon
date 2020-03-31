@@ -5,13 +5,13 @@
 # Table name: challenges
 #
 #  id              :bigint           not null, primary key
-#  attacked        :boolean          default("false"), not null
+#  attacked        :boolean          default(FALSE), not null
 #  challenger_type :string           not null
-#  clear           :boolean          default("false"), not null
+#  clear           :boolean          default(FALSE), not null
 #  difficulty      :string           default("easy"), not null
-#  life            :integer          default("3"), not null
-#  over_days       :integer          default("0"), not null
-#  progress        :integer          default("0"), not null
+#  life            :integer          default(3), not null
+#  over_days       :integer          default(0), not null
+#  progress        :integer          default(0), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  challenger_id   :bigint           not null
@@ -41,9 +41,9 @@ class Challenge < ApplicationRecord
     numericality: {
       greater_than_or_equal_to: 0,
       less_than_or_equal_to: 3,
-      message: "入力値が0~3の範囲外です",
+      message: '入力値が0~3の範囲外です',
     }
-  validate :double_challenge, on: :create
+  validate :over_challenge, on: :create
   validate :discarded_challenge, on: :create
   validate :check_clear, if: :clear?
 
@@ -85,6 +85,7 @@ class Challenge < ApplicationRecord
 
   def rank_down
     return unless current_level
+    previous_level = current_level - 1
     if previous_level > 0
       self.progress = each_level_start[previous_level]
     else
@@ -99,8 +100,9 @@ class Challenge < ApplicationRecord
   end
 
   def deal_damage
+    life_before_update = life
     update(life: life - 1)
-    Notification.notify_challenge_damaged(self) unless life_before_last_save == 1
+    Notification.notify_challenge_damaged(self) unless life_before_update == 1
   end
 
   def at_level_start?
@@ -108,15 +110,15 @@ class Challenge < ApplicationRecord
   end
 
   private
-    def double_challenge
-      if Challenge.find_by(challenger: challenger)
-        errors.add(:base, "２つ以上のダンジョンを同時に攻略することはできません")
+    def over_challenge
+      if Challenge.where(challenger: challenger).count >= User::DEFAULT_MAX_CHALLENGE
+        errors.add(:base, "#{User::DEFAULT_MAX_CHALLENGE + 1}つ以上のダンジョンを同時に攻略することはできません")
       end
     end
 
     def discarded_challenge
       if dungeon.discarded?
-        errors.add(:base, "削除されたダンジョンを攻略することはできません")
+        errors.add(:base, '削除されたダンジョンを攻略することはできません')
       end
     end
 
@@ -125,7 +127,7 @@ class Challenge < ApplicationRecord
         errors.add(:progress, "が#{threshold}日以上でないとダンジョンはクリアできません")
       end
       if progress <= total_days
-        errors.add(:base, "最終レベルをクリアしていないとダンジョンはクリアできません")
+        errors.add(:base, '最終レベルをクリアしていないとダンジョンはクリアできません')
       end
     end
 
@@ -161,9 +163,5 @@ class Challenge < ApplicationRecord
         .with_index(1) do |days, index|
           [index, days]
         end.to_h
-    end
-
-    def previous_level
-      current_level - 1
     end
 end

@@ -4,9 +4,9 @@
   h1.pagetit
     span ダンジョンを編集
 
-  = render "form"
+  = render 'form'
 
   .bottom
     .bottom-links
-      = link_to "もどる", @dungeon
-      = link_to "削除", @dungeon, data: { confirm: "本当によろしいですか？" }, method: :delete
+      = link_to 'もどる', @dungeon
+      = link_to '削除', @dungeon, data: { confirm: '本当によろしいですか？' }, method: :delete

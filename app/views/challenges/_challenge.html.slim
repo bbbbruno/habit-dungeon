@@ -1,5 +1,6 @@
 li.card-list-item
-  .circle-stamp = difficulty_in_japanese(challenge)
+  .circle-stamp
+    span = difficulty_in_japanese(challenge)
   .overlay style="background: url('#{challenge_header_url(challenge)}') center center/cover"
     h2.card-list-tit = challenge.title
   ul.card-list-inner
@@ -14,4 +15,4 @@ li.card-list-item
     li.card-list-txt
       p 次のレベルまで
       p = "#{challenge.enemy_life}日"
-    p.card-list-link = link_to "くわしく", challenge
+    p.card-list-link = link_to 'くわしく', challenge

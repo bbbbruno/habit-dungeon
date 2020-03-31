@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: admin_users
@@ -18,6 +20,7 @@
 #
 FactoryBot.define do
   factory :admin_user do
-    
+    email { 'admin@example.com' }
+    password { 'password' }
   end
 end

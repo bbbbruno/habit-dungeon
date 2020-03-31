@@ -1,19 +1,19 @@
-- title "ユーザー設定"
+- title 'ユーザー設定'
 
 .card
   h2.card-tit
-    = "ユーザー設定"
+    = 'ユーザー設定'
   .card-inner
-    = form_with model: @user, url: user_registration_path, method: :put, class: "form", local: true do |f|
-      = render "devise/shared/error_messages", resource: @user
+    = form_with model: @user, url: user_registration_path, method: :put, class: 'form', local: true do |f|
+      = render 'devise/shared/error_messages', resource: @user
       - unless current_user.has_dummy_email?
         .form-field
-          = f.label :email, class: "required"
-          = f.email_field :email, autofocus: true, autocomplete: "email"
+          = f.label :email, class: 'required'
+          = f.email_field :email, autofocus: true, autocomplete: 'email'
         - if devise_mapping.confirmable? && @user.pending_reconfirmation?
-          div = t(".currently_waiting_confirmation_for_email", email: @user.unconfirmed_email)
+          div = t('.currently_waiting_confirmation_for_email', email: @user.unconfirmed_email)
       .form-field
-        = f.label :username, class: "required"
+        = f.label :username, class: 'required'
         = f.text_field :username
       .form-field._file
         = f.label :name
@@ -23,16 +23,16 @@
         = f.text_area :self_introduction
       .form-field._file
         = f.label :avatar
-        = f.label :avatar, class: "preview" do
-          = image_tag "#{@user.avatar.attached? ? url_for(@user.avatar.variant(resize_to_fill: [100, 100]).processed) : asset_pack_path("media/images/default_avatar.png")}"
+        = f.label :avatar, class: 'preview' do
+          = image_tag "#{@user.avatar.attached? ? url_for(@user.avatar.variant(resize_to_fill: [100, 100]).processed) : asset_pack_path('media/images/default_avatar.png')}"
           span 画像を選択
-          = f.file_field :avatar, style: "display: none"
+          = f.file_field :avatar, style: 'display: none'
       .form-field._file._large
         = f.label :header
-        = f.label :header, class: "preview" do
-          = image_tag "#{@user.header.attached? ? url_for(@user.header) : asset_pack_path("media/images/default_dungeon.png")}"
+        = f.label :header, class: 'preview' do
+          = image_tag "#{@user.header.attached? ? url_for(@user.header) : asset_pack_path('media/images/default_dungeon.png')}"
           span 画像を選択
-          = f.file_field :header, style: "display: none"
+          = f.file_field :header, style: 'display: none'
       .form-field
         = f.label :facebook_url
         = f.text_field :facebook_url
@@ -48,44 +48,44 @@
       - unless current_user.has_dummy_email?
         .form-field
           = f.label :password
-          i = "(#{t(".leave_blank_if_you_don_t_want_to_change_it")})"
-          = f.password_field :password, autocomplete: "new-password"
+          i = "(#{t('.leave_blank_if_you_don_t_want_to_change_it')})"
+          = f.password_field :password, autocomplete: 'new-password'
           - if @minimum_password_length
-            em = t("devise.shared.minimum_password_length", count: @minimum_password_length)
+            em = t('devise.shared.minimum_password_length', count: @minimum_password_length)
         .form-field
           = f.label :password_confirmation
-          = f.password_field :password_confirmation, autocomplete: "new-password"
+          = f.password_field :password_confirmation, autocomplete: 'new-password'
       .form-btn
-        = f.submit t(".update")
+        = f.submit t('.update')
 
       - if current_user.has_dummy_email?
         .form-email
           h3.form-email-tit メールアドレスとパスワードログインを追加する
           .form-field
-            = f.label :new_email, "Eメール", class: "required"
-            = f.email_field :new_email, autocomplete: "email"
+            = f.label :new_email, 'Eメール', class: 'required'
+            = f.email_field :new_email, autocomplete: 'email'
           .form-field
-            = f.label :password, class: "required"
+            = f.label :password, class: 'required'
             - if @minimum_password_length
-              em = t("devise.shared.minimum_password_length", count: @minimum_password_length)
-            = f.password_field :password, autocomplete: "new-password"
+              em = t('devise.shared.minimum_password_length', count: @minimum_password_length)
+            = f.password_field :password, autocomplete: 'new-password'
           .form-field
-            = f.label :password_confirmation, class: "required"
-            = f.password_field :password_confirmation, autocomplete: "new-password"
+            = f.label :password_confirmation, class: 'required'
+            = f.password_field :password_confirmation, autocomplete: 'new-password'
           .form-btn
-            = f.submit "送信する"
+            = f.submit '送信する'
 
     .form-connect
       h3.form-connect-tit SNS連携
       ul.form-connect-list
         - resource_class.omniauth_providers.each do |provider|
           - if current_user.sns_connected?(provider)
-            li.form-connect-item._disconnect = link_to "#{provider.to_s.capitalize}との連携を解除する", user_user_auth_path(current_user, provider), class: "btn", method: :delete
+            li.form-connect-item._disconnect = link_to "#{provider.to_s.capitalize}との連携を解除する", user_user_auth_path(current_user, provider), class: 'btn', method: :delete
           - else
-            li.form-connect-item._connect = link_to "#{provider.to_s.capitalize}で登録", omniauth_authorize_path(resource_name, provider), class: "btn", method: :post
+            li.form-connect-item._connect = link_to "#{provider.to_s.capitalize}で登録", omniauth_authorize_path(resource_name, provider), class: 'btn', method: :post
 
     .form-unsubscribe
-      h3.form-unsubscribe-tit = t(".cancel_my_account")
-      p.form-unsubscribe-link = link_to "退会する", user_registration_path, data: { confirm: "一度退会するともうログインできなくなります。よろしいですか？" }, class: "btn", method: :delete
+      h3.form-unsubscribe-tit = t('.cancel_my_account')
+      p.form-unsubscribe-link = link_to '退会する', user_registration_path, data: { confirm: '一度退会するともうログインできなくなります。よろしいですか？' }, class: 'btn', method: :delete
 
-    = link_to t("devise.shared.links.back"), :back
+    = link_to t('devise.shared.links.back'), :back

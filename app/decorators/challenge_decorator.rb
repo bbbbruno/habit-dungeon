@@ -14,6 +14,6 @@ module ChallengeDecorator
   end
 
   def current_level_title
-    levels.pluck(:number, :title).to_h[current_level].tr("０-９", "0-9")
+    levels.pluck(:number, :title).to_h[current_level].tr('０-９', '0-9')
   end
 end

@@ -1,22 +1,22 @@
 .card
   .card-inner
-    = form_with model: @dungeon, class: "form dungeons-form" do |f|
+    = form_with model: @dungeon, class: 'form dungeons-form' do |f|
       - if @dungeon.errors.any?
         #error_explanation
-          h2 = "#{pluralize(@dungeon.errors.count, "error")} prohibited this dungeon from being saved:"
+          h2 = "#{pluralize(@dungeon.errors.count, 'error')} prohibited this dungeon from being saved:"
           ul
             - @dungeon.errors.full_messages.each do |message|
               li = message
 
       .form-field
-        = f.label :title, class: "lg"
+        = f.label :title, class: 'lg'
         = f.text_field :title, autofocus: true, required: true
       .form-field._file
         = f.label :header
-        = f.label :header, class: "preview" do
-          = @dungeon.header.attached? ? image_tag(@dungeon.header) : image_pack_tag("default_header.png")
+        = f.label :header, class: 'preview' do
+          = @dungeon.header.attached? ? image_tag(@dungeon.header) : image_pack_tag('default_header.png')
           span 画像を選択
-          = f.file_field :header, style: "display: none"
+          = f.file_field :header, style: 'display: none'
       .form-field
         = f.label :description
         = f.text_area :description, required: true
@@ -27,4 +27,4 @@
           span 目標
           span 日数
           div
-        #levels-form(data-dungeon-id="#{@dungeon.id}")
+        #levels-form(data-dungeon-id='#{@dungeon.id}')

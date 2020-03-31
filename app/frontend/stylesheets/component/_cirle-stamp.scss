@@ -1,18 +1,20 @@
 .circle-stamp {
-  width: 50px;
-  height: 50px;
-  line-height: 40px;
-  color: #555;
-  font-size: 3rem;
-  font-weight: 700;
-  border: 5px solid #d23;
-  color: #d23;
-  text-align: center;
-  border-radius: 50%;
-  font-family: 'Courier';
-  mask-image: url('../images/grunge.png');
-  mask-size: 944px 604px;
-  mix-blend-mode: multiply;
   transform: rotate(12deg);
-  mask-position: 2rem 3rem;
+  span {
+    display: block;
+    width: 50px;
+    height: 50px;
+    line-height: 40px;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #d23;
+    text-align: center;
+    font-family: 'Courier';
+    border: 5px solid #d23;
+    border-radius: 50%;
+    mask-image: url('../images/grunge.png');
+    mask-size: 944px 604px;
+    mix-blend-mode: multiply;
+    mask-position: 2rem 3rem;
+  }
 }
