@@ -35,8 +35,9 @@ module ApplicationHelper
       canonical: request.original_url,
       separator: '|',
       icon: [
-        { href: '/favicon.png', sizes: '32x32 96x96', type: 'image/png' },
-        { href: '/icon_itouch_precomp.png', rel: 'apple-touch-icon-precomposed', sizes: '32x32', type: 'image/png' },
+        { href: '/favicon.ico', rel: 'icon' },
+        { href: '/apple-touch-icon.png', rel: 'apple-touch-icon', sizes: '32x32', type: 'image/png' },
+        { href: '/android-chrome-256x256.png', rel: 'icon', type: 'image/png' },
       ],
       og: {
         site_name: :site,

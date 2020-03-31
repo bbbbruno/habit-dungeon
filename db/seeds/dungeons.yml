@@ -3,7 +3,7 @@ dungeon_1:
   description: |-
     本を毎日読む習慣をつけるためのダンジョンです。
     誰でも挑戦ウェルカムです。
-  user_id: 2
+  user_id: 1
   header: "sky.png"
   levels:
     - title: "本を毎日１ページ読む" # Lv 1

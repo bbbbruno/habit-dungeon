@@ -5,13 +5,13 @@
 # Table name: challenges
 #
 #  id              :bigint           not null, primary key
-#  attacked        :boolean          default("false"), not null
+#  attacked        :boolean          default(FALSE), not null
 #  challenger_type :string           not null
-#  clear           :boolean          default("false"), not null
+#  clear           :boolean          default(FALSE), not null
 #  difficulty      :string           default("easy"), not null
-#  life            :integer          default("3"), not null
-#  over_days       :integer          default("0"), not null
-#  progress        :integer          default("0"), not null
+#  life            :integer          default(3), not null
+#  over_days       :integer          default(0), not null
+#  progress        :integer          default(0), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  challenger_id   :bigint           not null
@@ -43,7 +43,7 @@ class Challenge < ApplicationRecord
       less_than_or_equal_to: 3,
       message: '入力値が0~3の範囲外です',
     }
-  validate :double_challenge, on: :create
+  validate :over_challenge, on: :create
   validate :discarded_challenge, on: :create
   validate :check_clear, if: :clear?
 
@@ -100,8 +100,9 @@ class Challenge < ApplicationRecord
   end
 
   def deal_damage
+    life_before_update = life
     update(life: life - 1)
-    Notification.notify_challenge_damaged(self) unless life_before_last_save == 1
+    Notification.notify_challenge_damaged(self) unless life_before_update == 1
   end
 
   def at_level_start?
@@ -109,9 +110,9 @@ class Challenge < ApplicationRecord
   end
 
   private
-    def double_challenge
-      if Challenge.find_by(challenger: challenger)
-        errors.add(:base, '２つ以上のダンジョンを同時に攻略することはできません')
+    def over_challenge
+      if Challenge.where(challenger: challenger).count >= User::DEFAULT_MAX_CHALLENGE
+        errors.add(:base, "#{User::DEFAULT_MAX_CHALLENGE + 1}つ以上のダンジョンを同時に攻略することはできません")
       end
     end
 

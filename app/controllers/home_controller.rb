@@ -4,7 +4,13 @@ class HomeController < ApplicationController
   before_action :logged_in?, only: %i[index]
 
   def index
-    @challenges = current_user.challenges
+    @challenges = current_user
+                    .challenges
+                    .includes(:challenger, :enemy, dungeon: [{ header_attachment: :blob }, :levels])
+                    .unscope(:order)
+                    .order(created_at: :asc)
+                    .page(params[:page])
+                    .per(1)
   end
 
   private

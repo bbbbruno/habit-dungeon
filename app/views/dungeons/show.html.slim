@@ -1,4 +1,4 @@
-- title '「#{@dungeon.title}」のダンジョン詳細'
+- title "「#{@dungeon.title}」のダンジョン詳細"
 
 .wrap-900
   h1.pagetit
@@ -21,7 +21,7 @@
             p.levels-days = level.days.to_s + '日'
 
   .bottom
-    - unless current_user&.challenging? || @dungeon.discarded?
+    - unless current_user&.already_max_challenge? || current_user&.challenging?(@dungeon) || @dungeon.discarded?
       label.bottom-action for="modal_toggle" 挑戦する！
     .bottom-links
       = link_to 'もどる', :back

@@ -23,8 +23,12 @@
 #
 FactoryBot.define do
   factory :dungeon do
-    title { "MyString" }
-    description { "MyText" }
-    user { nil }
+    title { '本を毎日読む' }
+    description { '本を毎日読む習慣を身に付けるためのダンジョンです。' }
+    user
+
+    after(:build) do |dungeon|
+      dungeon.levels = 1.upto(6).map { |i| build(:level, number: i, dungeon: dungeon) }
+    end
   end
 end

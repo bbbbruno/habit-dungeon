@@ -2,7 +2,7 @@
 - description "現在Lv#{@challenge.current_level}の#{@challenge.enemy_name}と交戦中！"
 - set_meta_tags og: { image: "https://res.cloudinary.com/bbbbruno/image/upload/l_text:GN-Kin-iro-SansSerif.ttf_130_center:#{@challenge.current_level_title},w_1100,h_300,y_-50,co_rgb:333,c_fit/v1584696438/twitter_opg_r2zy5q.png" }
 
-.overlay style='background: url(#{challenge_header_url(@challenge)}) no-repeat center center/cover;"
+.overlay style="background: url(#{challenge_header_url(@challenge)}) no-repeat center center/cover;"
   h1.challenges-tit = @challenge.title
 
 .challenges-battle style="background: url(#{asset_pack_path('media/images/dungeons/23.jpg')}) no-repeat center center/cover;"

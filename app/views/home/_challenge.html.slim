@@ -40,8 +40,8 @@
                     - (challenge.enemy_life - (i - 1)).times do
                       li.gauge-block
 
-#result
 .challenges-container
+  = paginate challenges
   .challenges-progress
     h2 継続#{challenge.progress}日目
     ul.challenges-levels

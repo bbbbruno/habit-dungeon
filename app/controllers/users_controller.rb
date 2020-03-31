@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User
-              .includes(:challenges, avatar_attachment: :blob)
+              .includes(challenges: { dungeon: :header_attachment }, avatar_attachment: :blob)
               .order(updated_at: :desc)
               .page(params[:page])
   end

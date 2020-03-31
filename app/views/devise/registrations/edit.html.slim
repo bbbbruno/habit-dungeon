@@ -80,9 +80,9 @@
       ul.form-connect-list
         - resource_class.omniauth_providers.each do |provider|
           - if current_user.sns_connected?(provider)
-            li.form-connect-item._disconnect = link_to '#{provider.to_s.capitalize}との連携を解除する', user_user_auth_path(current_user, provider), class: 'btn', method: :delete
+            li.form-connect-item._disconnect = link_to "#{provider.to_s.capitalize}との連携を解除する", user_user_auth_path(current_user, provider), class: 'btn', method: :delete
           - else
-            li.form-connect-item._connect = link_to '#{provider.to_s.capitalize}で登録', omniauth_authorize_path(resource_name, provider), class: 'btn', method: :post
+            li.form-connect-item._connect = link_to "#{provider.to_s.capitalize}で登録", omniauth_authorize_path(resource_name, provider), class: 'btn', method: :post
 
     .form-unsubscribe
       h3.form-unsubscribe-tit = t('.cancel_my_account')

@@ -2,13 +2,13 @@
 
 enemies = []
 enemies[1] = [
-  { name: "スライム", image_path: "slime" },
+  { name: 'スライム', image_path: 'slime' },
 ]
 enemies[2] = [
-  { name: "スネーク", image_path: "snake" },
+  { name: 'スネーク', image_path: 'snake' },
 ]
 enemies[3] = [
-  { name: "ヒドラ", image_path: "hydra" },
+  { name: 'ヒドラ', image_path: 'hydra' },
 ]
 
 1.upto(3).each do |i|

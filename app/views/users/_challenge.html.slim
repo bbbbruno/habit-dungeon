@@ -1,6 +1,7 @@
 .users-challenges-tit
   h3 = link_to challenge.title, challenge.dungeon
-  p.circle-stamp = difficulty_in_japanese(challenge)
+  p.circle-stamp
+    span = difficulty_in_japanese(challenge)
 .users-challenges-details
   .users-challenges-avatars
     - avatar_urls(challenge.challenger, size: [50, 50]).each do |url|

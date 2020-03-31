@@ -30,16 +30,28 @@
 #
 FactoryBot.define do
   factory :user_auth do
-    user { nil }
-    uid { 'MyString' }
-    provider { 'MyString' }
-    name { 'MyString' }
-    nickname { 'MyString' }
-    email { 'MyString' }
-    url { 'MyString' }
-    image_url { 'MyString' }
-    description { 'MyString' }
-    credentials { 'MyText' }
-    raw_info { 'MyText' }
+    user
+    uid { '123456' }
+    provider { 'google' }
+    name { 'Test User' }
+    nickname { 'testuser' }
+    email { 'test@example.com' }
+    url { 'https://testuser.example.com' }
+    image_url { 'https://via.placeholder.com/150' }
+    description { 'testtest' }
+    credentials { 'test' }
+    raw_info { 'test' }
+
+    trait :facebook do
+      provider { 'facebook' }
+    end
+
+    trait :twitter do
+      provider { 'twitter' }
+    end
+
+    trait :google do
+      provider { 'google' }
+    end
   end
 end

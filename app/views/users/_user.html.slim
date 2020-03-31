@@ -15,7 +15,8 @@ li.card-list-item
         p = user.challenge.progress
       li.card-list-txt
         p こうげき
-        p.circle-stamp class="#{user.challenge.attacked? ? '' : 'yet'}" = "#{user.challenge.attacked? ? '済' : '未'}"
+        p.circle-stamp class="#{user.challenge.attacked? ? '' : 'yet'}"
+          span = "#{user.challenge.attacked? ? '済' : '未'}"
     - else
       p 攻略しているダンジョンはありません
     p.card-list-link = link_to 'くわしく', user

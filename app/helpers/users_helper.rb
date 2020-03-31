@@ -10,12 +10,12 @@ module UsersHelper
   end
 
   def difficulty_in_japanese(challenge)
-    case challenge.difficulty.to_sym
-    when :easy
+    case challenge.difficulty
+    when 'easy'
       '易'
-    when :normal
+    when 'normal'
       '中'
-    when :hard
+    when 'hard'
       '難'
     end
   end

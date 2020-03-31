@@ -7,7 +7,7 @@ class ChallengesController < ApplicationController
 
   def index
     @challenges = Challenge
-                    .includes(:dungeon, challenger: { avatar_attachment: :blob })
+                    .includes(dungeon: { header_attachment: :blob }, challenger: { avatar_attachment: :blob })
                     .recent_updated
                     .page(params[:page])
   end

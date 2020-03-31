@@ -2,6 +2,6 @@
 - description 'ホーム画面です。'
 
 - if @challenges.exists?
-  = render partial: 'challenge', collection: @challenges
+  = render partial: 'challenge', collection: @challenges, locals: { challenges: @challenges }
 - else
   = render 'no-challenge'

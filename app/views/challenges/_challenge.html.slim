@@ -1,5 +1,6 @@
 li.card-list-item
-  .circle-stamp = difficulty_in_japanese(challenge)
+  .circle-stamp
+    span = difficulty_in_japanese(challenge)
   .overlay style="background: url('#{challenge_header_url(challenge)}') center center/cover"
     h2.card-list-tit = challenge.title
   ul.card-list-inner

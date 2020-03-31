@@ -8,7 +8,7 @@
 #  kind        :integer          not null
 #  message     :string           not null
 #  path        :string           not null
-#  read        :boolean          default("false"), not null
+#  read        :boolean          default("unread"), not null
 #  sender_type :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
@@ -26,9 +26,15 @@
 #
 FactoryBot.define do
   factory :notification do
-    user { nil }
-    subject { nil }
-    kind { 1 }
-    read { false }
+    user
+    for_user
+
+    trait :for_user do
+      association :sender, factory: :user
+    end
+
+    trait :for_admin do
+      association :sender, factory: :admin
+    end
   end
 end

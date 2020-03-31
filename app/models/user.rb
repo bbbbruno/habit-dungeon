@@ -22,7 +22,7 @@
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
 #  self_introduction      :text
-#  sign_in_count          :integer          default("0"), not null
+#  sign_in_count          :integer          default(0), not null
 #  twitter_url            :string
 #  unconfirmed_email      :string
 #  username               :string           default(""), not null
@@ -58,7 +58,7 @@ class User < ApplicationRecord
 
   has_one_attached :avatar, dependent: :destroy
   has_one_attached :header, dependent: :destroy
-  has_many :dungeons, dependent: :destroy
+  has_many :dungeons
   has_many :notifications, dependent: :destroy
   has_many :sent_notifications, as: :sender, class_name: 'Notification', dependent: :destroy
 
@@ -70,6 +70,8 @@ class User < ApplicationRecord
       with: /\A\w+\z/,
       message: 'は半角英数字と_（アンダースコア）のみが使用できます'
     }
+
+  DEFAULT_MAX_CHALLENGE = 1
 
   def self.from_omniauth(auth, current_user)
     # returning users
@@ -109,8 +111,8 @@ class User < ApplicationRecord
       url = data.info.urls.Twitter
       update(twitter_url: url)
     when 'google'
-      nickname = data.info.email.split('@').first
-      url = data.extra.raw_info.profile
+      nickname = data.info.email.split('@').first.tr('.', '_')
+      url = ''
     end
     user_auths.build({
       provider: data.provider,
@@ -143,10 +145,6 @@ class User < ApplicationRecord
     [avatar]
   end
 
-  def challenging?
-    challenges.exists?
-  end
-
   private
     def self.create_new_user_from_oauth(auth, email)
       user = User.new({
@@ -154,7 +152,7 @@ class User < ApplicationRecord
         password: Devise.friendly_token[0, 20],
       })
       oauth = user.add_oauth_authorization(auth)
-      user.username = oauth.nickname.delete('.')
+      user.username = oauth.nickname
       user.self_introduction = oauth.description
       user.avatar.attach(io: open(oauth.image_url), filename: "#{user.username}_avatar.jpg", content_type: 'image/jpg')
       user.skip_confirmation!
