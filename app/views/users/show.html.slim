@@ -23,7 +23,8 @@ h1.pagetit
           = link_to @user.youtube_url do
             i.fab.fa-youtube
       .users-self_introduction = simple_format h @user.self_introduction
-      p.users-edit = link_to 'ユーザー設定', edit_user_registration_path
+      - if @user == current_user
+        p.users-edit = link_to 'ユーザー設定', edit_user_registration_path
 
   .users-right
     .users-challenges.card

@@ -83,34 +83,57 @@
     position: relative;
     line-height: 2;
     border-bottom: none;
+    @include media(md) {
+      font-size: 5.5rem;
+      line-height: 1.6;
+    }
   }
 
   &-heading {
     font-size: 4rem;
     line-height: 1;
+    @include media(md) {
+      font-size: 3.5rem;
+    }
   }
 
   &-box {
     margin-bottom: 30px;
+    @include media(md) {
+      margin-bottom: 20px;
+    }
 
     p {
       line-height: 1.7;
       font-size: 1.8rem;
+      @include media(md) {
+        font-size: 1.6rem;
+      }
     }
   }
 
   .form-field {
     margin-bottom: 20px;
+    @include media(md) {
+      margin-bottom: 10px;
+    }
 
     &._file {
       img {
         width: 100%;
         height: 200px;
         margin: 0;
+        @include media(md) {
+          height: 130px;
+        }
       }
       span {
         margin: 0;
         font-size: 2rem;
+        @include media(md) {
+          font-size: 1.8rem;
+          padding: 8px;
+        }
       }
     }
 
@@ -118,8 +141,14 @@
       &.lg {
         text-align: center;
         font-size: 4rem;
+        @include media(md) {
+          font-size: 3.5rem;
+        }
       }
       font-size: 2.5rem;
+      @include media(md) {
+        font-size: 2rem;
+      }
     }
   }
 }

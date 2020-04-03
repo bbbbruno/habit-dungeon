@@ -7,6 +7,7 @@
 #  id           :bigint           not null, primary key
 #  description  :text
 #  discarded_at :datetime
+#  recommended  :boolean          default(FALSE), not null
 #  title        :string           not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
@@ -35,6 +36,11 @@ class Dungeon < ApplicationRecord
   has_many :challenges, dependent: :destroy
   has_many :solos, through: :challenges, source: :challenger, source_type: 'User'
 
+  scope :included, -> { includes(:challenges, :solos, header_attachment: :blob) }
+  scope :recommended, -> { included.where(recommended: true) }
+  scope :popular, -> { included.sort_by { |dungeon| dungeon.all_uniq_challengers.count }.reverse }
+  scope :recent, -> { included.order(created_at: :desc) }
+
   accepts_nested_attributes_for :levels, allow_destroy: true
   validates :levels, presence: true
   validates_associated :levels
@@ -48,7 +54,7 @@ class Dungeon < ApplicationRecord
   end
 
   def all_uniq_challengers
-    solos.uniq
+    solos.distinct
   end
 
   private

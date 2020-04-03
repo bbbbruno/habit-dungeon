@@ -3,6 +3,10 @@
 h1.pagetit
   span 攻略中のダンジョン一覧
 
+.tab._links._sp
+  = link_to 'ダンジョン一覧', dungeons_path, class: active_controller_and_action?('dungeons', 'index')
+  = link_to '攻略中一覧', challenges_path, class: active_controller_and_action?('challenges', 'index')
+
 ul.card-list._challenge
   = render @challenges
 

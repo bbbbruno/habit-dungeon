@@ -3,6 +3,9 @@
     color: $danger;
     margin: 10px 0;
     text-align: center;
+    @include media(md) {
+      font-size: 1.5rem;
+    }
   }
 
   &-form {
@@ -15,7 +18,19 @@
     grid-template-columns: 45px 1fr 63px 35px;
     grid-gap: 10px;
     align-items: center;
-    margin-bottom: 10px;
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+    @include media(md) {
+      grid-template-columns: 45px 1fr 75px 35px;
+      grid-gap: 5px;
+    }
+
+    p {
+      @include media(md) {
+        font-size: 1.5rem !important;
+      }
+    }
 
     span {
       text-align: center;
@@ -33,6 +48,9 @@
   &-days {
     input {
       padding: 10px;
+      @include media(md) {
+        font-size: 1.5rem;
+      }
     }
   }
 
@@ -77,22 +95,12 @@
   &-total {
     display: flex;
     align-items: center;
-    span {
-      padding: 5px 20px;
-      color: #ffffff;
-      background: $sub;
-      letter-spacing: 0.2rem;
-      font-size: 2rem;
-      font-weight: bold;
-      border-radius: 30px;
-    }
     p {
       font-size: 2rem;
       font-weight: 500;
       margin-left: 10px;
     }
   }
-
   &-submit {
     @extend .form-btn;
   }

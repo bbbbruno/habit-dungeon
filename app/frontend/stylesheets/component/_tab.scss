@@ -1,0 +1,37 @@
+.tab {
+  display: flex;
+
+  &._sp {
+    display: none;
+    @include media(md) {
+      display: flex;
+    }
+  }
+
+  a {
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+    flex: 1 1 33%;
+    font-weight: 500;
+    color: $main;
+    border-bottom: 3px solid $main;
+    transition: all 0.3s;
+    &._active {
+      background: $main;
+      color: #ffffff;
+    }
+  }
+
+  &._links {
+    margin-bottom: 15px;
+    a {
+      color: $info;
+      border: 2px solid $info;
+      &._active {
+        background: $info;
+        color: #ffffff;
+      }
+    }
+  }
+}

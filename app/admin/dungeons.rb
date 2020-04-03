@@ -6,7 +6,7 @@ ActiveAdmin.register Dungeon do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :title, :description, :user_id, :discarded_at
+  permit_params :title, :description, :user_id, :discarded_at, :recommended
   #
   # or
   #
@@ -15,13 +15,12 @@ ActiveAdmin.register Dungeon do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  includes :challenges, :solos
-
   form do |f|
     f.inputs do
       f.input :title
       f.input :description
       f.input :discarded_at
+      f.input :recommended
       f.has_many :levels,
         heading: 'レベル',
         allow_destroy: true,
@@ -78,4 +77,5 @@ ActiveAdmin.register Dungeon do
   filter :created_at
   filter :updated_at
   filter :discarded_at
+  filter :recommended
 end

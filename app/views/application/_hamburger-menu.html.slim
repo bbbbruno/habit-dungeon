@@ -1,0 +1,27 @@
+.hamburger-menu._sp
+  input#hidden-checkbox-hamburger.nav-unshown type="checkbox"
+  label.open for="hidden-checkbox-hamburger"
+    span
+  label.close for="hidden-checkbox-hamburger"
+  nav.hamburger-menu-inner
+    .hamburger-menu-top
+      = link_to root_path do
+        = image_pack_tag 'logo.png'
+      label for="hidden-checkbox-hamburger"
+    ul.hamburger-menu-list
+      li.hamburger-menu-item
+        p HabitDungeon
+        = link_to 'ダンジョン', dungeons_path
+        = link_to '攻略', challenges_path
+        = link_to 'プレイヤー', users_path
+      li.hamburger-menu-item
+        p ユーザー
+        = link_to 'マイページ', current_user
+        = link_to '設定', edit_user_registration_path
+      li.hamburger-menu-item
+        p 運営
+        = link_to 'お知らせ', '#'
+        = link_to 'ヘルプ', '#'
+      li.hamburger-menu-item
+        p その他
+        = link_to 'ログアウト', destroy_user_session_path, method: :delete

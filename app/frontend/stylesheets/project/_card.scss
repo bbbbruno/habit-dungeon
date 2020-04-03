@@ -5,9 +5,15 @@
   overflow: hidden;
   position: relative;
   box-shadow: rgba(0, 0, 0, 0.2) 0 0.0625rem 0.125rem;
+  @include media(md) {
+    margin-bottom: 10px;
+  }
 
   &-inner {
     padding: 10px 20px;
+    @include media(md) {
+      padding: 15px;
+    }
   }
 
   &-tit {
@@ -17,5 +23,9 @@
     border-bottom: 1px solid #dfdfdf;
     padding-top: 10px;
     margin-bottom: 15px;
+    @include media(md) {
+      margin-bottom: 0;
+      font-size: 4rem;
+    }
   }
 }
