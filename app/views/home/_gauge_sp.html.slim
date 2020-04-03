@@ -1,0 +1,14 @@
+.gauge._sp
+  - 1.step(challenge.enemy_max_life, 5) do |i|
+    .gauge-wrap
+      - if i == 1
+        .gauge-ttl
+          span = "HP　#{challenge.enemy_life}／#{challenge.enemy_max_life}"
+      .gauge-bg
+        ul.gauge-main
+          - if (challenge.enemy_life - (i - 1)) >= 5
+            - 5.times do
+              li.gauge-block
+          - else
+            - (challenge.enemy_life - (i - 1)).times do
+              li.gauge-block

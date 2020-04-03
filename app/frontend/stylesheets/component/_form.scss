@@ -2,8 +2,11 @@
   label {
     display: inline-block;
     margin-bottom: 5px;
-    font-size: 18px;
+    font-size: 1.8rem;
     width: 100%;
+    @include media(md) {
+      font-size: 1.6rem;
+    }
 
     &.required::after {
       content: '必須';
@@ -46,6 +49,10 @@
         height: 100px;
         object-fit: cover;
         margin: 15px auto;
+        @include media(md) {
+          width: 64px;
+          height: 64px;
+        }
         &:hover {
           opacity: 0.7;
         }
@@ -67,6 +74,9 @@
           width: 100%;
           height: 150px;
           margin: 0;
+          @include media(md) {
+            height: 120px;
+          }
         }
       }
     }
@@ -102,6 +112,9 @@
     width: 100%;
     height: 200px;
     padding: 10px;
+    @include media(md) {
+      height: 150px;
+    }
   }
 
   &-btn {
@@ -122,10 +135,16 @@
 
   &-shared {
     padding: 15px 0;
+    @include media(md) {
+      margin-top: 10px;
+    }
 
     a {
       transition: all 0.2s;
       margin: 2px 5px;
+      @include media(md) {
+        margin: 0;
+      }
     }
   }
 
@@ -138,6 +157,9 @@
       line-height: 1;
       letter-spacing: 0.3rem;
       margin-bottom: 10px;
+      @include media(md) {
+        font-size: 3rem;
+      }
     }
   }
 
@@ -150,11 +172,18 @@
     &-list {
       display: flex;
       justify-content: space-between;
+      @include media(md) {
+        display: block;
+      }
     }
 
     &-item {
       width: 32%;
       border-radius: 5px;
+      @include media(md) {
+        width: 100%;
+        margin-bottom: 10px;
+      }
 
       &._connect {
         background: $info;

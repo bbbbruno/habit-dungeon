@@ -4,7 +4,7 @@ header.header
       = image_pack_tag 'logo.png', class: 'header-logo'
       p.header-tit HabitDungeon
 
-  nav.header-gnav
+  nav.header-gnav._pc
     ul.header-list
       li.header-item class="#{active_controller?('dungeons') || active_controller_and_action?('challenges', 'index')}"
         = link_to 'ダンジョン', dungeons_path
@@ -17,7 +17,10 @@ header.header
   .header-wrap
     - if user_signed_in?
       = render 'notifications'
+      / pc
       = render 'toggle-menu'
+      / sp
+      = render 'hamburger-menu'
     - else
       = link_to '新規登録', new_user_registration_path
       = link_to 'ログイン', new_user_session_path

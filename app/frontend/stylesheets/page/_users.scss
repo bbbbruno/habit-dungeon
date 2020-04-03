@@ -12,6 +12,9 @@
 
   .card {
     margin: 0 0 30px;
+    @include media(md) {
+      margin-bottom: 20px;
+    }
     &-tit {
       text-align: left;
       font-size: 3.2rem;
@@ -25,16 +28,25 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    @include media(md) {
+      display: block;
+    }
   }
 
   &-left {
     width: 43%;
+    @include media(md) {
+      width: 100%;
+    }
   }
 
   &-header {
     position: relative;
     height: 130px;
     margin-bottom: 40px;
+    @include media(md) {
+      height: 100px;
+    }
 
     img {
       position: absolute;
@@ -42,6 +54,9 @@
       bottom: -40px;
       left: 50%;
       transform: translate(-50%);
+      @include media(md) {
+        width: 85px;
+      }
     }
   }
 
@@ -139,6 +154,9 @@
 
   &-right {
     width: 55%;
+    @include media(md) {
+      width: 100%;
+    }
 
     h3 {
       font-family: $rpg;
@@ -170,6 +188,9 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      @include media(md) {
+        display: block;
+      }
 
       img {
         width: 50px;
@@ -183,9 +204,18 @@
       padding-top: 5px;
     }
 
+    &-avatars {
+      @include media(md) {
+        margin-bottom: 5px;
+      }
+    }
+
     &-links {
       display: flex;
       align-items: center;
+      @include media(md) {
+        justify-content: flex-end;
+      }
       a {
         margin-left: 10px;
         text-decoration: underline;

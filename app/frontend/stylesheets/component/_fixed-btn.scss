@@ -2,7 +2,11 @@
   position: fixed;
   bottom: 50px;
   right: 50px;
-  z-index: 9999;
+  z-index: 3000;
+  @include media(md) {
+    bottom: 130px;
+    right: 20px;
+  }
   a {
     display: block;
     font-family: $rpg;
@@ -19,6 +23,11 @@
     color: #ffffff;
     transition: all 0.3s;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+    @include media(md) {
+      width: 120px;
+      height: 120px;
+      font-size: 2.5rem;
+    }
     &:hover {
       opacity: 1;
       background: darken($sub, 5%);
@@ -29,6 +38,9 @@
     i {
       font-size: 5rem;
       transform: rotate(10deg);
+      @include media(md) {
+        font-size: 4rem;
+      }
     }
   }
 }

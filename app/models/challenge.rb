@@ -101,7 +101,7 @@ class Challenge < ApplicationRecord
 
   def deal_damage
     life_before_update = life
-    update(life: life - 1)
+    update(attacked: false, life: life - 1)
     Notification.notify_challenge_damaged(self) unless life_before_update == 1
   end
 
@@ -136,8 +136,6 @@ class Challenge < ApplicationRecord
       self.enemy = Enemy.choose(level: 1)
     end
 
-    # レベルの開始位置にいてattackedがtrueの時、
-    # deal_damageでダメージを与えるとrank_upとlife_upが作動して、ダメージを受けない
     def check_rank_up_or_rank_down
       return unless current_level
       if life == 0

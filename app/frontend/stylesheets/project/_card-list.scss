@@ -4,6 +4,11 @@
   grid-auto-rows: auto;
   grid-gap: 30px;
   padding: 20px 0;
+  @include media(md) {
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 25px;
+    padding: 15px 0;
+  }
 
   &-item {
     background: #ffffff;
@@ -45,6 +50,8 @@
     position: relative;
     z-index: 1;
     letter-spacing: 0.2rem;
+    font-size: 3.5rem;
+    line-height: 1.4;
   }
 
   &-inner {
@@ -73,7 +80,7 @@
       }
 
       &.circle-stamp {
-        span  {
+        span {
           display: block;
           width: 25px;
           height: 25px;

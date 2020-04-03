@@ -1,5 +1,8 @@
 .challengers {
   margin-top: 30px;
+  @include media(md) {
+    margin-top: 20px;
+  }
   h2 {
     font-size: 3.5rem;
     line-height: 1;

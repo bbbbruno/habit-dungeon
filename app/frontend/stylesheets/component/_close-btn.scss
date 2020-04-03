@@ -7,6 +7,11 @@
   height: 25px;
   opacity: 0.7;
   transition: all 0.2s;
+  @include media(md) {
+    right: 15px;
+    width: 20px;
+    height: 20px;
+  }
 
   &:hover {
     opacity: 1;
@@ -21,6 +26,9 @@
     height: 26px;
     width: 2px;
     background-color: #fff;
+    @include media(md) {
+      height: 20px;
+    }
   }
 
   &::before {

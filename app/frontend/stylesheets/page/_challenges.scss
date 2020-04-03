@@ -50,6 +50,9 @@
   &#show {
     .main {
       padding: 0;
+      @include media(md) {
+        padding-bottom: 70px;
+      }
     }
     .container {
       max-width: 100%;
@@ -61,6 +64,9 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 30px;
+    @include media(md) {
+      padding: 20px 15px;
+    }
   }
 
   &-tit {
@@ -70,6 +76,10 @@
     position: relative;
     z-index: 1;
     line-height: 2;
+    @include media(md) {
+      font-size: 5rem;
+      line-height: 1.7;
+    }
   }
 
   &-battle {
@@ -81,12 +91,18 @@
       align-items: center;
       position: relative;
       z-index: 1;
+      @include media(md) {
+        display: block;
+      }
     }
     h3 {
       font-family: $rpg;
       font-size: 4rem;
       letter-spacing: 0.2rem;
       line-height: 1;
+      @include media(md) {
+        font-size: 3.5rem;
+      }
     }
   }
 
@@ -95,37 +111,43 @@
     border-radius: 5px;
     padding: 15px 20px;
     background: #ffffff;
-    max-width: 300px;
+    max-width: 350px;
     margin: 0 auto;
+    @include media(md) {
+      width: 100%;
+      margin-bottom: 20px;
+      max-width: 100%;
+      padding: 10px 15px;
+    }
 
     h3 {
       font-weight: 500;
       letter-spacing: 0.1rem;
+      text-align: center;
+      margin-bottom: 10px;
     }
-    p {
+    h4 {
       letter-spacing: 0.2rem;
       font-family: $rpg;
       font-size: 2em;
-    }
-    i {
-      font-size: 4rem;
-      color: #ff5150;
-      &:not(:last-child) {
-        margin-right: 15px;
+      flex: 0 0 80px;
+      @include media(md) {
+        text-align: center;
       }
     }
-
-    h3 {
-      text-align: center;
-      margin-bottom: 10px;
+    p {
+      display: flex;
+      flex-wrap: wrap;
+      @include media(md) {
+        justify-content: center;
+      }
     }
 
     &-wrap {
       border-radius: 5px;
-      max-width: 300px;
       margin: 0 auto;
-      p {
-        width: 80px;
+      @include media(md) {
+        display: flex;
       }
     }
 
@@ -135,9 +157,18 @@
       border-radius: 5px;
       background: #ffffff;
       margin-bottom: 15px;
+      @include media(md) {
+        display: block;
+        width: 50%;
+        margin-bottom: 0;
+      }
       img {
-        width: 70px;
-        margin-right: 20px;
+        width: 64px;
+        margin: 0 10px 5px 0;
+        @include media(md) {
+          width: 50px;
+          height: 50px;
+        }
       }
     }
 
@@ -146,11 +177,17 @@
       border-radius: 5px;
       display: flex;
       max-width: 300px;
-      span {
-        letter-spacing: 0.2rem;
-        font-size: 2em;
-        &:not(:last-of-type) {
-          margin-right: 15px;
+      @include media(md) {
+        display: block;
+        width: 50%;
+      }
+      i {
+        font-size: 4rem;
+        color: #ff5150;
+        margin: 0 15px;
+        @include media(md) {
+          font-size: 3.5rem;
+          margin: 5px 8px 0;
         }
       }
     }
@@ -162,19 +199,47 @@
     display: flex;
     align-items: center;
     overflow: hidden;
+    @include media(md) {
+      align-items: stretch;
+      width: 100%;
+    }
 
     &-image {
       padding: 15px;
+      text-align: center;
+      @include media(md) {
+        width: 50%;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba($color: #000000, $alpha: 0.5);
+      }
       img {
         width: 100%;
+        @include media(md) {
+          width: 80%;
+        }
       }
     }
     &-status {
       padding: 15px 20px;
       background: #ffffff;
       border-radius: 5px;
+      max-width: 270px;
+      margin: 0 auto;
+      @include media(md) {
+        width: 50%;
+        padding: 10px 15px;
+        border-radius: 0;
+        max-width: 100%;
+      }
       h3 {
         margin-bottom: 10px;
+        @include media(md) {
+          line-height: 1;
+          margin-bottom: 5px;
+        }
       }
     }
   }
@@ -183,16 +248,20 @@
     padding: 15px 0;
     background: #ffffff;
     margin-bottom: 30px;
-  }
-
-  &-progress {
     border-radius: 5px;
     padding: 30px 40px 10px;
+    @include media(md) {
+      padding: 10px 20px 0px;
+      margin-bottom: 20px;
+    }
     h2 {
       line-height: 1;
       font-size: 6rem;
       letter-spacing: 0.2rem;
       margin: 0;
+      @include media(md) {
+        font-size: 4.7rem;
+      }
     }
   }
 
@@ -202,6 +271,9 @@
     position: relative;
     padding: 30px 0 0;
     margin: 0 calc(100% / 7 / 2 * 0.9 * -1);
+    @include media(md) {
+      padding: 20px 0 0;
+    }
   }
 
   &-step {
@@ -212,6 +284,10 @@
     justify-content: center;
     align-items: center;
     counter-increment: stepNum;
+    @include media(md) {
+      width: calc(100% / 5);
+      margin-bottom: 25px;
+    }
 
     &:not(._clear)::before {
       content: counter(stepNum);
@@ -220,6 +296,9 @@
       &::before {
         content: 'goal';
         font-size: 1.3rem;
+        @include media(md) {
+          font-size: 1.2rem;
+        }
       }
       .level {
         pointer-events: none;
@@ -255,6 +334,12 @@
       font-size: 1.4rem;
       background: #ffffff;
       color: #ccc;
+      @include media(md) {
+        width: 30px;
+        height: 30px;
+        line-height: 26px;
+        font-size: 1.3rem;
+      }
     }
     &._passed {
       &::before {
@@ -264,6 +349,9 @@
         color: #ffffff;
         border: 2px solid $sub;
         font-size: 2rem;
+        @include media(md) {
+          font-size: 1.7rem;
+        }
       }
     }
     &._now {
@@ -290,10 +378,31 @@
         height: 8px;
         right: -50%;
         background: #ccc;
+        @include media(md) {
+          height: 6px;
+        }
       }
-
-      &._passed::after {
-        background: $sub;
+    }
+    &._passed::after {
+      background: $sub !important;
+    }
+    @include media(md) {
+      &:nth-of-type(5n) {
+        &::after {
+          display: none;
+        }
+      }
+      &:nth-of-type(7n) {
+        &::after {
+          content: '';
+          width: 100%;
+          top: 50%;
+          transform: translateY(-50%);
+          position: absolute;
+          height: 8px;
+          right: -50%;
+          background: #ccc;
+        }
       }
     }
 
@@ -315,6 +424,11 @@
       pointer-events: none;
       font-family: $base;
       font-size: 1.7rem;
+      @include media(md) {
+        font-size: 1.3rem;
+        width: 180px;
+        padding: 10px 5px;
+      }
       &::before {
         content: '';
         position: absolute;
@@ -350,6 +464,9 @@
       font-size: 2rem;
       z-index: 10;
       text-align: center;
+      @include media(md) {
+        bottom: 30px;
+      }
 
       &.now {
         bottom: -23px;

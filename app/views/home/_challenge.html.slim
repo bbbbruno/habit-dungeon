@@ -7,15 +7,17 @@
       h3 = "#{challenge.challenger_name}"
       .challenges-challenger-wrap
         .challenges-challenger-avatars
-          p メンバー
-          - avatar_urls(challenge.challenger).each do |url|
-            = image_tag url, style: 'border-radius: 50%;'
+          h4 メンバー
+          p
+            - avatar_urls(challenge.challenger).each do |url|
+              = image_tag url, style: 'border-radius: 50%;'
         .challenges-challenger-lifes
-          p ライフ
-          - challenge.life.times do
-            i.fas.fa-heart
-          - (challenge.max_life - challenge.life).times do
-            i.far.fa-heart
+          h4 ライフ
+          p
+            - challenge.life.times do
+              i.fas.fa-heart
+            - (challenge.max_life - challenge.life).times do
+              i.far.fa-heart
     .challenges-enemy#target
       .challenges-enemy-image
         = image_tag challenge.enemy_image
@@ -25,20 +27,8 @@
         - else
           h3.level = "Lv #{challenge.levels.last.number}"
         h3.name = challenge.enemy_name
-        .gauge
-          - 1.step(challenge.enemy_max_life, 7) do |i|
-            .gauge-wrap
-              - if i == 1
-                .gauge-ttl
-                  span = "HP　#{challenge.enemy_life}／#{challenge.enemy_max_life}"
-              .gauge-bg
-                ul.gauge-main
-                  - if (challenge.enemy_life - (i - 1)) >= 7
-                    - 7.times do
-                      li.gauge-block
-                  - else
-                    - (challenge.enemy_life - (i - 1)).times do
-                      li.gauge-block
+        = render 'gauge_pc', challenge: challenge
+        = render 'gauge_sp', challenge: challenge
 
 .challenges-container
   = paginate challenges
