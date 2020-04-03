@@ -25,6 +25,11 @@ class Dungeon < ApplicationRecord
   include Discard::Model
   default_scope -> { kept }
 
+  scope :included, -> { includes(:challenges, :solos, header_attachment: :blob) }
+  scope :recommended, -> { included }
+  scope :popular, -> { included.sort_by { |dungeon| dungeon.all_uniq_challengers.count }.reverse }
+  scope :recent, -> { included.order(created_at: :desc) }
+
   after_discard do
     destroy unless challenges.exists?
   end

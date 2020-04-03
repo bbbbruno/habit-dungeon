@@ -4,11 +4,23 @@ class DungeonsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create update destroy]
   before_action :set_dungeon, only: %i[show]
   before_action :set_my_dungeon, only: %i[edit update destroy]
+  around_action :skip_bullet, only: %i[index], if: -> { defined?(Bullet) }
 
   def index
-    @dungeons = Dungeon
-                  .includes(:challenges, :solos, header_attachment: :blob)
-                  .page(params[:page])
+    if params[:target]
+      dungeons =
+        case params[:target]
+        when 'recommended'
+          Dungeon.recommended
+        when 'popular'
+          Dungeon.popular
+        when 'recent'
+          Dungeon.recent
+        end
+    else
+      dungeons = Dungeon.recommended
+    end
+    @dungeons = Kaminari.paginate_array(dungeons).page(params[:page])
   end
 
   def show
@@ -63,4 +75,12 @@ class DungeonsController < ApplicationController
     def update_dungeon_params
       params.require(:dungeon).permit(:title, :description, :header, levels_attributes: %i[id number title days _destroy])
     end
+
+    def skip_bullet
+      previous_value = Bullet.enable?
+      Bullet.enable = false
+      yield
+    ensure
+      Bullet.enable = previous_value
+  end
 end

@@ -91,7 +91,7 @@
       align-items: center;
       position: relative;
       z-index: 1;
-      @include media(md) {
+      @include media(lg) {
         display: block;
       }
     }
@@ -113,6 +113,9 @@
     background: #ffffff;
     max-width: 350px;
     margin: 0 auto;
+    @include media(lg) {
+      margin-bottom: 30px;
+    }
     @include media(md) {
       width: 100%;
       margin-bottom: 20px;
@@ -185,6 +188,9 @@
         font-size: 4rem;
         color: #ff5150;
         margin: 0 15px;
+        @include media(lg) {
+          margin: 0 10px;
+        }
         @include media(md) {
           font-size: 3.5rem;
           margin: 5px 8px 0;
@@ -199,9 +205,11 @@
     display: flex;
     align-items: center;
     overflow: hidden;
+    @include media(lg) {
+      width: 100%;
+    }
     @include media(md) {
       align-items: stretch;
-      width: 100%;
     }
 
     &-image {
@@ -217,7 +225,7 @@
       }
       img {
         width: 100%;
-        @include media(md) {
+        @include media(lg) {
           width: 80%;
         }
       }
