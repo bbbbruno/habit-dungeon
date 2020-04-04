@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'redcarpet'
+require 'coderay'
+
 module ApplicationHelper
   def active_controller?(controller_name)
     params[:controller] == controller_name ? '_active' : nil
@@ -59,6 +62,25 @@ module ApplicationHelper
         height: 100
       }
     }
+  end
+
+  def markdown(text)
+    options = {
+      hard_wrap:       true,
+      space_after_headers: true,
+    }
+
+    extensions = {
+      autolink:           true,
+      no_intra_emphasis:  true,
+      fenced_code_blocks: true,
+    }
+
+    input = ERB.new(text).result(binding)
+    renderer = Redcarpet::Render::HTML.new(options)
+    markdown = Redcarpet::Markdown.new(renderer, extensions)
+
+    markdown.render(input).html_safe
   end
 
   def avatar_urls(challenger, size: [88, 88])

@@ -28,4 +28,79 @@
       font-size: 4rem;
     }
   }
+
+  &-markdown {
+    h2 {
+      position: relative;
+      color: #333;
+      text-shadow: 0 0 2px white;
+      z-index: 0;
+      margin: 30px 10px;
+      font-family: $base;
+      font-weight: 500;
+      &:first-child {
+        margin-top: 0;
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        background: lighten($color: $main, $amount: 15%);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        top: 50%;
+        /* border: dashed 1px white; */
+        left: -15px;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        z-index: -1;
+      }
+    }
+
+    h3 {
+      font-size: 2rem;
+      position: relative;
+      padding-left: 1.2em; /*アイコン分のスペース*/
+      line-height: 1.4;
+      margin-bottom: 10px;
+      &::before {
+        font-family: 'Font Awesome 5 Free';
+        content: '\f00c'; /*アイコンのユニコード*/
+        position: absolute; /*絶対位置*/
+        font-size: 1em; /*サイズ*/
+        left: 0; /*アイコンの位置*/
+        top: 0; /*アイコンの位置*/
+        color: $info; /*アイコン色*/
+      }
+    }
+
+    ul,
+    ol,
+    p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    a {
+      color: $main;
+      &:hover {
+        opacity: 1;
+        text-decoration: underline;
+      }
+    }
+
+    img {
+      max-width: 600px;
+    }
+  }
+
+  &-bottom {
+    margin: 20px 0 10px;
+    a {
+      text-decoration: underline;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
 }

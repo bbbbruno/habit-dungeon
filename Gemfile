@@ -42,6 +42,8 @@ gem 'html2slim'
 gem 'discard'
 gem 'active_decorator'
 gem 'high_voltage'
+gem 'redcarpet'
+gem 'coderay'
 gem 'whenever', require: false
 gem 'meta-tags'
 gem 'kaminari'

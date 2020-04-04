@@ -1,0 +1,9 @@
+- title 'お知らせ一覧'
+
+h1.pagetit
+  span お知らせ一覧
+
+ul.notifications-list
+  = render @news_index
+
+.pagination = paginate @news_index

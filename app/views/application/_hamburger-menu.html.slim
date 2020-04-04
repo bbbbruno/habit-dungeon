@@ -20,8 +20,8 @@
         = link_to '設定', edit_user_registration_path
       li.hamburger-menu-item
         p 運営
-        = link_to 'お知らせ', '#'
-        = link_to 'ヘルプ', '#'
+        = link_to 'お知らせ', news_index_path
+        = link_to 'ヘルプ', page_path('help')
       li.hamburger-menu-item
         p その他
         = link_to 'ログアウト', destroy_user_session_path, method: :delete

@@ -1,0 +1,6 @@
+li.notifications-item class="#{news.published? ? '_read' : ''}"
+  = link_to news do
+    = image_tag admin_avatar_url
+    .noftifications-content
+      p = news.title
+      span = news.created_at.strftime('%Y/%m/%d')

@@ -30,14 +30,14 @@ h1.pagetit
     .users-challenges.card
       h2.card-tit 攻略中のダンジョン
       .users-challenges-inner
-        = render partial: 'users/challenge', collection: @user.challenges.includes(:dungeon, :challenger)
+        = render partial: 'users/challenge', collection: @user.challenges.includes(:dungeon)
     .users-progress.card
       h2.card-tit 継続日数
       h3 = "#{@user.max_progress}日"
     .users-dungeons.card
       h2.card-tit 作成したダンジョン
       .users-dungeons-inner
-        = render partial: 'users/dungeon', collection: @user.dungeons.includes(:challenges, :solos)
+        = render partial: 'users/dungeon', collection: @user.dungeons
 
 .bottom
   .bottom-links

@@ -36,10 +36,9 @@ class Dungeon < ApplicationRecord
   has_many :challenges, dependent: :destroy
   has_many :solos, through: :challenges, source: :challenger, source_type: 'User'
 
-  scope :included, -> { includes(:challenges, :solos, header_attachment: :blob) }
-  scope :recommended, -> { included.where(recommended: true) }
-  scope :popular, -> { included.sort_by { |dungeon| dungeon.all_uniq_challengers.count }.reverse }
-  scope :recent, -> { included.order(created_at: :desc) }
+  scope :recommended, -> { includes(header_attachment: :blob).where(recommended: true) }
+  scope :popular, -> { includes(header_attachment: :blob).sort_by { |dungeon| dungeon.all_uniq_challengers.count }.reverse }
+  scope :recent, -> { includes(header_attachment: :blob).order(created_at: :desc) }
 
   accepts_nested_attributes_for :levels, allow_destroy: true
   validates :levels, presence: true
@@ -54,7 +53,7 @@ class Dungeon < ApplicationRecord
   end
 
   def all_uniq_challengers
-    solos.distinct
+    solos.distinct.includes(avatar_attachment: :blob)
   end
 
   private
