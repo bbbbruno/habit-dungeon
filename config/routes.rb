@@ -97,7 +97,7 @@ Rails.application.routes.draw do
       resources :allmarks, only: %i[create], controller: 'notifications/allmarks'
     end
   end
-  resources :news, only: %i[index show]
+  resources :news
 
   namespace :api, format: 'json' do
     resources :dungeons, only: %i[] do

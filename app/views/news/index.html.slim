@@ -3,7 +3,12 @@
 h1.pagetit
   span お知らせ一覧
 
-ul.notifications-list
+ul.index-list
   = render @news_index
 
 .pagination = paginate @news_index
+
+.bottom
+  .bottom-links
+    - if admin_user_signed_in?
+      = link_to '新規作成', new_news_path

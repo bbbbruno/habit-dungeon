@@ -38,8 +38,15 @@
       margin: 30px 10px;
       font-family: $base;
       font-weight: 500;
+      @include media(md) {
+        font-size: 2.3rem;
+        margin: 20px 10px;
+      }
       &:first-child {
         margin-top: 0;
+        @include media(md) {
+          margin-top: 10px;
+        }
       }
       &::before {
         content: '';
@@ -49,7 +56,6 @@
         height: 50px;
         border-radius: 50%;
         top: 50%;
-        /* border: dashed 1px white; */
         left: -15px;
         -webkit-transform: translateY(-50%);
         transform: translateY(-50%);
@@ -60,17 +66,20 @@
     h3 {
       font-size: 2rem;
       position: relative;
-      padding-left: 1.2em; /*アイコン分のスペース*/
+      padding-left: 1.2em;
       line-height: 1.4;
       margin-bottom: 10px;
+      @include media(md) {
+        font-size: 1.9rem;
+      }
       &::before {
         font-family: 'Font Awesome 5 Free';
-        content: '\f00c'; /*アイコンのユニコード*/
-        position: absolute; /*絶対位置*/
-        font-size: 1em; /*サイズ*/
-        left: 0; /*アイコンの位置*/
-        top: 0; /*アイコンの位置*/
-        color: $info; /*アイコン色*/
+        content: '\f00c';
+        position: absolute;
+        font-size: 1em;
+        left: 0;
+        top: 0;
+        color: $info;
       }
     }
 
@@ -91,6 +100,9 @@
 
     img {
       max-width: 600px;
+      @include media(md) {
+        max-width: 100%;
+      }
     }
   }
 

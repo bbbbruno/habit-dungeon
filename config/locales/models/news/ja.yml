@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      news: お知らせ
+    attributes:
+      news:
+        title: タイトル
+        content: 内容
+        status: 公開
