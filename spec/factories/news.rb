@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: news
@@ -11,9 +13,25 @@
 #
 FactoryBot.define do
   factory :news do
-    title { "MyString" }
-    content { "MyText" }
-    index { "MyString" }
-    show { "MyString" }
+    title { 'ついにリリース！' }
+    content {
+      <<~EOS
+      ## リリースした
+      ついにリリースできました！
+      使い方について、くわしくは以下のリンクをチェック↓
+      <%= link_to 'こちら', page_path('help') %>
+      EOS
+    }
+    status { 'draft' }
+
+    trait :draft do
+      title { 'ついにリリース！ v1.1' }
+      status { 'draft' }
+    end
+
+    trait :published do
+      title { 'ついにリリース！ v1.2' }
+      status { 'published' }
+    end
   end
 end

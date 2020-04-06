@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class NewsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :authenticate_admin_user!, only: %i[new create update destroy]
+  before_action :authenticate_admin_user!, only: %i[new create edit update destroy]
   before_action :set_news, only: %i[show edit update destroy]
 
   def index
@@ -44,7 +43,7 @@ class NewsController < ApplicationController
 
   def destroy
     @news.destroy
-    redirect_to news_index_url, notice: 'ダンジョンの更新に成功しました'
+    redirect_to news_index_url, notice: 'お知らせの削除に成功しました'
   end
 
   private

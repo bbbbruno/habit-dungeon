@@ -30,6 +30,7 @@ RSpec.describe Notification, type: :model do
   let(:dungeon) { create(:dungeon) }
   let(:challenge) { create(:challenge, dungeon: dungeon) }
   let(:notifications) { recipient.notifications.where(kind: kind) }
+  let(:news) { build(:news, :published) }
 
   before do
     create_enemies
@@ -69,6 +70,14 @@ RSpec.describe Notification, type: :model do
     before do
       recipients.each { |recipient| create(:challenge, :for_user, challenger: recipient, dungeon: dungeon) }
     end
+    it { is_expected_block.to change { notifications.map(&:count) }.to [1, 1, 1] }
+  end
+
+  describe '.notify_news_created' do
+    subject { Notification.notify_news_created(news) }
+    let(:recipients) { create_list(:user, 3) }
+    let(:kind) { :news_created }
+    let(:notifications) { recipients.map { |recipient| recipient.notifications.where(kind: kind) } }
     it { is_expected_block.to change { notifications.map(&:count) }.to [1, 1, 1] }
   end
 end
