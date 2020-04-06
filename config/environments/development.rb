@@ -56,9 +56,9 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_mailer.delivery_method = :letter_opener_web
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  config.action_controller.asset_host = 'http://localhost:3000'
-  config.action_mailer.asset_host = 'http://localhost:3000'
+  config.action_mailer.default_url_options = { host: 'localhost' }
+  config.action_controller.asset_host = 'http://localhost'
+  config.action_mailer.asset_host = 'http://localhost'
 
   config.after_initialize do
     Bullet.enable = true # Bulletプラグインを有効

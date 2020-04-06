@@ -18,8 +18,4 @@ module ChallengesHelper
       '_final'
     end
   end
-
-  def challenge_header_url(challenge)
-    challenge&.header&.attached? ? url_for(challenge.header) : asset_pack_path('media/images/default_header.png')
-  end
 end
