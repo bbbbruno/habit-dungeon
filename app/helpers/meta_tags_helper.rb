@@ -33,7 +33,10 @@ module MetaTagsHelper
         image: asset_pack_url('media/images/ogp.png'),
         width: 100,
         height: 100
-      }
+      },
+      'apple-mobile-web-app-capable': 'yes',
+      'apple-mobile-web-app-status-bar-style': 'black',
+      'apple-mobile-web-app-title': 'HabitDungeon',
     }
   end
 end

@@ -13,10 +13,10 @@
     "eslint-plugin-vue": "^6.2.1",
     "import-glob-loader": "^1.1.0",
     "node-sass": "^4.13.1",
+    "rails-erb-loader": "^5.5.2",
     "turbolinks": "^5.2.0",
     "vue": "^2.6.11",
     "vue-loader": "^15.9.0",
-    "vue-sweetalert2": "^3.0.3",
     "vue-template-compiler": "^2.6.11",
     "vue-turbolinks": "^2.1.0"
   },
