@@ -17,7 +17,6 @@ services:
       - yarn-cache:/usr/local/share/.cache/yarn/v2:cached
       - node_modules:/srv/habit-dungeon/node_modules:cached
     ports:
-      - 3000:3000
       - 3035:3035
     depends_on:
       - db
@@ -31,7 +30,7 @@ services:
     depends_on:
       - app
     ports:
-      - 80:80
+      - 3000:3000
 volumes:
   public-data:
   tmp-data:

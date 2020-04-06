@@ -28,7 +28,7 @@ module MetaTagsHelper
         app_id: '661596567936976'
       },
       twitter: {
-        card: 'summary',
+        card: 'summary_large_image',
         site: '@bbbbruno69',
         image: asset_pack_url('media/images/ogp.png'),
         width: 100,

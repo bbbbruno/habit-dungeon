@@ -35,13 +35,13 @@ https://habit-dungeon.com
 
 # クラウドアーキテクチャ
 
-![cloud.png](https://user-images.githubusercontent.com/41530576/78524121-019a8300-780e-11ea-8f84-734ad70dfaf5.png)
+![cloud](https://user-images.githubusercontent.com/41530576/78524121-019a8300-780e-11ea-8f84-734ad70dfaf5.png)
 
 # インストール
 
 ```
 $ docker-compose build
-$ docker-compose run app bin/setup
+$ docker-compose run -rm app bin/setup
 $ docker-compose up
 ```
 
@@ -56,3 +56,9 @@ $ bundle exec rspec
 ```
 $ ./bin/lint
 ```
+
+# 資料
+
+エレベーターピッチ、ペーパープロトタイプ、DB設計図を作成しました。
+以下のリンクで確認できます。
+[資料一覧](https://github.com/bbbbruno/habit-dungeon/wiki/%E4%BC%81%E7%94%BB%E8%B3%87%E6%96%99)
