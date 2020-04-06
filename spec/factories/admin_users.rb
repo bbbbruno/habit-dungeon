@@ -22,5 +22,12 @@ FactoryBot.define do
   factory :admin_user do
     email { 'admin@example.com' }
     password { 'password' }
+    after(:build) do |admin|
+      admin.avatar.attach(
+        io: File.open(Rails.root.join('spec', 'factories', 'images', 'test_avatar.jpg')),
+        filename: 'test_avatar.jpg',
+        content_type: 'image/jpg'
+      )
+    end
   end
 end

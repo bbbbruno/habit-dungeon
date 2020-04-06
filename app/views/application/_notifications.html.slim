@@ -8,7 +8,7 @@
     label for="hidden-checkbox-notificaitons"
     p.toggle-menu-txt あなたへの通知
     ul.toggle-menu-list._scroll
-      - current_user.notifications.recent(10).each do |notification|
+      - current_user.notifications.includes(sender: { avatar_attachment: :blob }).limit(10).each do |notification|
         li.toggle-menu-item class="#{notification.read? ? '_read' : ''}"
           = link_to notification, method: :patch do
             = image_tag avatar_url(notification.sender)

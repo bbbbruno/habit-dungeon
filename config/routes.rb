@@ -69,13 +69,14 @@
 #               GET    /:id/attachments/:file(.:format) letter_opener_web/letters#attachment
 
 Rails.application.routes.draw do
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: '/letter_opener'
   end
 
   root to: 'home#index'
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
 
   devise_for :users,
     controllers: {
@@ -96,6 +97,7 @@ Rails.application.routes.draw do
       resources :allmarks, only: %i[create], controller: 'notifications/allmarks'
     end
   end
+  resources :news
 
   namespace :api, format: 'json' do
     resources :dungeons, only: %i[] do

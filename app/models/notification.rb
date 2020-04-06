@@ -25,7 +25,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Notification < ApplicationRecord
-  scope :recent, ->(count) { includes(:sender).order(created_at: :desc).limit(count) }
+  default_scope -> { order(created_at: :desc).includes(:sender) }
 
   belongs_to :user
   belongs_to :sender, polymorphic: true
@@ -39,6 +39,7 @@ class Notification < ApplicationRecord
     challenge_damaged: 1,
     challenge_rank_downed: 2,
     dungeon_edited: 3,
+    news_created: 4,
   }
   enum read: { unread: false, read: true }
 
@@ -92,6 +93,19 @@ class Notification < ApplicationRecord
             kind: :dungeon_edited,
           )
         end
+    end
+
+    def notify_news_created(news)
+      admin = AdminUser.first
+      message = news.title
+      User.all.find_each do |user|
+        user.notifications.create!(
+          sender: admin,
+          message: message,
+          path: Rails.application.routes.url_helpers.polymorphic_path(news),
+          kind: :news_created,
+        )
+      end
     end
   end
 end

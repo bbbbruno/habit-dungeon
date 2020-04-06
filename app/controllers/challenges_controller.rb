@@ -8,7 +8,7 @@ class ChallengesController < ApplicationController
   def index
     @challenges = Challenge
                     .includes(dungeon: { header_attachment: :blob }, challenger: { avatar_attachment: :blob })
-                    .recent_updated
+                    .order(updated_at: :desc)
                     .page(params[:page])
   end
 

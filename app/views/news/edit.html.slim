@@ -1,0 +1,12 @@
+- title 'お知らせ編集'
+
+.wrap-900
+  h1.pagetit
+    span = title
+
+  = render 'form'
+
+  .bottom
+    .bottom-links
+      = link_to 'もどる', @news
+      = link_to '削除', @news, data: { confirm: '本当によろしいですか？' }, method: :delete

@@ -1,0 +1,21 @@
+.card
+  .card-inner
+    = form_with model: @news, class: 'form' do |f|
+      - if @news.errors.any?
+        #error_explanation
+          h2 = "#{pluralize(@dungeon.errors.count, 'error')} prohibited this dungeon from being saved:"
+          ul
+            - @dungeon.errors.full_messages.each do |message|
+              li = message
+
+      .form-field
+        = f.label :title
+        = f.text_field :title, autofocus: true
+      .form-field
+        = f.label :content
+        = f.text_area :content, rows: 20
+      .form-field
+        = f.label :status
+        = f.check_box :status, {}, 'published', 'draft'
+      .form-btn
+        = f.submit

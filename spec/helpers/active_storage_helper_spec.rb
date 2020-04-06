@@ -3,14 +3,14 @@
 require 'rails_helper'
 
 # Specs in this file have access to a helper object that includes
-# the DungeonsHelper. For example:
+# the ActiveStorageHelper. For example:
 #
-# describe DungeonsHelper do
+# describe ActiveStorageHelper do
 #   describe "string concat" do
 #     it "concats two strings with spaces" do
 #       expect(helper.concat_strings("this","that")).to eq("this that")
 #     end
 #   end
 # end
-RSpec.describe DungeonsHelper, type: :helper do
+RSpec.describe ActiveStorageHelper, type: :helper do
 end

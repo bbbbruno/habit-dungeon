@@ -1,0 +1,13 @@
+- title @news.title
+
+.wrap-900
+  .card
+    h1.card-tit = title
+    .card-inner
+      .card-markdown = markdown(@news.content)
+
+  .bottom
+    .bottom-links
+      = link_to 'もどる', news_index_path
+      - if admin_user_signed_in?
+        = link_to '編集', edit_news_path(@news)

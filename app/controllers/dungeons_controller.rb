@@ -61,7 +61,7 @@ class DungeonsController < ApplicationController
 
   private
     def set_dungeon
-      @dungeon = Dungeon.with_discarded.includes(solos: { avatar_attachment: :blob }).find(params[:id])
+      @dungeon = Dungeon.with_discarded.find(params[:id])
     end
 
     def set_my_dungeon

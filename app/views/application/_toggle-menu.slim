@@ -6,7 +6,7 @@
     label for="hidden-checkbox-user"
     ul.toggle-menu-list
       li.toggle-menu-item._border = link_to 'マイページ', current_user
-      li.toggle-menu-item = link_to 'お知らせ', '#'
-      li.toggle-menu-item._border = link_to 'ヘルプ', '#'
+      li.toggle-menu-item = link_to 'お知らせ', news_index_path
+      li.toggle-menu-item._border = link_to 'ヘルプ', page_path('help')
       li.toggle-menu-item._border = link_to 'ユーザー設定', edit_user_registration_path
       li.toggle-menu-item = link_to 'ログアウト', destroy_user_session_path, method: :delete
