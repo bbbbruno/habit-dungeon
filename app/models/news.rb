@@ -6,12 +6,14 @@
 #
 #  id         :bigint           not null, primary key
 #  content    :text
-#  status     :boolean          default(FALSE), not null
+#  status     :boolean          default("draft"), not null
 #  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 class News < ApplicationRecord
+  default_scope -> { order(created_at: :desc) }
+
   enum status: { draft: false, published: true }
 
   after_save :notify_to_users

@@ -10,7 +10,7 @@ class NewsController < ApplicationController
     else
       news_index = News.published
     end
-    @news_index = news_index.order(created_at: :desc).page(params[:page])
+    @news_index = news_index.page(params[:page])
   end
 
   def new

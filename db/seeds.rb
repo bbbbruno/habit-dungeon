@@ -60,6 +60,7 @@ if Rails.env.development?
       description: description,
       user: user,
       levels: levels,
+      recommended: true,
     )
     next unless header
     image_file = header
