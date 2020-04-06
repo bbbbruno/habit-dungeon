@@ -32,6 +32,7 @@ https://habit-dungeon.com
 - Docker
 - CircleCI
 - GitHub
+- Vue.js
 
 # クラウドアーキテクチャ
 
