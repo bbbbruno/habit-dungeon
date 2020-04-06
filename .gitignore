@@ -11,7 +11,8 @@
 /log/*
 /tmp/*
 !/log/.keep
-!/tmp/.keep
+!/tmp/sockets/.keep
+!/tmp/pids/.keep
 
 # Ignore uploaded files in development.
 /storage/*
