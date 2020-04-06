@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/bbbbruno/habit-dungeon/tree/master.svg?style=svg)](https://circleci.com/gh/bbbbruno/habit-dungeon/tree/master)
+
 # HabitDungeon
 
 ![logo](https://user-images.githubusercontent.com/41530576/78524286-7cfc3480-780e-11ea-94e1-0ed3df1ec0fa.png)
