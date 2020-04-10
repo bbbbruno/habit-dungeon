@@ -47,7 +47,7 @@ class Challenge < ApplicationRecord
 
   delegate :challenger_name, :all_challengers, :all_challengers_avatar, to: :challenger
   delegate :title, :levels, :header, to: :dungeon
-  delegate :name, :image, to: :enemy, prefix: true
+  delegate :name, to: :enemy, prefix: true
 
   before_validation :set_initial_life_and_enemy, on: :create
   before_update :check_rank_up_or_rank_down
