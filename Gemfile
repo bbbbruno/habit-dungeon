@@ -32,6 +32,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'rails-i18n'
 gem 'devise'
 gem 'devise-i18n'
+gem 'aws-sdk-s3', require: false
 gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'

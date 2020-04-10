@@ -28,7 +28,7 @@
       .form-field._file._large
         = f.label :header
         = f.label :header, class: 'preview' do
-          = image_tag "#{@user.header.attached? ? url_for(@user.header.variant(resize_to_fill: [88, 88]).processed) : asset_pack_path('media/images/default_dungeon.png')}"
+          = image_tag user_header_url(@user)
           span 画像を選択
           = f.file_field :header, style: 'display: none'
       .form-field
