@@ -1,0 +1,35 @@
+blockquote {
+  position: relative;
+  padding: 10px 15px 15px 50px;
+  font-style: italic;
+  border: solid 2px #fff;
+  color: #fff;
+}
+
+blockquote:before {
+  display: inline-block;
+  position: absolute;
+  top: 20px;
+  left: 15px;
+  content: '\f10d';
+  font-family: 'Font Awesome 5 Free';
+  color: #fff;
+  font-size: 25px;
+  line-height: 1;
+  font-weight: 900;
+}
+
+blockquote p {
+  padding: 0;
+  margin: 10px 0 10px;
+  line-height: 1.7;
+  font-weight: 700;
+}
+
+blockquote cite {
+  display: block;
+  text-align: right;
+  color: #fff;
+  font-size: 0.9em;
+  font-weight: 600;
+}

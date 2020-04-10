@@ -1,7 +1,7 @@
 .overlay style="background: url(#{challenge_header_url(challenge)}) no-repeat center center/cover;"
   h1.challenges-tit = challenge.title
 
-.challenges-battle style="background: url('#{asset_pack_path('media/images/dungeons/23.jpg')}') no-repeat center center/cover;"
+.challenges-battle
   .challenges-container
     .challenges-challenger
       h3 = "#{challenge.challenger_name}"
@@ -18,7 +18,7 @@
               i.fas.fa-heart
             - (challenge.max_life - challenge.life).times do
               i.far.fa-heart
-    .challenges-enemy#target
+    .challenges-enemy
       .challenges-enemy-image
         = image_tag challenge.enemy_image
       .challenges-enemy-status
@@ -33,6 +33,9 @@
 .challenges-container
   = paginate challenges
   .challenges-progress
+    - if challenge.clear?
+      h1.stamp
+        span CLEAR！！
     h2 継続#{challenge.progress}日目
     ul.challenges-levels
       - counter = 0

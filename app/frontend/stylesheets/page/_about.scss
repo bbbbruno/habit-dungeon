@@ -1,0 +1,296 @@
+.about {
+  // background-color: #8c00ff;
+  // background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='540' height='450' viewBox='0 0 1080 900'%3E%3Cg fill-opacity='.1'%3E%3Cpolygon fill='%23444' points='90 150 0 300 180 300'/%3E%3Cpolygon points='90 150 180 0 0 0'/%3E%3Cpolygon fill='%23AAA' points='270 150 360 0 180 0'/%3E%3Cpolygon fill='%23DDD' points='450 150 360 300 540 300'/%3E%3Cpolygon fill='%23999' points='450 150 540 0 360 0'/%3E%3Cpolygon points='630 150 540 300 720 300'/%3E%3Cpolygon fill='%23DDD' points='630 150 720 0 540 0'/%3E%3Cpolygon fill='%23444' points='810 150 720 300 900 300'/%3E%3Cpolygon fill='%23FFF' points='810 150 900 0 720 0'/%3E%3Cpolygon fill='%23DDD' points='990 150 900 300 1080 300'/%3E%3Cpolygon fill='%23444' points='990 150 1080 0 900 0'/%3E%3Cpolygon fill='%23DDD' points='90 450 0 600 180 600'/%3E%3Cpolygon points='90 450 180 300 0 300'/%3E%3Cpolygon fill='%23666' points='270 450 180 600 360 600'/%3E%3Cpolygon fill='%23AAA' points='270 450 360 300 180 300'/%3E%3Cpolygon fill='%23DDD' points='450 450 360 600 540 600'/%3E%3Cpolygon fill='%23999' points='450 450 540 300 360 300'/%3E%3Cpolygon fill='%23999' points='630 450 540 600 720 600'/%3E%3Cpolygon fill='%23FFF' points='630 450 720 300 540 300'/%3E%3Cpolygon points='810 450 720 600 900 600'/%3E%3Cpolygon fill='%23DDD' points='810 450 900 300 720 300'/%3E%3Cpolygon fill='%23AAA' points='990 450 900 600 1080 600'/%3E%3Cpolygon fill='%23444' points='990 450 1080 300 900 300'/%3E%3Cpolygon fill='%23222' points='90 750 0 900 180 900'/%3E%3Cpolygon points='270 750 180 900 360 900'/%3E%3Cpolygon fill='%23DDD' points='270 750 360 600 180 600'/%3E%3Cpolygon points='450 750 540 600 360 600'/%3E%3Cpolygon points='630 750 540 900 720 900'/%3E%3Cpolygon fill='%23444' points='630 750 720 600 540 600'/%3E%3Cpolygon fill='%23AAA' points='810 750 720 900 900 900'/%3E%3Cpolygon fill='%23666' points='810 750 900 600 720 600'/%3E%3Cpolygon fill='%23999' points='990 750 900 900 1080 900'/%3E%3Cpolygon fill='%23999' points='180 0 90 150 270 150'/%3E%3Cpolygon fill='%23444' points='360 0 270 150 450 150'/%3E%3Cpolygon fill='%23FFF' points='540 0 450 150 630 150'/%3E%3Cpolygon points='900 0 810 150 990 150'/%3E%3Cpolygon fill='%23222' points='0 300 -90 450 90 450'/%3E%3Cpolygon fill='%23FFF' points='0 300 90 150 -90 150'/%3E%3Cpolygon fill='%23FFF' points='180 300 90 450 270 450'/%3E%3Cpolygon fill='%23666' points='180 300 270 150 90 150'/%3E%3Cpolygon fill='%23222' points='360 300 270 450 450 450'/%3E%3Cpolygon fill='%23FFF' points='360 300 450 150 270 150'/%3E%3Cpolygon fill='%23444' points='540 300 450 450 630 450'/%3E%3Cpolygon fill='%23222' points='540 300 630 150 450 150'/%3E%3Cpolygon fill='%23AAA' points='720 300 630 450 810 450'/%3E%3Cpolygon fill='%23666' points='720 300 810 150 630 150'/%3E%3Cpolygon fill='%23FFF' points='900 300 810 450 990 450'/%3E%3Cpolygon fill='%23999' points='900 300 990 150 810 150'/%3E%3Cpolygon points='0 600 -90 750 90 750'/%3E%3Cpolygon fill='%23666' points='0 600 90 450 -90 450'/%3E%3Cpolygon fill='%23AAA' points='180 600 90 750 270 750'/%3E%3Cpolygon fill='%23444' points='180 600 270 450 90 450'/%3E%3Cpolygon fill='%23444' points='360 600 270 750 450 750'/%3E%3Cpolygon fill='%23999' points='360 600 450 450 270 450'/%3E%3Cpolygon fill='%23666' points='540 600 630 450 450 450'/%3E%3Cpolygon fill='%23222' points='720 600 630 750 810 750'/%3E%3Cpolygon fill='%23FFF' points='900 600 810 750 990 750'/%3E%3Cpolygon fill='%23222' points='900 600 990 450 810 450'/%3E%3Cpolygon fill='%23DDD' points='0 900 90 750 -90 750'/%3E%3Cpolygon fill='%23444' points='180 900 270 750 90 750'/%3E%3Cpolygon fill='%23FFF' points='360 900 450 750 270 750'/%3E%3Cpolygon fill='%23AAA' points='540 900 630 750 450 750'/%3E%3Cpolygon fill='%23FFF' points='720 900 810 750 630 750'/%3E%3Cpolygon fill='%23222' points='900 900 990 750 810 750'/%3E%3Cpolygon fill='%23222' points='1080 300 990 450 1170 450'/%3E%3Cpolygon fill='%23FFF' points='1080 300 1170 150 990 150'/%3E%3Cpolygon points='1080 600 990 750 1170 750'/%3E%3Cpolygon fill='%23666' points='1080 600 1170 450 990 450'/%3E%3Cpolygon fill='%23DDD' points='1080 900 1170 750 990 750'/%3E%3C/g%3E%3C/svg%3E");
+  background-color: #8c00ff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%23720acc' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%236900aa' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%237506c5' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%236801a3' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%237704be' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%2367029c' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%237802b7' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%23650495' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%237900b1' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%2364058f' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%237a00aa' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%23620788' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+  font-family: $top;
+
+  .btn {
+    background: $info;
+    font-size: 2rem;
+    @include media(md) {
+      font-size: 1.8rem;
+    }
+    &:hover {
+      background: darken($color: $info, $amount: 10%);
+    }
+  }
+
+  .header {
+    background-color: transparent;
+    // background-color: #8c00ff;
+  }
+
+  .main {
+    padding: 30px 0;
+    text-align: center;
+    color: #ffffff;
+    @include media(md) {
+      padding: 0px 0;
+    }
+
+    > .container {
+      max-width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    h1,
+    h2 {
+      font-weight: bold;
+      font-family: $top;
+    }
+  }
+
+  .footer {
+    &-inner {
+      @include media(md) {
+        display: block;
+      }
+    }
+
+    &-nav {
+      display: none;
+    }
+  }
+
+  &-content {
+    // background-color: #6402b4;
+
+    h2 {
+      font-size: 4rem;
+      @include media(md) {
+        font-size: 3rem;
+      }
+    }
+
+    p {
+      font-size: 1.9rem;
+      margin-bottom: 20px;
+      font-weight: 600;
+      @include media(md) {
+        font-size: 1.6rem;
+      }
+    }
+  }
+
+  .top {
+    margin-bottom: 100px;
+    @include media(md) {
+      margin-bottom: 30px;
+    }
+    // background: darken($color: $main, $amount: 10%);
+
+    &-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      @include media(md) {
+        display: block;
+      }
+    }
+
+    &-tit {
+      font-size: 6.5rem;
+      margin-bottom: 5px;
+      @include media(md) {
+        font-size: 4.5rem;
+      }
+    }
+
+    &-subtit {
+      font-size: 3.2rem;
+      @include media(md) {
+        font-size: 2.6rem;
+        margin-bottom: 10px;
+      }
+    }
+
+    &-img {
+      max-width: 35%;
+      @include media(md) {
+        max-width: 70%;
+        margin: 0 auto;
+      }
+    }
+
+    &-btns {
+      display: flex;
+      justify-content: center;
+      @include media(md) {
+        display: block;
+      }
+      a {
+        margin: 0 20px;
+        padding: 15px 20px;
+        @include media(md) {
+          margin-bottom: 20px;
+          padding: 15px;
+        }
+      }
+    }
+  }
+
+  .intro {
+    padding: 10px 0 30px;
+    margin-bottom: 70px;
+    @include media(md) {
+      padding: 10px 0 0;
+    }
+
+    &-tit {
+      margin-bottom: 40px;
+    }
+  }
+
+  .point {
+    padding: 30px 0;
+    margin-bottom: 100px;
+    @include media(md) {
+      margin-bottom: 70px;
+      padding: 0;
+    }
+
+    &-tit {
+      margin-bottom: 50px;
+      @include media(md) {
+        margin-bottom: 30px;
+      }
+    }
+
+    &-list {
+      display: flex;
+      justify-content: center;
+      @include media(md) {
+        display: block;
+      }
+    }
+
+    &-item {
+      flex: 1 1 33%;
+      padding: 0px 15px;
+      @include media(md) {
+        margin-bottom: 25px;
+      }
+      img {
+        width: 100px;
+        margin-bottom: 5px;
+      }
+    }
+
+    &-subtit {
+      font-size: 2.6rem;
+      margin-bottom: 10px;
+    }
+  }
+
+  .step {
+    margin-bottom: 150px;
+    @include media(md) {
+      margin-bottom: 70px;
+    }
+
+    &-tit {
+      margin-bottom: 70px;
+      @include media(md) {
+        margin-bottom: 30px;
+      }
+    }
+
+    &-subtit {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      @include media(md) {
+        font-size: 2.6rem;
+      }
+    }
+
+    &-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 100px;
+      @include media(md) {
+        display: block;
+        margin-bottom: 40px;
+      }
+      &:nth-child(2n) {
+        flex-direction: row-reverse;
+        .step-box {
+          padding-right: 0;
+          padding-left: 50px;
+          @include media(md) {
+            padding-left: 0;
+          }
+        }
+      }
+    }
+
+    &-box {
+      flex: 1 1 50%;
+      padding-right: 50px;
+      @include media(md) {
+        padding-right: 0;
+      }
+    }
+
+    &-txt {
+      font-size: 2rem;
+      line-height: 1.7;
+      text-align: left;
+      @include media(md) {
+        font-size: 1.6rem;
+      }
+    }
+
+    &-img {
+      flex: 1 1 45%;
+    }
+  }
+
+  .quote {
+    margin-bottom: 150px;
+    @include media(md) {
+      margin-bottom: 40px;
+    }
+    &-txt {
+      margin-bottom: 10px;
+      font-size: 2.3rem;
+      @include media(md) {
+        font-size: 1.8rem;
+      }
+    }
+    &-cite {
+      font-size: 1.6rem;
+      @include media(md) {
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+  .action {
+    &-subtit {
+      margin-bottom: 20px;
+      font-size: 3.2rem;
+      @include media(md) {
+        font-size: 2.3rem;
+        margin-bottom: 10px;
+      }
+    }
+    &-tit {
+      margin-bottom: 40px;
+      font-size: 3.5rem;
+      @include media(md) {
+        font-size: 3rem;
+      }
+    }
+    a {
+      max-width: 500px;
+      margin: 0 auto;
+      margin-bottom: 60px;
+    }
+  }
+}

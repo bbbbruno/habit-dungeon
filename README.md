@@ -61,5 +61,5 @@ $ ./bin/lint
 # 資料
 
 エレベーターピッチ、ペーパープロトタイプ、DB設計図を作成しました。
-以下のリンクで確認できます。
+以下のリンクで確認できます。  
 [資料一覧](https://github.com/bbbbruno/habit-dungeon/wiki/%E4%BC%81%E7%94%BB%E8%B3%87%E6%96%99)

@@ -11,9 +11,7 @@ function onInstall(event) {
         // if you want to reference application.js from here
         '<%#= asset_path "application.js" %>',
 
-        <% helpers = ActionController::Base.helpers %>
-
-        '<%= helpers.asset_pack_path "application.js" %>',
+        '<%= ActionController::Base.helpers.asset_pack_path "application.js" unless Rails.env == 'test' %>',
 
         '/offline.html',
 
