@@ -51,7 +51,7 @@
     .main {
       padding: 0;
       @include media(md) {
-        padding-bottom: 70px;
+        padding-bottom: 59px;
       }
     }
     .container {
@@ -85,6 +85,7 @@
   &-battle {
     font-weight: bold;
     position: relative;
+    background: url('../images/default_challenge.jpg') center center / cover;
     .challenges-container {
       display: flex;
       justify-content: space-between;
@@ -258,6 +259,7 @@
     margin-bottom: 30px;
     border-radius: 5px;
     padding: 30px 40px 10px;
+    position: relative;
     @include media(md) {
       padding: 10px 20px 0px;
       margin-bottom: 20px;
@@ -270,6 +272,10 @@
       @include media(md) {
         font-size: 4.7rem;
       }
+    }
+    .stamp span {
+      font-size: 20rem;
+      border-width: 20px;
     }
   }
 

@@ -34,7 +34,7 @@ require 'rails_helper'
 RSpec.describe Challenge, type: :model do
   let(:challenge) { create :challenge, progress: progress }
   let(:progress) { 0 }
-  
+
   before do
     create_enemies
   end
@@ -67,7 +67,8 @@ RSpec.describe Challenge, type: :model do
 
     context '継続日数が最終レベルを超えたとき' do
       let(:progress) { 70 }
-      it { is_expected.to eq nil }
+      let(:last_level) { challenge.levels.last.number }
+      it { is_expected.to eq last_level }
     end
   end
 

@@ -3,6 +3,8 @@
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
+    position: relative;
+    z-index: 2;
     a {
       text-decoration: underline;
       margin-left: 10px;

@@ -62,6 +62,7 @@ class Challenge < ApplicationRecord
   end
 
   def current_level
+    return last_level if over_last_level?
     each_level_start
       .values
       .each_cons(2)
@@ -72,17 +73,17 @@ class Challenge < ApplicationRecord
   end
 
   def enemy_life
-    return 0 unless current_level
+    return 0 if over_last_level?
     each_level_start[current_level + 1] - progress
   end
 
   def rank_up
-    return unless current_level
+    return if over_last_level?
     self.enemy = Enemy.choose(level: current_level)
   end
 
   def rank_down
-    return unless current_level
+    return if over_last_level?
     previous_level = current_level - 1
     if previous_level > 0
       self.progress = each_level_start[previous_level]
@@ -124,7 +125,7 @@ class Challenge < ApplicationRecord
       if progress < threshold
         errors.add(:progress, "が#{threshold}日以上でないとダンジョンはクリアできません")
       end
-      if progress <= total_days
+      if progress < total_days
         errors.add(:base, '最終レベルをクリアしていないとダンジョンはクリアできません')
       end
     end
@@ -135,7 +136,7 @@ class Challenge < ApplicationRecord
     end
 
     def check_rank_up_or_rank_down
-      return unless current_level
+      return if over_last_level?
       if life == 0
         rank_down
         Notification.notify_rank_downed(self)
@@ -159,5 +160,13 @@ class Challenge < ApplicationRecord
         .with_index(1) do |days, index|
           [index, days]
         end.to_h
+    end
+
+    def over_last_level?
+      progress >= each_level_start[last_level + 1]
+    end
+
+    def last_level
+      levels.last.number
     end
 end

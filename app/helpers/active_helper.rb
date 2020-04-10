@@ -24,4 +24,12 @@ module ActiveHelper
       nil
     end
   end
+
+  def active_page?(page)
+    if params[:id] == page
+      page
+    else
+      nil
+    end
+  end
 end

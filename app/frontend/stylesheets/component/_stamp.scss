@@ -1,19 +1,27 @@
 .stamp {
   color: #555;
-  font-size: 8rem;
-  font-weight: 700;
-  border: 1rem solid #d23;
-  color: #d23;
-  padding: 0.25rem 1.5rem;
-  border-radius: 1rem;
-  font-family: 'Courier';
-  mask-image: url('../images/grunge.png');
-  mask-size: 944px 604px;
-  mix-blend-mode: multiply;
   position: absolute;
   top: 50%;
   left: 50%;
-  z-index: 9999;
+  z-index: 1000;
   transform: translate(-50%, -50%) rotate(12deg);
-  mask-position: 2rem 3rem;
+  span {
+    font-size: 8rem;
+    font-weight: 700;
+    border: 10px solid #d23;
+    color: #d23;
+    padding: 0.25rem 1.5rem;
+    border-radius: 1rem;
+    font-family: 'Courier';
+    mask-image: url('../images/grunge.png');
+    mask-size: 944px 604px;
+    mix-blend-mode: multiply;
+    mask-position: 2rem 3rem;
+    white-space: nowrap;
+
+    @include media(md) {
+      font-size: 5rem;
+      border-width: 5px;
+    }
+  }
 }

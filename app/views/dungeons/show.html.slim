@@ -3,11 +3,13 @@
 .wrap-900
   h1.pagetit
     span ダンジョン詳細
-  .card
+  .card class="#{'overlay' if @dungeon.discarded?}"
     - if @dungeon.discarded?
-      h1.stamp 削除済み
+      h1.stamp
+          span 削除済み
     .overlay style="background: url(#{dungeon_header_url(@dungeon)}) no-repeat center center/cover;"
-      h1.card-tit.dungeons-tit = @dungeon.title
+      h1.card-tit.dungeons-tit style="#{'z-index: 0;' if @dungeon.discarded?}"
+        = @dungeon.title
     .card-inner
       .dungeons-box
         h2.dungeons-heading 説明

@@ -1,3 +1,110 @@
 - title 'HabitDungeon（ハビットダンジョン）'
 
-h1 This is about page
+.about-top
+  .container
+    section.top
+      .top-box
+        .top-txt
+          h1.top-tit HabitDungeon
+          h2.top-subtit Lv1から始める習慣化
+        .top-img
+          = image_pack_tag 'top/dungeon.png'
+      .top-btns
+        = link_to '習慣化をはじめる', new_user_session_path, class: 'btn'
+        = link_to 'ダンジョンを見てみる', dungeons_path, class: 'btn'
+
+.about-content
+  .container
+    section.intro
+      h2.intro-tit ゲーム感覚で楽しく習慣を身につけよう
+      p.intro-txt
+        |「もっと早起きしたい」「健康のために運動しなきゃな」「本もたくさん読まないと」<br >
+        | そう思って習慣作りを初めてみたものの、すぐに続かなくなって挫折してしまった・・。<br>
+        | そんな経験はありませんか？
+      p.intro-txt
+        | ある研究結果によると、毎日の行動のじつに40パーセント以上が「習慣」によるものだそうです。<br class="_pc">
+        | つまり、日々の習慣こそが我々の人格を形成していくのです。<br class="_pc">
+        | ならば、習慣さえ変えることができれば、人格が変わり、<br>
+        | そして人生をも変えることができる、そう考えられないでしょうか？
+      p.intro-txt
+        | しかし習慣化する際に多くの人は、「大きく」はじめてしまいがちです。<br>
+        | 例えば、「運動すること」を習慣化したい場合は<br class="_pc">
+        | 「明日から毎日１km走る」という目標を立てがちです。<br class="_pc">
+        | 今まで全然運動してこなかった人が急に毎日走ることができるでしょうか？<br>
+        | これが多くの人が習慣化に挫折してしまう、最も大きな原因です。
+      p.intro-txt
+        | 習慣化にはコツがあります。<br >
+        | それは「できないことがありえないぐらい小さく」はじめることです。<br class="_pc">
+        | 例えば、「明日から毎日１０秒走る」という感じです。<br class="_pc">
+        | そして少しずつ「毎日１分」、「毎日１０分」と目標をエスカレートさせていくことが大切です。<br>
+        | HabitDungeonはそんな「小さな習慣」を楽しく行うための、<br class="_pc">
+        | そして新しい習慣を身に付けて自分の人生を変えたい人のための、<br class="_pc">
+        | 習慣化支援サービスです。
+
+    section.point
+      h2.point-tit こんな特徴があります
+      ul.point-list
+        li.point-item
+          = image_pack_tag 'top/all-for-one.png'
+          h3.point-subtit 少しずつ身につける！
+          p.point-txt
+            | プレイヤーはLv1の目標からスタートし、少しずつLvアップしていきます。
+            | ありえないぐらい小さい目標からはじめ、徐々に難易度を上げていくので、無理なく継続することができます！
+        li.point-item
+          = image_pack_tag 'top/clockwork.png'
+          h3.point-subtit 継続日数が常にわかる！
+          p.point-txt
+            | ダンジョンを攻略していく中で、今までにクリアしたレベルと継続日数が常にわかります。
+            | これによって自分の今までの努力が可視化され、やる気やモチベーションの維持につながります！
+        li.point-item
+          = image_pack_tag 'top/life-bar.png'
+          h3.point-subtit 何度でもやり直せる！
+          p.point-txt
+            | HabitDungeonはライフ制です。
+            | 継続できないとダメージを受けて、ライフが０になるとLvが１つ下がります。
+            | なので、1日や2日継続できなくても、Lvが下がるだけでそのまま再スタートできます！
+
+    section.step
+      h2.step-tit こんな風に利用します
+      ul.step-list
+        li.step-item
+          .step-box
+            h3.step-subtit 毎日こうげき！
+            p.step-txt
+              | HabitDungeonでプレイヤーがやるべきことは「毎日モンスターにこうげきする」、基本これだけです。<br>
+              | プレイヤーは現在の目標が継続できたらモンスターにこうげきしてダメージを与えることができます。<br>
+              | 毎日継続してダメージを与え、次のレベルを目指していきましょう！
+          .step-img
+            = image_pack_tag 'top/screencapture1.png'
+        li.step-item
+          .step-box
+            h3.step-subtit 目標がLvアップ！
+            p.step-txt
+              | 毎日モンスターにダメージを与えていき、モンスターのライフが０になると、そのレベルはクリアです！<br>
+              | ランダムに次のモンスターが出現し、レベルが１つ上がります。<br>
+              | モンスターは最初は弱そうなものばかりですが、後半になるにつれて強力な見た目になります。<br>
+              | 次にどんなモンスターが現れるかを楽しみましょう！
+          .step-img
+            = image_pack_tag 'top/screencapture2.png'
+        li.step-item
+          .step-box
+            h3.step-subtit 66日以上継続でクリア！
+            p.step-txt
+              | 最終レベルをクリアし、66日以上継続するとダンジョンクリアです！<br>
+              | 「ダンジョンクリア ＝ 一生モノの習慣が一つ身についた」ということです。<br>
+              | ダンジョンを順調にクリアしていけば、年に4個も自分の一生身に着けたい習慣を身につけることができます。<br>
+              | クリアを目指してどんどん挑戦しましょう！
+          .step-img
+            = image_pack_tag 'top/screencapture3.png'
+
+    section.quote
+      blockquote
+        p.quote-txt 小さいことを積み重ねるのが、とんでもないところへ行くただひとつの道だと思っています。
+        cite.quote-cite ｂｙ　イチロー　（鈴木一朗）
+
+.about-footer
+  .container
+    section.action
+      h3.action-subtit 小さな習慣の積み重ねであなたの人生は変わります。
+      h2.action-tit さあ！いまこそLv1からはじめましょう！
+      = link_to '今日からHabitDungeonをはじめる', new_user_session_path, class: 'btn'
