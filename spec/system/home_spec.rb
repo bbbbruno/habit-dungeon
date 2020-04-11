@@ -33,7 +33,7 @@ RSpec.describe 'Home', type: :system do
   context 'ログインしていないとき' do
     it 'aboutページに飛ばされる' do
       visit root_path
-      expect(current_path).to eq '/about'
+      expect(current_path).to eq page_path('about')
     end
   end
 end

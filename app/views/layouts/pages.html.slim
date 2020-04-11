@@ -10,11 +10,18 @@ html lang="ja"
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     link rel="manifest" href="/manifest.json"
 
-  body class=controller.controller_name id=controller.action_name
-    .inner class=active_page?('about')
+  body class=controller.controller_name id=params[:id]
+    .inner
       = render 'header'
       = render 'flash'
       main.main
-        .container = yield
+        .container
+          .wrap-900
+            .card
+              h1.card-tit = title
+              .card-inner
+                .card-markdown = yield
+                .card-bottom
+                  = link_to 'もどる', :back
       = render 'footer_pc'
       = render 'footer_sp'

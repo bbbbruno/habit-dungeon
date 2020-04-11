@@ -83,8 +83,18 @@
       }
     }
 
-    ul,
-    ol,
+    ol {
+      list-style: decimal;
+      margin: 10px 0 10px 40px;
+      li {
+        padding-left: 3px;
+      }
+    }
+
+    li {
+      line-height: 1.7;
+    }
+
     p {
       margin-bottom: 15px;
       line-height: 1.6;

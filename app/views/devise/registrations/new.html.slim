@@ -55,6 +55,11 @@
       .form-field
         = f.label :password_confirmation, class: 'required'
         = f.password_field :password_confirmation, autocomplete: 'new-password'
+      p.form-agreement
+        = link_to '利用規約', page_path('term-of-use')
+        | 及び
+        = link_to 'プライバシーポリシー', page_path('privacy-policy')
+        | に同意することになります
       .form-btn
         = f.submit t('.sign_up')
     = render 'devise/shared/links'
