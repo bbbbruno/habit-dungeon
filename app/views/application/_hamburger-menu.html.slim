@@ -25,3 +25,12 @@
       li.hamburger-menu-item
         p その他
         = link_to 'ログアウト', destroy_user_session_path, method: :delete
+      li.hamburger-menu-item
+        p リンク
+        = link_to 'Twitter', 'https://twitter.com/bbbbruno69'
+        = link_to 'GitHub', 'https://github.com/bbbbruno'
+        = link_to '利用規約', page_path('term-of-use')
+        = link_to 'プライバシーポリシー', page_path('privacy-policy')
+        = link_to 'お問い合わせ', 'https://forms.gle/a7QZbmPjg4wgSSH89', target: :_blank
+        = link_to 'フィードバック', 'https://forms.gle/PPaixKgFoVrmuVs17', target: :_blank
+      small © 2020 HabitDungeon All rights reserved.
