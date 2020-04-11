@@ -21,7 +21,7 @@
   }
 
   &-tit {
-    font-family: 'Suez One', serif;
+    font-family: $logo;
     font-size: 3rem;
     margin-left: 5px;
     @include media(md) {
