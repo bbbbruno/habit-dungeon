@@ -16,7 +16,7 @@ module ActiveStorageHelper
   end
 
   def user_header_url(user)
-    user.header.attached? ? cdn_ready_blob_path(user.header) : asset_pack_path('media/images/default_dungeon.png')
+    user.header.attached? ? cdn_ready_blob_path(user.header) : asset_pack_path('media/images/default_dungeon.jpg')
   end
 
   def dungeon_header_url(dungeon)

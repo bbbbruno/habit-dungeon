@@ -1,4 +1,4 @@
-<% title 'HabitDungeonとは？' %>
+<% title 'HabitDungeon とは？' %>
 
 ## 楽しく習慣化を行いましょう
 
@@ -15,7 +15,7 @@
 ## 具体例
 
 <%= link_to 'root', root_path %>
-<%= image_pack_tag 'default_dungeon.png' %>
+<%= image_pack_tag 'default_dungeon.jpg' %>
 <%= Time.current %>
 
 つまりはこういうことですね
