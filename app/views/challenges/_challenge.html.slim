@@ -8,7 +8,7 @@ li.card-list-item
       p メンバー
       p
         - challenge.all_challengers.each do |challenger|
-          = link_to image_tag(avatar_url(challenger)), challenger
+          = link_to lazy_image_tag(avatar_url(challenger)), challenger
     li.card-list-txt
       p 現在のレベル
       p = "Lv#{challenge.current_level}"

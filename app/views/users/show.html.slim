@@ -5,7 +5,7 @@ h1.pagetit
 .users-wrap
   .users-left.card
     .users-header style="background: url('#{user_header_url(@user)}') no-repeat center center/cover"
-      = image_tag avatar_url(@user)
+      = lazy_image_tag avatar_url(@user)
     .users-profile
       h2 = @user.username
       h3 = @user.name

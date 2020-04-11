@@ -1,5 +1,5 @@
 li.card-list-item
-  = image_tag avatar_url(user), class: 'card-list-icon _left'
+  = lazy_image_tag avatar_url(user), class: 'card-list-icon _left'
   .card-list-top
     h2 = user.username
     h3 = user.name

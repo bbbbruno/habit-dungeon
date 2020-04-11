@@ -37,4 +37,4 @@
   ul.challengers-list
     - @dungeon.all_uniq_challengers.each do |challenger|
       = link_to challenger do
-        = image_tag avatar_url(challenger)
+        = lazy_image_tag avatar_url(challenger)

@@ -5,7 +5,7 @@
 .users-challenges-details
   .users-challenges-avatars
     - avatar_urls(challenge.challenger, size: [50, 50]).each do |url|
-      = image_tag url
+      = lazy_image_tag url
   .users-challenges-links
     h3.users-challenges-level = "現在のレベル　Lv #{challenge.current_level}"
     = link_to 'くわしく', challenge

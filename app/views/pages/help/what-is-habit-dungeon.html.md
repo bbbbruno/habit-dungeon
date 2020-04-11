@@ -15,7 +15,7 @@
 ## 具体例
 
 <%= link_to 'root', root_path %>
-<%= image_pack_tag 'default_dungeon.jpg' %>
+<%= lazy_image_pack_tag 'default_dungeon.jpg' %>
 <%= Time.current %>
 
 つまりはこういうことですね

@@ -11,7 +11,7 @@
       - current_user.notifications.includes(sender: { avatar_attachment: :blob }).limit(10).each do |notification|
         li.toggle-menu-item class="#{notification.read? ? '_read' : ''}"
           = link_to notification, method: :patch do
-            = image_tag avatar_url(notification.sender)
+            = lazy_image_tag avatar_url(notification.sender)
             .toggle-menu-message
               p = notification.message
               span = notification.created_at.strftime('%Y/%m/%d')

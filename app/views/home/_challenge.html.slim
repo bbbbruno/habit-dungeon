@@ -10,7 +10,7 @@
           h4 メンバー
           p
             - avatar_urls(challenge.challenger).each do |url|
-              = image_tag url, style: 'border-radius: 50%;'
+              = lazy_image_tag url, style: 'border-radius: 50%;'
         .challenges-challenger-lifes
           h4 ライフ
           p
@@ -20,7 +20,7 @@
               i.far.fa-heart
     .challenges-enemy
       .challenges-enemy-image
-        = image_tag enemy_image_url(challenge.enemy)
+        = lazy_image_tag enemy_image_url(challenge.enemy)
       .challenges-enemy-status
         - if challenge.current_level
           h3.level = "Lv #{challenge.current_level}"

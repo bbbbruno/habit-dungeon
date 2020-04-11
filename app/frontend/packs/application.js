@@ -8,6 +8,7 @@ require('turbolinks').start()
 require('@rails/activestorage').start()
 require('channels')
 
+require('../javascript/lazyload')
 require('../javascript/serviceworker-companion')
 require('../javascript/fileinput')
 require('../javascript/levels')
@@ -17,6 +18,6 @@ require('../javascript/levels')
 // or the `imagePath` JavaScript helper below.
 //
 const images = require.context('../images', true)
-const imagePath = (name) => images(name, true)
+const imagePath = name => images(name, true)
 
 import '../stylesheets/application'

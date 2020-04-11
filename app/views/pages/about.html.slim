@@ -8,7 +8,7 @@
           h1.top-tit HabitDungeon
           h2.top-subtit Lv1から始める習慣化
         .top-img
-          = image_pack_tag 'top/dungeon.png'
+          = lazy_image_pack_tag 'top/dungeon.png'
       .top-btns
         = link_to '習慣化をはじめる', new_user_session_path, class: 'btn'
         = link_to 'ダンジョンを見てみる', dungeons_path, class: 'btn'
@@ -45,19 +45,19 @@
       h2.point-tit こんな特徴があります
       ul.point-list
         li.point-item
-          = image_pack_tag 'top/all-for-one.png'
+          = lazy_image_pack_tag 'top/all-for-one.png'
           h3.point-subtit 少しずつ身につける！
           p.point-txt
             | プレイヤーはLv1の目標からスタートし、少しずつLvアップしていきます。
             | ありえないぐらい小さい目標からはじめ、徐々に難易度を上げていくので、無理なく継続することができます！
         li.point-item
-          = image_pack_tag 'top/clockwork.png'
+          = lazy_image_pack_tag 'top/clockwork.png'
           h3.point-subtit 継続日数が常にわかる！
           p.point-txt
             | ダンジョンを攻略していく中で、今までにクリアしたレベルと継続日数が常にわかります。
             | これによって自分の今までの努力が可視化され、やる気やモチベーションの維持につながります！
         li.point-item
-          = image_pack_tag 'top/life-bar.png'
+          = lazy_image_pack_tag 'top/life-bar.png'
           h3.point-subtit 何度でもやり直せる！
           p.point-txt
             | HabitDungeonはライフ制です。
@@ -75,7 +75,7 @@
               | プレイヤーは現在の目標が継続できたらモンスターにこうげきしてダメージを与えることができます。<br>
               | 毎日継続してダメージを与え、次のレベルを目指していきましょう！
           .step-img
-            = image_pack_tag 'top/screencapture1.png'
+            = lazy_image_pack_tag 'top/screencapture1.png'
         li.step-item
           .step-box
             h3.step-subtit 目標がLvアップ！
@@ -85,7 +85,7 @@
               | モンスターは最初は弱そうなものばかりですが、後半になるにつれて強力な見た目になります。<br>
               | 次にどんなモンスターが現れるかを楽しみましょう！
           .step-img
-            = image_pack_tag 'top/screencapture2.png'
+            = lazy_image_pack_tag 'top/screencapture2.png'
         li.step-item
           .step-box
             h3.step-subtit 66日以上継続でクリア！
@@ -95,7 +95,7 @@
               | ダンジョンを順調にクリアしていけば、年に4個も自分の一生身に着けたい習慣を身につけることができます。<br>
               | クリアを目指してどんどん挑戦しましょう！
           .step-img
-            = image_pack_tag 'top/screencapture3.png'
+            = lazy_image_pack_tag 'top/screencapture3.png'
 
     section.quote
       blockquote
