@@ -104,7 +104,7 @@ if Rails.env.development?
         name: name,
       )
       image_file = image
-      path = Rails.root.join('app', 'frontend', 'images', "level#{index}", image_file)
+      path = Rails.root.join('app', 'frontend', 'images', "level#{index}", "#{image_file}.png")
       file = File.open(path)
       created_enemy.image.attach(io: file, filename: image_file, content_type: 'image/png')
     end

@@ -54,6 +54,7 @@
         letter-spacing: 0.2rem;
         line-height: 1;
         margin-bottom: 5px;
+        font-weight: 500;
         @include media(md) {
           font-size: 3.5rem;
           margin-bottom: 2px;
