@@ -6,9 +6,49 @@
 @font-face {
   font-family: 'GN';
   font-display: swap;
-  src: url('../fonts/GN-Kin-iro_SansSerif.ttf');
+  src: url('../fonts/GN-Kin-iro_SansSerif.woff2');
 }
-@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&family=Noto+Serif+JP:wght@400;600;700&family=Suez+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Suez+One&display=swap');
+@font-face {
+  font-family: 'M PLUS Rounded 1c';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+  src: local('M PLUS Rounded 1c'), local('MPLUSRounded1c-Regular'),
+    url('../fonts/MPLUSRounded1c-Regular.woff2');
+}
+@font-face {
+  font-family: 'M PLUS Rounded 1c';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 500;
+  src: local('M PLUS Rounded 1c Medium'), local('MPLUSRounded1c-Medium'),
+    url('../fonts/MPLUSRounded1c-Medium.woff2');
+}
+@font-face {
+  font-family: 'M PLUS Rounded 1c';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+  src: local('M PLUS Rounded 1c Bold'), local('MPLUSRounded1c-Bold'),
+    url('../fonts/MPLUSRounded1c-Bold.woff2');
+}
+@font-face {
+  font-family: 'Noto Serif JP';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 600;
+  src: local('Noto Serif JP SemiBold'), local('NotoSerifJP-SemiBold'),
+    url('../fonts/NotoSerifJP-SemiBold.woff2');
+}
+@font-face {
+  font-family: 'Noto Serif JP';
+  font-display: swap;
+  font-style: bold;
+  font-weight: 700;
+  src: local('Noto Serif JP Bold'), local('NotoSerifJP-Bold'),
+    url('../fonts/NotoSerifJP-Bold.woff2');
+}
 $logo: 'Suez One', serif;
 $rpg: 'GN', sans-serif;
 $base: 'M PLUS Rounded 1c', sans-serif;
