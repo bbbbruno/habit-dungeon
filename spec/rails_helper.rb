@@ -63,6 +63,8 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
+  Capybara.default_max_wait_time = 5
+
   config.before(:each) do |example|
     if example.metadata[:type] == :system
       if example.metadata[:js]
@@ -71,5 +73,11 @@ RSpec.configure do |config|
         driven_by :rack_test
       end
     end
+  end
+
+  config.verbose_retry = true
+  config.display_try_failure_messages = true
+  config.around :each, :js do |ex|
+    ex.run_with_retry retry: 3
   end
 end

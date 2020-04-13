@@ -15,14 +15,13 @@
   &-field {
     width: 100%;
     display: grid;
-    grid-template-columns: 45px 1fr 63px 35px;
+    grid-template-columns: 45px 1fr 70px 35px;
     grid-gap: 10px;
     align-items: center;
     &:not(:last-child) {
       margin-bottom: 10px;
     }
     @include media(md) {
-      grid-template-columns: 45px 1fr 75px 35px;
       grid-gap: 5px;
     }
 
@@ -95,6 +94,15 @@
   &-total {
     display: flex;
     align-items: center;
+    span {
+      padding: 5px 20px;
+      color: #ffffff;
+      background: $sub;
+      letter-spacing: 0.2rem;
+      font-size: 2rem;
+      font-weight: bold;
+      border-radius: 30px;
+    }
     p {
       font-size: 2rem;
       font-weight: 500;

@@ -22,7 +22,7 @@
         @keydown.13.prevent
         required
       />
-      <span class="levels-days">
+      <p class="levels-days">
         <input
           min="1"
           max="31"
@@ -33,7 +33,7 @@
           required
         />
         日
-      </span>
+      </p>
       <input
         type="hidden"
         :value="level.id"

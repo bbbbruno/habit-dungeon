@@ -98,6 +98,7 @@ group :test do
   gem 'rspec_junit_formatter'
   gem 'capybara'
   gem 'webdrivers'
+  gem 'rspec-retry'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
