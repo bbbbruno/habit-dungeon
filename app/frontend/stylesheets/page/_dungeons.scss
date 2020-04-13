@@ -117,6 +117,9 @@
   }
 
   &-content {
+    a {
+      @include underline;
+    }
     p {
       margin-bottom: 10px;
     }

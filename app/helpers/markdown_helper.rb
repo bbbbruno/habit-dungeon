@@ -2,6 +2,8 @@
 
 module MarkdownHelper
   def markdown(text)
+    return '' if text.blank?
+
     options = {
       hard_wrap:       true,
       space_after_headers: true,

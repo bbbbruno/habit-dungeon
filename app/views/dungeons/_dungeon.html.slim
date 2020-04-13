@@ -4,7 +4,7 @@ li.card-list-item
   .card-list-inner
     .card-list-content
       h3 説明
-      .card-list-sentence = simple_format h truncate(dungeon.description, length: 60)
+      .card-list-sentence = markdown truncate(dungeon.description, length: 60)
       .card-list-tits
         h4 = "#{dungeon.all_uniq_challengers.count}人が挑戦中！"
         h4 = "最大 Lv#{dungeon.last_level}"

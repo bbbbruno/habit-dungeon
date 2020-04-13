@@ -13,7 +13,7 @@
     .card-inner
       .dungeons-box
         h2.dungeons-heading 説明
-        .dungeons-content = simple_format h @dungeon.description
+        .dungeons-content = markdown @dungeon.description
       .dungeons-box
         h2.dungeons-heading レベル
         - @dungeon.levels.each do |level|
