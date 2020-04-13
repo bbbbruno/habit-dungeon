@@ -35,7 +35,7 @@ module ActiveStorageHelper
     def cdn_ready_blob_path(attachment)
       service = Rails.application.config.active_storage.service
       if service == :amazon
-        key = attachment&.blob&.key
+        key = attachment&.key
         "https://d2r2xm25ziwcl0.cloudfront.net/#{key}"
       else
         url_for(attachment)
