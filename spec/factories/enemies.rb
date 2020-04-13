@@ -10,6 +10,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_enemies_on_name  (name) UNIQUE
+#
 FactoryBot.define do
   factory :enemy do
     trait :slime do
@@ -45,35 +49,35 @@ FactoryBot.define do
         )
       end
     end
-    trait :hydra4 do
+    trait :witch do
       level { 4 }
-      name { 'ヒドラ' }
+      name { 'ウィッチ' }
       after(:build) do |enemy|
         enemy.image.attach(
-          io: File.open(Rails.root.join('app', 'frontend', 'images', 'level3', 'hydra.png')),
-          filename: 'hydra.png',
+          io: File.open(Rails.root.join('app', 'frontend', 'images', 'level4', 'witch.png')),
+          filename: 'which.png',
           content_type: 'image/png'
         )
       end
     end
-    trait :hydra5 do
+    trait :panda do
       level { 5 }
-      name { 'ヒドラ' }
+      name { 'パンダ' }
       after(:build) do |enemy|
         enemy.image.attach(
-          io: File.open(Rails.root.join('app', 'frontend', 'images', 'level3', 'hydra.png')),
-          filename: 'hydra.png',
+          io: File.open(Rails.root.join('app', 'frontend', 'images', 'level5', 'panda.png')),
+          filename: 'panda.png',
           content_type: 'image/png'
         )
       end
     end
-    trait :hydra6 do
+    trait :medusa do
       level { 6 }
-      name { 'ヒドラ' }
+      name { 'メデューサ' }
       after(:build) do |enemy|
         enemy.image.attach(
-          io: File.open(Rails.root.join('app', 'frontend', 'images', 'level3', 'hydra.png')),
-          filename: 'hydra.png',
+          io: File.open(Rails.root.join('app', 'frontend', 'images', 'level6', 'medusa.png')),
+          filename: 'medusa.png',
           content_type: 'image/png'
         )
       end

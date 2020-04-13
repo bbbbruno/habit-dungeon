@@ -62,6 +62,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # end
     def after_sign_in_path_for(resource)
       if resource.sign_in_count == 1
+        Notification.notify_welcome_to_habit_dungeon(resource)
         flash.alert = '好きなユーザー名を設定してください'
         edit_user_registration_path
       else
