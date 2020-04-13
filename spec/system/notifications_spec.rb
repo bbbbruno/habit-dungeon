@@ -9,7 +9,7 @@ RSpec.describe 'Notifications', type: :system do
     login_as user, scope: :user
   end
 
-  describe '通知一覧' do
+  describe '通知一覧', js: true do
     it '一覧が見れる' do
       visit root_path
       find('.toggle-menu._notifications').click
@@ -18,10 +18,12 @@ RSpec.describe 'Notifications', type: :system do
     end
   end
 
-  it '全て既読にできる' do
-    visit root_path
-    find('.toggle-menu._notifications').click
-    click_on '全て既読にする'
-    expect(page).to have_content '全て既読にしました'
+  describe '既読', js: true do
+    it '全て既読にできる' do
+      visit root_path
+      find('.toggle-menu._notifications').click
+      click_on '全て既読にする'
+      expect(page).to have_content '全て既読にしました'
+    end
   end
 end
