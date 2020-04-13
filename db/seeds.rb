@@ -8,6 +8,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first
 if Rails.env.development?
+  admin = AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+  path = Rails.root.join('app', 'frontend', 'images', 'admin.jpg')
+  file = File.open(path)
+  admin.avatar.attach(io: file, filename: 'admin.jpg', content_type: 'image/jpg')
+
   users = YAML.load_file(Rails.root.join('db', 'seeds', 'users.yml'))
   users.each.with_index(1) do |(user, attributes), index|
     email = attributes['email']
@@ -119,9 +124,4 @@ if Rails.env.development?
       difficulty: 'easy',
     )
   end
-
-  admin = AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
-  path = Rails.root.join('app', 'frontend', 'images', 'admin.jpg')
-  file = File.open(path)
-  admin.avatar.attach(io: file, filename: 'admin.jpg', content_type: 'image/jpg')
 end
