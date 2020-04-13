@@ -68,7 +68,7 @@
       position: relative;
       padding-left: 1.2em;
       line-height: 1.4;
-      margin-bottom: 10px;
+      margin: 30px 0 10px;
       @include media(md) {
         font-size: 1.9rem;
       }
@@ -80,6 +80,14 @@
         left: 0;
         top: 0;
         color: $info;
+      }
+    }
+
+    ul {
+      list-style-type: disc;
+      margin: 10px 0 10px 40px;
+      li {
+        padding-left: 3px;
       }
     }
 
@@ -110,8 +118,10 @@
 
     img {
       max-width: 600px;
+      margin: 20px 0;
       @include media(md) {
         max-width: 100%;
+        margin: 10px 0;
       }
     }
   }

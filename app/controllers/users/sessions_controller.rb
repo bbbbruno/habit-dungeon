@@ -25,6 +25,7 @@ class Users::SessionsController < Devise::SessionsController
     # end
 
     def after_sign_in_path_for(resource)
+      Notification.notify_welcome_to_habit_dungeon(resource) if resource.sign_in_count == 1
       root_path
     end
 

@@ -4,7 +4,7 @@ def create_enemies
   create(:enemy, :slime)
   create(:enemy, :snake)
   create(:enemy, :hydra)
-  create(:enemy, :hydra4)
-  create(:enemy, :hydra5)
-  create(:enemy, :hydra6)
+  create(:enemy, :witch)
+  create(:enemy, :panda)
+  create(:enemy, :medusa)
 end

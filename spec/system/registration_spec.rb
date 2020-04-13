@@ -5,6 +5,10 @@ require 'rails_helper'
 RSpec.describe 'Registration', type: :system do
   let(:user_a) { create(:user) }
 
+  before do
+    create(:admin_user)
+  end
+
   describe '新規登録' do
     it 'Eメールとパスワードで新規登録できる' do
       visit new_user_registration_path

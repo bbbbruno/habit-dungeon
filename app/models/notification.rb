@@ -35,15 +35,27 @@ class Notification < ApplicationRecord
   validates :path, presence: true
 
   enum kind: {
-    dungeon_challenged: 0,
-    challenge_damaged: 1,
-    challenge_rank_downed: 2,
-    dungeon_edited: 3,
-    news_created: 4,
+    welcome_to_habit_dungeon: 0,
+    dungeon_challenged: 1,
+    challenge_damaged: 2,
+    challenge_rank_downed: 3,
+    dungeon_edited: 4,
+    news_created: 5,
   }
   enum read: { unread: false, read: true }
 
   class << self
+    def notify_welcome_to_habit_dungeon(user)
+      admin = AdminUser.first
+      message = 'HabitDungeonへようこそ！'
+      user.notifications.create!(
+        sender: admin,
+        message: message,
+        path: Rails.application.routes.url_helpers.page_path('help/what-is-habit-dungeon'),
+        kind: :welcome_to_habit_dungeon,
+      )
+    end
+
     def notify_dungeon_challenged(challenge)
       message = "#{challenge.challenger_name} があなたのつくった「#{challenge.title}」ダンジョンに挑戦し始めました。"
       challenge.dungeon.user.notifications.create!(
