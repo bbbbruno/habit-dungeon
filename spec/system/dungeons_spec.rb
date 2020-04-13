@@ -73,7 +73,7 @@ RSpec.describe 'Dungeons', type: :system do
 
   describe 'ダンジョン編集' do
     context 'ログインしているとき' do
-      context 'ダンジョン作成者が自分のとき', js: true do
+      context 'ダンジョン作成者が自分のとき', js: true, retry: 5, retry_wait: 5 do
         let(:login_user) { user_a }
         it '編集できる' do
           visit edit_dungeon_path(dungeon)

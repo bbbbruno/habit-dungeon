@@ -115,9 +115,11 @@
 
     &-img {
       max-width: 35%;
+      padding: 15px;
       @include media(md) {
         max-width: 70%;
         margin: 0 auto;
+        padding: 15px 0 5px;
       }
     }
 

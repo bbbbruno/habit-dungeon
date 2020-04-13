@@ -71,10 +71,6 @@ class User < ApplicationRecord
       message: 'は半角英数字と_（アンダースコア）のみが使用できます'
     }
 
-  after_create do
-    Notification.notify_welcome_to_habit_dungeon(self)
-  end
-
   DEFAULT_MAX_CHALLENGE = 1
 
   def self.from_omniauth(auth, current_user)
