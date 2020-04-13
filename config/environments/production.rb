@@ -107,12 +107,14 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   config.action_mailer.default_url_options = { host: 'habit-dungeon.com' }
-  ActionMailer::Base.smtp_settings = {
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
     port: 587,
-    user_name: 'habitdungeon@gmail.com',
-    password: 'xvaofwjjloqtbvih',
-    authentication: 'plain',
+    user_name: Rails.application.credentials.smtp[:user_name],
+    password: Rails.application.credentials.smtp[:password],
+    authentication: :plain,
     enable_starttls_auto: true,
   }
 end
