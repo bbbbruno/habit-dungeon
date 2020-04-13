@@ -29,7 +29,10 @@ RSpec.describe 'Dungeons', type: :system do
         fill_in '説明', with: '本を毎日読む習慣を身に付けるためのダンジョンです。'
         attach_file 'ヘッダー画像', Rails.root.join('app', 'frontend', 'images', 'headers', 'sky.png'), visible: false
         find('.delete').click
-        find('.add').click
+        find('.delete').click
+        find('.delete').click
+        find('.delete').click
+        find('.delete').click
         find('.add').click
         6.times do |i|
           fill_in "dungeon_levels_attributes_#{i}_title", with: "本を毎日#{i}ページ読む"

@@ -104,30 +104,50 @@ export default {
       levels: [
         {
           title: '〜を毎日〜する',
-          days: 10,
+          days: 10
         },
         {
           title: '〜を毎日〜する',
-          days: 10,
+          days: 10
         },
         {
           title: '〜を毎日〜する',
-          days: 10,
+          days: 10
         },
         {
           title: '〜を毎日〜する',
-          days: 10,
+          days: 10
         },
         {
           title: '〜を毎日〜する',
-          days: 10,
+          days: 10
         },
+        {
+          title: '〜を毎日〜する',
+          days: 10
+        },
+        {
+          title: '〜を毎日〜する',
+          days: 10
+        },
+        {
+          title: '〜を毎日〜する',
+          days: 10
+        },
+        {
+          title: '〜を毎日〜する',
+          days: 10
+        },
+        {
+          title: '〜を毎日〜する',
+          days: 10
+        }
       ],
       additionalLevels: [],
       error: null,
       isEditPage: false,
       confirmMessage:
-        'ダンジョンを編集すると、このダンジョンを攻略中の他のユーザーのダンジョン情報も変更されます。\nよろしいですか？',
+        'ダンジョンを編集すると、このダンジョンを攻略中の他のユーザーのダンジョン情報も変更されます。\nよろしいですか？'
     }
   },
   computed: {
@@ -143,7 +163,7 @@ export default {
       } else {
         return ''
       }
-    },
+    }
   },
   created() {
     if (this.dungeonId) {
@@ -156,7 +176,7 @@ export default {
   watch: {
     levels() {
       this.error = null
-    },
+    }
   },
   methods: {
     addLevel() {
@@ -168,7 +188,7 @@ export default {
       } else {
         const additionalLevel = {
           title: '',
-          days: 0,
+          days: 0
         }
         this.levels.push(additionalLevel)
         this.additionalLevels.push(additionalLevel)
@@ -188,8 +208,8 @@ export default {
           level.destroy = false
         }
       })
-    },
-  },
+    }
+  }
 }
 </script>
 
