@@ -12,16 +12,9 @@
         - else
           h3.level = "Lv #{@challenge.levels.last.number}"
         h3.name = @challenge.enemy_name
-        .gauge
-          - 1.step(@challenge.enemy_max_life, 7) do |i|
-            .gauge-wrap
-              - if i == 1
-                .gauge-ttl
-                  span = "HP　#{@challenge.enemy_life}／#{@challenge.enemy_max_life}"
-              .gauge-bg
-                ul.gauge-main
-                  - (@challenge.enemy_life - (i - 1)).times do
-                    li.gauge-block
+        = render 'home/gauge_pc', challenge: @challenge
+        = render 'home/gauge_sp', challenge: @challenge
+
     .card-inner
       .attacked-status
         .attacked-status-progress
