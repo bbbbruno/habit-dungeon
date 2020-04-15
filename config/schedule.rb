@@ -20,8 +20,7 @@ set :environment, ENV.fetch('RAILS_ENV') { :development }
 #   runner "AnotherModel.prune_old_records"
 # end
 every 1.day do
-  rake 'midnight_action:deal_damage'
-  rake 'midnight_action:reset_flag'
+  rake 'midnight_action:deal_damage_and_reset_flag'
 end
 
 every :month do
