@@ -33,7 +33,7 @@ gem 'rails-i18n'
 gem 'devise'
 gem 'devise-i18n'
 gem 'aws-sdk-s3', require: false
-gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'activeadmin'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
