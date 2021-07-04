@@ -42,7 +42,7 @@ https://habit-dungeon.com
 
 ```
 $ docker-compose build
-$ docker-compose run -rm app bin/setup
+$ docker-compose run --rm app bin/setup
 $ docker-compose up
 ```
 
