@@ -13,7 +13,7 @@
     "eslint-plugin-vue": "^6.2.1",
     "import-glob-loader": "^1.1.0",
     "lozad": "^1.14.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "rails-erb-loader": "^5.5.2",
     "turbolinks": "^5.2.0",
     "vue": "^2.6.11",
